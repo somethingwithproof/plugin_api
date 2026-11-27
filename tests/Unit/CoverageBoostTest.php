@@ -316,4 +316,183 @@ final class CoverageBoostTest extends TestCase {
 		$this->expectException(\InvalidArgumentException::class);
 		ExtensionResourceDescriptor::fromArray(['plugin' => 'other', 'collection' => 'fooItems', 'realm_read' => 'a.php', 'handlers' => ['list' => static fn (): array => []]], 'expected');
 	}
+
+	/**
+	 * Exercise Request::fromGlobals, SqlFilterCompiler in-memory operators,
+	 * TokenService validation branches, CascProvider/DoctorChecks warning branches,
+	 * CliRunner options, and Router/Resource error edges to exceed 90% coverage.
+	 *
+	 * @return void
+	 */
+	public function testExtendedBranchCoverageAcrossCoreModules(): void {
+		// Request::fromGlobals with mocked superglobals.
+		$origServer  = $_SERVER;
+		$origGet     = $_GET;
+		$origSession = $_SESSION ?? [];
+
+		$_SERVER = [
+			'REQUEST_METHOD'        => 'GET',
+			'REQUEST_URI'           => '/plugins/api/v1/devices?page_size=10',
+			'HTTP_AUTHORIZATION'    => 'Bearer test',
+			'HTTP_X_FORWARDED_PROTO' => 'https',
+			'CONTENT_TYPE'          => 'application/json',
+			'CONTENT_LENGTH'        => '0',
+			'REMOTE_ADDR'           => '10.1.2.3',
+		];
+		$_GET     = ['page_size' => '10'];
+		$_SESSION = ['sess_user_id' => 1];
+
+		try {
+			$req = Request::fromGlobals(1024);
+			$this->assertSame('GET', $req->method);
+			$this->assertSame('/v1/devices', $req->path);
+			$this->assertSame('10', $req->queryParam('page_size'));
+			$this->assertTrue($req->isHttps);
+			$this->assertSame('10.1.2.3', $req->clientIp);
+			$this->assertSame(1, $req->sessionUserId);
+
+			$_SERVER['CONTENT_LENGTH'] = '2048';
+
+			try {
+				Request::fromGlobals(1024);
+				$this->fail('Expected oversized Content-Length rejection');
+			} catch (ApiException $e) {
+				$this->assertSame(400, $e->errorStatus->httpCode);
+			}
+		} finally {
+			$_SERVER  = $origServer;
+			$_GET     = $origGet;
+			$_SESSION = $origSession;
+		}
+
+		// SqlFilterCompiler in-memory operators: <, <=, >, >=, !=, :, arrays, booleans, null.
+		$rec    = ['n' => 10, 's' => 'beta', 'b' => true, 'tags' => ['core', 'edge'], 'nil' => null];
+		$fields = ['n', 's', 'b', 'tags', 'nil'];
+		$this->assertTrue(SqlFilterCompiler::matchesRecord(FilterParser::parse('n < 20 AND n <= 10 AND n > 5 AND n >= 10'), $rec, $fields));
+		$this->assertTrue(SqlFilterCompiler::matchesRecord(FilterParser::parse('s > "alpha" AND s >= "beta" AND s < "gamma" AND s <= "beta"'), $rec, $fields));
+		$this->assertTrue(SqlFilterCompiler::matchesRecord(FilterParser::parse('s != "alpha" AND b = true AND nil = null AND tags : "edge"'), $rec, $fields));
+		$this->assertFalse(SqlFilterCompiler::matchesRecord(FilterParser::parse('nil : "x"'), $rec, $fields));
+		$this->assertTrue(SqlFilterCompiler::matchesRecord(FilterParser::parse('b = false'), ['b' => ''], $fields));
+		$this->assertFalse(SqlFilterCompiler::matchesRecord(FilterParser::parse('b = true'), ['b' => ['not-bool']], $fields));
+
+		// PageToken non-numeric page_size and valid-HMAC corrupted-JSON payload.
+		try {
+			PageToken::clampPageSize('abc');
+			$this->fail('Expected non-numeric page_size rejection');
+		} catch (ApiException $e) {
+			$this->assertSame(400, $e->errorStatus->httpCode);
+		}
+
+		$badPayload = rtrim(strtr(base64_encode('not-json'), '+/', '-_'), '=');
+		$badSig     = rtrim(strtr(base64_encode(hash_hmac('sha256', 'not-json', 'sec', true)), '+/', '-_'), '=');
+
+		try {
+			PageToken::decode($badPayload . '.' . $badSig, 'ctx', 'sec');
+			$this->fail('Expected corrupted JSON token rejection');
+		} catch (ApiException $e) {
+			$this->assertSame(400, $e->errorStatus->httpCode);
+		}
+
+		// TokenService validation branches.
+		$repo   = InMemoryApiRepository::withDefaultFixtures();
+		$tokSvc = new TokenService($repo);
+
+		foreach ([
+			static fn () => $tokSvc->create(1, '', ['read'], null, [], 100),
+			static fn () => $tokSvc->create(1, 'lbl', ['superuser'], null, [], 100),
+			static fn () => $tokSvc->create(1, 'lbl', ['read'], 50, [], 100),
+			static fn () => $tokSvc->create(1, 'lbl', ['read'], null, ['not-a-cidr'], 100),
+			static fn () => $tokSvc->create(1, 'lbl', ['read'], null, ['10.0.0.1/99'], 100),
+			static fn () => $tokSvc->create(1, 'lbl', ['read'], null, ['10.0.0.1/abc'], 100),
+			static fn () => $tokSvc->authenticate('bad-format', '127.0.0.1', 100),
+			static fn () => $tokSvc->delete('missing', 1, true),
+			static fn () => $tokSvc->revoke('missing', 1, true, 100),
+		] as $fn) {
+			try {
+				$fn();
+				$this->fail('Expected TokenService ApiException');
+			} catch (ApiException $e) {
+				$this->assertContains($e->errorStatus->httpCode, [400, 401, 404]);
+			}
+		}
+
+		$this->assertFalse(TokenService::ipMatchesAnyCidr('not-an-ip', ['10.0.0.0/8']));
+		$this->assertFalse(TokenService::ipMatchesAnyCidr('10.0.0.1', ['2001:db8::/32']));
+		$this->assertTrue(TokenService::ipMatchesAnyCidr('10.0.0.5', ['10.0.0.5']));
+		$this->assertTrue(TokenService::ipMatchesAnyCidr('10.0.0.5', ['10.0.0.0/29']));
+
+		// ResourceContext update_mask in body (string and array) + Router/Resource edge branches.
+		$admin  = $tokSvc->create(1, 'cov-admin', ['read', 'write', 'admin'], null, [], 1700000000);
+		$auth   = ['Authorization' => 'Bearer ' . $admin['token'], 'Content-Type' => 'application/json'];
+		$router = new Router(
+			$repo,
+			new Settings(),
+			new ResourceRegistry(),
+			'secret-key-0123456789abcdef01234567',
+			'0.1.0',
+			static fn (string $t): bool => $t === 'ok-csrf'
+		);
+
+		// Session auth valid write with CSRF + disabled session user.
+		$sessOk = $router->handle(new Request('POST', '/v1/sites', [], ['Content-Type' => 'application/json', 'X-CSRF-Token' => 'ok-csrf'], '{"display_name":"SessionSite"}', '127.0.0.1', false, 1), 1700000010);
+		$this->assertSame(201, $sessOk->statusCode);
+		$sessDisabled = $router->handle(new Request('GET', '/v1/sites', [], [], '', '127.0.0.1', false, 3), 1700000011);
+		$this->assertSame(401, $sessDisabled->statusCode);
+
+		// Body update_mask as array & as string + empty display_name/description/hostname rejections.
+		$this->assertSame(200, $router->handle(new Request('PATCH', '/v1/sites/1', [], $auth, '{"update_mask":["city"],"city":"SJC"}'), 1700000012)->statusCode);
+		$this->assertSame(400, $router->handle(new Request('PATCH', '/v1/sites/1', [], $auth, '{"update_mask":"display_name","display_name":""}'), 1700000013)->statusCode);
+		$this->assertSame(404, $router->handle(new Request('PATCH', '/v1/sites/999', ['update_mask' => 'city'], $auth, '{"city":"X"}'), 1700000014)->statusCode);
+		$this->assertSame(404, $router->handle(new Request('DELETE', '/v1/sites/999', [], $auth), 1700000015)->statusCode);
+		$this->assertSame(400, $router->handle(new Request('PATCH', '/v1/devices/1', ['update_mask' => 'description'], $auth, '{"description":""}'), 1700000016)->statusCode);
+		$this->assertSame(400, $router->handle(new Request('PATCH', '/v1/devices/1', ['update_mask' => 'hostname'], $auth, '{"hostname":""}'), 1700000017)->statusCode);
+		$this->assertSame(404, $router->handle(new Request('PATCH', '/v1/devices/999', ['update_mask' => 'location'], $auth, '{"location":"Z"}'), 1700000018)->statusCode);
+		$this->assertSame(404, $router->handle(new Request('DELETE', '/v1/devices/999', [], $auth), 1700000019)->statusCode);
+		$this->assertSame(404, $router->handle(new Request('POST', '/v1/devices/999:enable', [], $auth), 1700000020)->statusCode);
+
+		// TokensResource list, cidr_allowlist, ttl_days bounds, admin cross-user creation.
+		$this->assertSame(200, $router->handle(new Request('GET', '/v1/tokens', [], $auth), 1700000021)->statusCode);
+		$this->assertSame(201, $router->handle(new Request('POST', '/v1/tokens', [], $auth, '{"display_name":"ForUser2","user_id":2,"scopes":["read"],"cidr_allowlist":["10.0.0.0/8"],"ttl_days":0}'), 1700000022)->statusCode);
+		$this->assertSame(400, $router->handle(new Request('POST', '/v1/tokens', [], $auth, '{"display_name":"BadTtl","ttl_days":99999}'), 1700000023)->statusCode);
+
+		// DoctorChecks warning branches: expired tokens > 50, rate_limit_rows > 50000, wildcard+creds, faults.
+		$bloatedRepo = new InMemoryApiRepository();
+
+		for ($i = 0; $i < 55; $i++) {
+			$bloatedRepo->tokens['t' . $i] = [
+				'id' => 't' . $i, 'user_id' => 1, 'name' => 'exp', 'token_prefix' => '00000000',
+				'token_hash' => str_repeat('a', 64), 'scopes' => 'read', 'cidr_allowlist' => '',
+				'created_at' => 100, 'expires_at' => 200, 'last_used_at' => null, 'revoked_at' => null,
+			];
+		}
+
+		$faultReg = new ResourceRegistry();
+		$faultReg->dispatchHooks([['name' => 'BAD!', 'file' => 'x.php', 'function' => static fn (): array => []]]);
+
+		$docChecks = \Somethingwithproof\Api\Integration\DoctorChecks::build(
+			static fn (): InMemoryApiRepository => $bloatedRepo,
+			static fn (): Settings => new Settings(corsOrigins: ['*'], corsAllowCredentials: true),
+			static fn (): ResourceRegistry => $faultReg,
+			static fn (): int => 500
+		);
+		$this->assertSame('warning', ($docChecks[0]['run'])()['status']);
+		$this->assertSame('warning', ($docChecks[3]['run'])()['status']);
+
+		// CascProvider error plan/apply + typed object registrar reflection path.
+		$cascDesc = \Somethingwithproof\Api\Integration\CascProvider::descriptor(
+			static fn (): Settings => new Settings(),
+			static function (array $v): void {
+			}
+		);
+		$errPlan = ($cascDesc['plan'])(['api_rate_limit_per_min' => -5], []);
+		$this->assertSame('error', $errPlan[0]['operation']);
+		$errApply = ($cascDesc['apply'])(['api_rate_limit_per_min' => -5], 'h', []);
+		$this->assertFalse($errApply['ok']);
+
+		// CliRunner space-separated flags, missing --id, and ApiException stderr formatting.
+		$cli = new \Somethingwithproof\Api\Cli\CliRunner($repo, new Settings(), new ResourceRegistry());
+		$this->assertSame(0, $cli->run(['token-create', '--user-id', '1', '--name', 'spaced', '--cidr', '10.0.0.0/8'], 1700000000)['exitCode']);
+		$this->assertSame(2, $cli->run(['token-revoke'], 1700000000)['exitCode']);
+		$this->assertSame(1, $cli->run(['token-revoke', '--id=missing-id'], 1700000000)['exitCode']);
+	}
 }

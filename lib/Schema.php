@@ -274,7 +274,7 @@ final class Schema {
 				'keys'    => [
 					['name' => 'idx_token_prefix', 'columns' => 'token_prefix'],
 					['name' => 'idx_user_id', 'columns' => 'user_id'],
-					['name' => 'idx_revoked_expires', 'columns' => 'revoked_at, expires_at'],
+					['name' => 'idx_revoked_expires', 'columns' => ['revoked_at', 'expires_at']],
 				],
 				'type'    => 'InnoDB',
 				'comment' => 'Application Password tokens hashed with SHA-256 at rest',
@@ -295,7 +295,7 @@ final class Schema {
 				],
 				'primary' => 'id',
 				'keys'    => [
-					['name' => 'idx_done_created', 'columns' => 'done, created_at'],
+					['name' => 'idx_done_created', 'columns' => ['done', 'created_at']],
 					['name' => 'idx_user_id', 'columns' => 'user_id'],
 				],
 				'type'    => 'InnoDB',
