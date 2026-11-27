@@ -21,6 +21,8 @@ declare(strict_types=1);
 
 namespace Somethingwithproof\Api\Auth;
 
+use Somethingwithproof\Api\Pages;
+
 /**
  * Authenticated caller identity binding Cacti user ID, realms, and token scopes.
  */
@@ -83,11 +85,28 @@ final class Principal {
 	/**
 	 * Return true when the user holds the specified Cacti realm file permission.
 	 *
+	 * Applies 3-tier API realm inheritance (Admin > Operator > View) so users
+	 * granted api_admin.php or api_tokens.php satisfy lower API realm checks
+	 * regardless of token scope.
+	 *
 	 * @param string $realmFile Cacti realm filename (e.g. "host.php", "api_admin.php").
 	 * @return bool
 	 */
 	public function hasRealm(string $realmFile): bool {
-		return $this->isAdmin || in_array($realmFile, $this->realmFiles, true);
+		if ($this->isAdmin || in_array($realmFile, $this->realmFiles, true)) {
+			return true;
+		}
+
+		if ($realmFile === Pages::VIEW) {
+			return in_array(Pages::OPERATOR, $this->realmFiles, true)
+				|| in_array(Pages::ADMIN, $this->realmFiles, true);
+		}
+
+		if ($realmFile === Pages::OPERATOR) {
+			return in_array(Pages::ADMIN, $this->realmFiles, true);
+		}
+
+		return false;
 	}
 
 	/**

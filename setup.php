@@ -504,15 +504,23 @@ function api_casc_register_providers($registrar) {
 /**
  * Decoupled doctor_register_checks hook contributing REST API health diagnostics.
  *
- * @param mixed $checks Existing diagnostic checks array.
- * @return mixed
+ * @param mixed $context Hook context array containing mode ('run'|'list') and plugin slug.
+ * @return list<array<string, mixed>>
  */
-function api_doctor_register_checks($checks) {
+function api_doctor_register_checks($context = array()): array {
 	if (!api_boot()) {
-		return $checks;
+		return array();
 	}
 
-	$built = \Somethingwithproof\Api\Integration\DoctorChecks::build(
+	$normalized = array();
+
+	if (is_array($context)) {
+		foreach ($context as $key => $value) {
+			$normalized[(string) $key] = $value;
+		}
+	}
+
+	return \Somethingwithproof\Api\Integration\DoctorChecks::build(
 		static function (): \Somethingwithproof\Api\Repository\ApiRepositoryInterface {
 			return new \Somethingwithproof\Api\Repository\CactiApiRepository(false);
 		},
@@ -521,29 +529,26 @@ function api_doctor_register_checks($checks) {
 		},
 		static function (): \Somethingwithproof\Api\Extension\ResourceRegistry {
 			return api_resource_registry();
-		}
+		},
+		null,
+		$normalized
 	);
-
-	if (is_array($checks)) {
-		return array_merge($checks, $built);
-	}
-
-	return $built;
 }
 
 /**
  * Decoupled doctor_register_debug_info hook returning a redacted diagnostic snapshot.
  *
- * @param mixed $info Existing diagnostic debug info sections map.
- * @return mixed
+ * @param mixed $context Optional hook context passed by plugin_doctor.
+ * @return list<array<string, mixed>>
  */
-function api_doctor_register_debug_info($info) {
+function api_doctor_register_debug_info($context = array()): array {
 	if (!api_boot()) {
-		return $info;
+		return array();
 	}
 
-	$version  = plugin_api_version();
-	$snapshot = \Somethingwithproof\Api\Integration\DoctorChecks::debugInfo(
+	$version = plugin_api_version();
+
+	return \Somethingwithproof\Api\Integration\DoctorChecks::debugInfo(
 		static function (): \Somethingwithproof\Api\Repository\ApiRepositoryInterface {
 			return new \Somethingwithproof\Api\Repository\CactiApiRepository(false);
 		},
@@ -555,14 +560,6 @@ function api_doctor_register_debug_info($info) {
 		},
 		$version['version'] ?? '0.1.0'
 	);
-
-	if (is_array($info)) {
-		$info['api'] = $snapshot;
-
-		return $info;
-	}
-
-	return array('api' => $snapshot);
 }
 
 /**

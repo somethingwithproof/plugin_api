@@ -24,6 +24,7 @@ namespace Somethingwithproof\Api\Repository;
 use Somethingwithproof\Api\Aip\FilterNode;
 use Somethingwithproof\Api\Aip\OrderByParser;
 use Somethingwithproof\Api\Aip\SqlFilterCompiler;
+use Somethingwithproof\Api\Pages;
 
 /**
  * Live MariaDB/Cacti 1.2 repository backed exclusively by Cacti prepared-statement APIs.
@@ -796,6 +797,14 @@ final class CactiApiRepository implements ApiRepositoryInterface {
 					$realms[] = $file;
 				}
 			}
+		}
+
+		// Enforce 3-tier API realm inheritance: Admin > Operator (Tokens) > View.
+		if (in_array(Pages::ADMIN, $realms, true)) {
+			$realms[] = Pages::OPERATOR;
+			$realms[] = Pages::VIEW;
+		} elseif (in_array(Pages::OPERATOR, $realms, true)) {
+			$realms[] = Pages::VIEW;
 		}
 
 		return array_values(array_unique($realms));

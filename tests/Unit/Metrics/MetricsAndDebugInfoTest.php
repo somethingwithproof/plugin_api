@@ -171,7 +171,7 @@ final class MetricsAndDebugInfoTest extends TestCase {
 			['name' => 'BAD_PLUGIN!', 'file' => 'setup.php', 'function' => static fn (): array => []],
 		]);
 
-		$snapshot = DoctorChecks::debugInfo(
+		$sections = DoctorChecks::debugInfo(
 			static fn (): InMemoryApiRepository => $repo,
 			static fn (): Settings => new Settings(enabled: true, rateLimitPerMin: 240, requireTls: true, corsOrigins: ['https://ops.example.com']),
 			static fn (): ResourceRegistry => $registry,
@@ -179,20 +179,32 @@ final class MetricsAndDebugInfoTest extends TestCase {
 			static fn (): int => $now
 		);
 
-		$this->assertSame('api', $snapshot['plugin']);
-		$this->assertSame('0.1.0', $snapshot['version']);
-		$this->assertSame(Schema::VERSION, $snapshot['schema_version']);
-		$this->assertTrue($snapshot['redacted']);
-		$this->assertSame('sha256_hashed_at_rest', $snapshot['secret_storage']);
-		$this->assertSame(1, $snapshot['metrics']['active_tokens']);
-		$this->assertSame(count(Router::CORE_COLLECTIONS) + 1, $snapshot['metrics']['registered_collections']);
-		$this->assertContains('devices', $snapshot['collections']['core']);
-		$this->assertSame(['inventoryNodes'], $snapshot['collections']['extension']);
-		$this->assertSame(['inventory'], $snapshot['extensions']['plugins']);
-		$this->assertSame(1, $snapshot['extensions']['fault_count']);
+		$this->assertCount(1, $sections);
+		$section = $sections[0];
+		$this->assertSame('api.overview', $section['id']);
+		$this->assertSame('api', $section['plugin']);
+		$this->assertSame('REST API (plugin_api)', $section['label']);
+		$this->assertFalse($section['private']);
+		$fields = $section['fields'];
+
+		foreach ($fields as $key => $field) {
+			$this->assertIsString($field['label'], 'Field label must be string: ' . $key);
+			$this->assertTrue(is_scalar($field['value']), 'Field value must be scalar: ' . $key);
+		}
+
+		$this->assertSame('0.1.0', $fields['version']['value']);
+		$this->assertSame(Schema::VERSION, $fields['schema_version']['value']);
+		$this->assertTrue($fields['redacted']['value']);
+		$this->assertSame('sha256_hashed_at_rest', $fields['secret_storage']['value']);
+		$this->assertSame(1, $fields['active_tokens']['value']);
+		$this->assertSame(count(Router::CORE_COLLECTIONS) + 1, $fields['registered_collections']['value']);
+		$this->assertStringContainsString('devices', (string) $fields['core_collections']['value']);
+		$this->assertSame('inventoryNodes', $fields['extension_collections']['value']);
+		$this->assertSame('inventory', $fields['extension_plugins']['value']);
+		$this->assertSame(1, $fields['extension_fault_count']['value']);
 
 		// Serialize entire snapshot and assert zero leakage of token plaintext, prefix, or hash.
-		$json = json_encode($snapshot, JSON_THROW_ON_ERROR);
+		$json = json_encode($sections, JSON_THROW_ON_ERROR);
 		$this->assertStringNotContainsString($rawToken, $json);
 		$this->assertStringNotContainsString($stored['token_hash'], $json);
 		$this->assertStringNotContainsString($stored['token_prefix'], $json);

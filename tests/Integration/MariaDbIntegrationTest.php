@@ -127,7 +127,15 @@ final class MariaDbIntegrationTest extends TestCase {
 		$this->assertSame(200, $cancelOp->statusCode);
 		$this->assertTrue($cancelOp->body['done'] ?? false);
 
-		// Verify self-graphing script-server telemetry and redacted doctor_register_debug_info on live MariaDB.
+		// Verify 3-tier realm inheritance: a read-only token for admin user 1 (granted default api_admin.php)
+		// receives HTTP 200 on GET /v1/operations instead of 403.
+		$readOnly = $tokens->create(1, 'ci-readonly-pat', ['read'], time() + 3600, [], time());
+		$readAuth = ['Authorization' => 'Bearer ' . $readOnly['token']];
+		$opsResp  = $router->handle(new Request('GET', '/v1/operations', [], $readAuth));
+		$this->assertSame(200, $opsResp->statusCode);
+		$tokens->revoke((string) $readOnly['resource']['id'], 1, true, time());
+
+		// Verify self-graphing script-server telemetry and redacted doctor hooks on live MariaDB.
 		$called_by_script_server = true;
 		require_once dirname(__DIR__, 2) . '/scripts/ss_api_stats.php';
 		$metricsLine = ss_api_stats();
@@ -136,10 +144,18 @@ final class MariaDbIntegrationTest extends TestCase {
 		$this->assertStringContainsString('registered_collections:', $metricsLine);
 		$this->assertStringNotContainsString('cacti_pat_', $metricsLine);
 
-		$debugInfo = api_doctor_register_debug_info([]);
-		$this->assertIsArray($debugInfo);
-		$this->assertTrue($debugInfo['api']['redacted'] ?? false);
-		$this->assertSame(1, $debugInfo['api']['metrics']['active_tokens'] ?? 0);
+		$checks = api_doctor_register_checks(['mode' => 'run', 'plugin' => 'api']);
+		$this->assertCount(4, $checks);
+		$this->assertSame('api.token_hygiene', $checks[0]['id']);
+		$this->assertSame('api', $checks[0]['plugin']);
+		$this->assertContains($checks[0]['status'], ['ok', 'warn', 'fail', 'info']);
+
+		$debugInfo = api_doctor_register_debug_info(['plugin' => 'api']);
+		$this->assertCount(1, $debugInfo);
+		$this->assertSame('api.overview', $debugInfo[0]['id']);
+		$this->assertSame('api', $debugInfo[0]['plugin']);
+		$this->assertTrue($debugInfo[0]['fields']['redacted']['value'] ?? false);
+		$this->assertSame(1, $debugInfo[0]['fields']['active_tokens']['value'] ?? 0);
 		$debugJson = json_encode($debugInfo, JSON_THROW_ON_ERROR);
 		$this->assertStringNotContainsString($issued['token'], $debugJson);
 

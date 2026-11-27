@@ -28,7 +28,12 @@ use Somethingwithproof\Api\Auth\AccessResult;
 use Somethingwithproof\Api\Auth\Principal;
 use Somethingwithproof\Api\Auth\RateLimiter;
 use Somethingwithproof\Api\Auth\TokenService;
+use Somethingwithproof\Api\Extension\ResourceRegistry;
+use Somethingwithproof\Api\Http\Request;
+use Somethingwithproof\Api\Http\Router;
+use Somethingwithproof\Api\Pages;
 use Somethingwithproof\Api\Repository\InMemoryApiRepository;
+use Somethingwithproof\Api\Settings;
 
 /**
  * Unit tests for Drupal-style AccessResult, Application Passwords TokenService,
@@ -168,5 +173,49 @@ final class AuthAndRateLimitTest extends TestCase {
 		// Next 60-second window resets the counter cleanly.
 		$hNext = $limiter->consume('token:abc', 2, $now + 65);
 		$this->assertSame('1', $hNext['X-RateLimit-Remaining']);
+	}
+
+	/**
+	 * Verify 3-tier realm inheritance allows admin users with only api_admin.php
+	 * granted (e.g. via cli/plugin_manage.php --allperms) to read GET /v1/operations
+	 * using a read-scoped token.
+	 *
+	 * @return void
+	 */
+	public function testThreeTierRealmInheritanceAllowsAdminReadTokenOnOperations(): void {
+		$repo                = InMemoryApiRepository::withDefaultFixtures();
+		$repo->userRealms[1] = [Pages::ADMIN];
+		$repo->userRealms[2] = [Pages::OPERATOR];
+
+		$tokens = new TokenService($repo);
+		$now    = 1700000000;
+
+		// Read-only token for admin user who holds only api_admin.php (not explicit api_view.php).
+		$adminRead = $tokens->create(1, 'admin-read-only', ['read'], null, [], $now);
+		$opRead    = $tokens->create(2, 'operator-read-only', ['read'], null, [], $now);
+
+		$router = new Router($repo, new Settings(), new ResourceRegistry(), 'secret-key-0123456789abcdef01234567');
+
+		$adminResp = $router->handle(
+			new Request('GET', '/v1/operations', [], ['Authorization' => 'Bearer ' . $adminRead['token']]),
+			$now + 1
+		);
+		$this->assertSame(200, $adminResp->statusCode);
+
+		$opResp = $router->handle(
+			new Request('GET', '/v1/operations', [], ['Authorization' => 'Bearer ' . $opRead['token']]),
+			$now + 2
+		);
+		$this->assertSame(200, $opResp->statusCode);
+
+		$pAdmin = $tokens->authenticate($adminRead['token'], '127.0.0.1', $now + 3);
+		$this->assertTrue($pAdmin->hasRealm(Pages::ADMIN));
+		$this->assertTrue($pAdmin->hasRealm(Pages::OPERATOR));
+		$this->assertTrue($pAdmin->hasRealm(Pages::VIEW));
+
+		$pOperator = $tokens->authenticate($opRead['token'], '127.0.0.1', $now + 4);
+		$this->assertFalse($pOperator->hasRealm(Pages::ADMIN));
+		$this->assertTrue($pOperator->hasRealm(Pages::OPERATOR));
+		$this->assertTrue($pOperator->hasRealm(Pages::VIEW));
 	}
 }

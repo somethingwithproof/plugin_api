@@ -85,7 +85,7 @@ final class McpAbilities {
 					'requireTls'           => ['type' => 'boolean'],
 					'activeTokens'         => ['type' => 'integer'],
 					'pendingOperations'    => ['type' => 'integer'],
-					'extensionCollections' => ['type' => 'array', 'items' => ['type' => 'string']],
+					'extensionCollections' => ['type' => 'array', 'items' => ['type' => 'string'], 'maxItems' => 256],
 				],
 				'required'             => ['enabled', 'version', 'rateLimitPerMin', 'requireTls', 'activeTokens', 'pendingOperations', 'extensionCollections'],
 				'additionalProperties' => false,
@@ -121,7 +121,7 @@ final class McpAbilities {
 			'output_schema' => [
 				'type'       => 'object',
 				'properties' => [
-					'operations' => ['type' => 'array', 'items' => ['type' => 'object']],
+					'operations' => ['type' => 'array', 'items' => ['type' => 'object'], 'maxItems' => 256],
 					'totalSize'  => ['type' => 'integer'],
 				],
 				'required'             => ['operations', 'totalSize'],
@@ -156,7 +156,7 @@ final class McpAbilities {
 				'properties' => [
 					'openapi'   => ['type' => 'string'],
 					'pathCount' => ['type' => 'integer'],
-					'paths'     => ['type' => 'array', 'items' => ['type' => 'string']],
+					'paths'     => ['type' => 'array', 'items' => ['type' => 'string'], 'maxItems' => 512],
 				],
 				'required'             => ['openapi', 'pathCount', 'paths'],
 				'additionalProperties' => false,

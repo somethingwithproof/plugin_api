@@ -110,7 +110,7 @@ final class EcosystemAndCliTest extends TestCase {
 	}
 
 	/**
-	 * Verify DoctorChecks report both healthy and degraded operational states.
+	 * Verify DoctorChecks report canonical list/run descriptors for healthy and degraded states.
 	 *
 	 * @return void
 	 */
@@ -119,27 +119,71 @@ final class EcosystemAndCliTest extends TestCase {
 		$registry = new ResourceRegistry();
 		$now      = 1700005000;
 
-		// Add a stuck operation (> 1h old) to verify stuck_operations warning.
+		// Add a stuck operation (> 1h old) to verify stuck_operations warn status.
 		(new OperationManager($repo))->create(1, 'device.poll', 'devices/1', [], $now - 7200);
 
+		// mode=list must return metadata-only descriptors with status=info without invoking factories.
+		$factoryCalls = 0;
+		$listChecks   = DoctorChecks::build(
+			static function () use ($repo, &$factoryCalls): InMemoryApiRepository {
+				$factoryCalls++;
+
+				return $repo;
+			},
+			static function () use (&$factoryCalls): Settings {
+				$factoryCalls++;
+
+				return new Settings();
+			},
+			static function () use ($registry, &$factoryCalls): ResourceRegistry {
+				$factoryCalls++;
+
+				return $registry;
+			},
+			static fn (): int => $now,
+			['mode' => 'list', 'plugin' => 'api']
+		);
+		$this->assertSame(0, $factoryCalls);
+		$this->assertCount(4, $listChecks);
+
+		foreach ($listChecks as $check) {
+			$this->assertStringStartsWith('api.', $check['id']);
+			$this->assertSame('api', $check['plugin']);
+			$this->assertSame('API', $check['category']);
+			$this->assertSame('info', $check['status']);
+			$this->assertNotSame('', $check['title']);
+			$this->assertNotSame('', $check['message']);
+			$this->assertArrayHasKey('details', $check);
+			$this->assertArrayHasKey('remediation', $check);
+		}
+
+		// mode=run evaluates checks directly and returns ok|warn|fail|info statuses.
 		$checks = DoctorChecks::build(
 			static fn (): InMemoryApiRepository => $repo,
 			static fn (): Settings => new Settings(requireTls: false),
 			static fn (): ResourceRegistry => $registry,
-			static fn (): int => $now
+			static fn (): int => $now,
+			['mode' => 'run', 'plugin' => 'api']
 		);
 		$this->assertCount(4, $checks);
 
-		$results = [];
+		$byId = [];
 
 		foreach ($checks as $check) {
-			$results[$check['id']] = ($check['run'])();
+			$this->assertStringStartsWith('api.', $check['id']);
+			$this->assertSame('api', $check['plugin']);
+			$this->assertContains($check['status'], ['ok', 'warn', 'fail', 'info']);
+			$this->assertNotSame('', $check['title']);
+			$this->assertNotSame('', $check['message']);
+			$byId[$check['id']] = $check;
 		}
 
-		$this->assertSame('ok', $results['api_token_hygiene']['status']);
-		$this->assertSame('warning', $results['api_stuck_operations']['status']);
-		$this->assertSame('ok', $results['api_rate_limit_table']['status']);
-		$this->assertSame('warning', $results['api_security_posture']['status']);
+		$this->assertSame('ok', $byId['api.token_hygiene']['status']);
+		$this->assertSame('warn', $byId['api.stuck_operations']['status']);
+		$this->assertNotSame('', $byId['api.stuck_operations']['remediation']);
+		$this->assertSame('ok', $byId['api.rate_limit_table']['status']);
+		$this->assertSame('warn', $byId['api.security_posture']['status']);
+		$this->assertNotSame('', $byId['api.security_posture']['remediation']);
 
 		// With requireTls=true and no faults, security posture check reports ok.
 		$okChecks = DoctorChecks::build(
@@ -148,7 +192,7 @@ final class EcosystemAndCliTest extends TestCase {
 			static fn (): ResourceRegistry => new ResourceRegistry(),
 			static fn (): int => $now
 		);
-		$this->assertSame('ok', ($okChecks[3]['run'])()['status']);
+		$this->assertSame('ok', $okChecks[3]['status']);
 	}
 
 	/**
@@ -190,6 +234,24 @@ final class EcosystemAndCliTest extends TestCase {
 		);
 
 		$this->assertSame(['api-get-status', 'api-list-operations', 'api-get-openapi'], array_keys($registered));
+
+		// Every type: array in input_schema/output_schema must define both items and maxItems.
+		foreach ($registered as $abilityId => $spec) {
+			foreach (['input_schema', 'output_schema'] as $schemaKey) {
+				$schema = $spec[$schemaKey] ?? [];
+
+				if (is_array($schema) && is_array($schema['properties'] ?? null)) {
+					foreach ($schema['properties'] as $propName => $propSchema) {
+						if (is_array($propSchema) && ($propSchema['type'] ?? null) === 'array') {
+							$this->assertArrayHasKey('items', $propSchema, sprintf('%s.%s.%s missing items', $abilityId, $schemaKey, $propName));
+							$this->assertIsInt($propSchema['maxItems'] ?? null, sprintf('%s.%s.%s missing integer maxItems', $abilityId, $schemaKey, $propName));
+						}
+					}
+				}
+			}
+		}
+
+		$this->assertSame(256, $registered['api-get-status']['output_schema']['properties']['extensionCollections']['maxItems']);
 
 		$status = ($registered['api-get-status']['execute'])(1, new \stdClass());
 		$this->assertTrue($status['enabled']);

@@ -185,10 +185,27 @@ final class CactiRepositoryAndSchemaTest extends TestCase {
 		$GLOBALS['__db_next']['row'] = ['id' => 1, 'username' => 'admin', 'enabled' => 'on', 'locked' => ''];
 		$this->assertTrue($repo->getUserById(1)['enabled'] ?? false);
 
-		$GLOBALS['__db_next']['assoc'] = [['file' => 'api_admin.php,api_view.php', 'realm_id' => 3]];
+		// Admin realm inherits Operator (api_tokens.php) and View (api_view.php).
+		$GLOBALS['__db_next']['assoc'] = [['file' => 'api_admin.php', 'realm_id' => 3]];
 		$realms                        = $repo->getUserRealms(1);
 		$this->assertContains('api_admin.php', $realms);
+		$this->assertContains('api_tokens.php', $realms);
+		$this->assertContains('api_view.php', $realms);
 		$this->assertContains('host.php', $realms);
+
+		// Operator realm inherits View (api_view.php) without escalating to Admin.
+		$GLOBALS['__db_next']['assoc'] = [['file' => 'api_tokens.php']];
+		$operatorRealms                = $repo->getUserRealms(2);
+		$this->assertContains('api_tokens.php', $operatorRealms);
+		$this->assertContains('api_view.php', $operatorRealms);
+		$this->assertNotContains('api_admin.php', $operatorRealms);
+
+		// View realm does not escalate to Operator or Admin.
+		$GLOBALS['__db_next']['assoc'] = [['file' => 'api_view.php']];
+		$viewRealms                    = $repo->getUserRealms(3);
+		$this->assertContains('api_view.php', $viewRealms);
+		$this->assertNotContains('api_tokens.php', $viewRealms);
+		$this->assertNotContains('api_admin.php', $viewRealms);
 
 		// Policy 1 with listed count 1 => denied; verify ACL methods run cleanly.
 		$GLOBALS['__db_next']['cell'] = 1;

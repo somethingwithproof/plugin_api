@@ -127,14 +127,19 @@ final class CoverageBoostTest extends TestCase {
 		$this->assertIsArray($casc);
 		$this->assertArrayHasKey('api', $casc);
 
-		$checks = api_doctor_register_checks([]);
+		$checks = api_doctor_register_checks(['mode' => 'run', 'plugin' => 'api']);
 		$this->assertIsArray($checks);
+		$this->assertArrayNotHasKey('mode', $checks);
 		$this->assertCount(4, $checks);
+		$this->assertSame('api.token_hygiene', $checks[0]['id']);
 
-		$debugInfo = api_doctor_register_debug_info([]);
+		$debugInfo = api_doctor_register_debug_info(['plugin' => 'api']);
 		$this->assertIsArray($debugInfo);
-		$this->assertArrayHasKey('api', $debugInfo);
-		$this->assertTrue($debugInfo['api']['redacted'] ?? false);
+		$this->assertArrayNotHasKey('plugin', $debugInfo);
+		$this->assertCount(1, $debugInfo);
+		$this->assertSame('api.overview', $debugInfo[0]['id']);
+		$this->assertSame('api', $debugInfo[0]['plugin']);
+		$this->assertTrue($debugInfo[0]['fields']['redacted']['value'] ?? false);
 
 		$captured = [];
 		$abReg    = new class ($captured) {
@@ -481,8 +486,8 @@ final class CoverageBoostTest extends TestCase {
 			static fn (): ResourceRegistry => $faultReg,
 			static fn (): int => 500
 		);
-		$this->assertSame('warning', ($docChecks[0]['run'])()['status']);
-		$this->assertSame('warning', ($docChecks[3]['run'])()['status']);
+		$this->assertSame('warn', $docChecks[0]['status']);
+		$this->assertSame('warn', $docChecks[3]['status']);
 
 		// CascProvider error plan/apply + typed object registrar reflection path.
 		$cascDesc = \Somethingwithproof\Api\Integration\CascProvider::descriptor(
