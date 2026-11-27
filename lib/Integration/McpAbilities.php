@@ -121,8 +121,46 @@ final class McpAbilities {
 			'output_schema' => [
 				'type'       => 'object',
 				'properties' => [
-					'operations' => ['type' => 'array', 'items' => ['type' => 'object'], 'maxItems' => 256],
-					'totalSize'  => ['type' => 'integer'],
+					'operations' => [
+						'type'     => 'array',
+						'maxItems' => 256,
+						'items'    => [
+							'type'       => 'object',
+							'properties' => [
+								'name'       => ['type' => 'string', 'maxLength' => 128],
+								'id'         => ['type' => 'string', 'maxLength' => 64],
+								'done'       => ['type' => 'boolean'],
+								'metadata'   => [
+									'type'       => 'object',
+									'properties' => [
+										'@type'                 => ['type' => 'string', 'maxLength' => 128],
+										'operationType'         => ['type' => 'string', 'maxLength' => 128],
+										'targetResource'        => ['type' => 'string', 'maxLength' => 256],
+										'createTime'            => ['type' => 'string', 'maxLength' => 64],
+										'requestedCancellation' => ['type' => 'boolean'],
+										'endTime'               => ['type' => ['string', 'null'], 'maxLength' => 64],
+									],
+									'required'             => ['@type', 'operationType', 'targetResource', 'createTime', 'requestedCancellation'],
+									'additionalProperties' => false,
+								],
+								'createTime' => ['type' => 'string', 'maxLength' => 64],
+								'updateTime' => ['type' => 'string', 'maxLength' => 64],
+								'error'      => [
+									'type'       => 'object',
+									'properties' => [
+										'code'    => ['type' => 'integer'],
+										'message' => ['type' => 'string', 'maxLength' => 1024],
+										'status'  => ['type' => 'string', 'maxLength' => 64],
+									],
+									'required'             => ['code', 'message', 'status'],
+									'additionalProperties' => false,
+								],
+							],
+							'required'             => ['name', 'id', 'done', 'metadata', 'createTime', 'updateTime'],
+							'additionalProperties' => false,
+						],
+					],
+					'totalSize' => ['type' => 'integer', 'minimum' => 0],
 				],
 				'required'             => ['operations', 'totalSize'],
 				'additionalProperties' => false,
@@ -133,11 +171,41 @@ final class McpAbilities {
 				$repo    = $repoFactory();
 				$realms  = $repo->getUserRealms($userId);
 				$isAdmin = in_array(Pages::ADMIN, $realms, true);
-				$ops     = (new OperationManager($repo))->list($userId, $isAdmin);
+				$rawOps  = (new OperationManager($repo))->list($userId, $isAdmin);
+				$ops     = [];
+
+				foreach (array_slice($rawOps, 0, 256) as $op) {
+					$meta = is_array($op['metadata'] ?? null) ? $op['metadata'] : [];
+					$item = [
+						'name'       => is_string($op['name'] ?? null) ? $op['name'] : '',
+						'id'         => is_string($op['id'] ?? null) ? $op['id'] : '',
+						'done'       => (bool) ($op['done'] ?? false),
+						'metadata'   => [
+							'@type'                 => is_string($meta['@type'] ?? null) ? $meta['@type'] : 'type.googleapis.com/cacti.api.v1.OperationMetadata',
+							'operationType'         => is_string($meta['operationType'] ?? null) ? $meta['operationType'] : '',
+							'targetResource'        => is_string($meta['targetResource'] ?? null) ? $meta['targetResource'] : '',
+							'createTime'            => is_string($meta['createTime'] ?? null) ? $meta['createTime'] : '',
+							'requestedCancellation' => (bool) ($meta['requestedCancellation'] ?? false),
+							'endTime'               => is_string($meta['endTime'] ?? null) ? $meta['endTime'] : null,
+						],
+						'createTime' => is_string($op['createTime'] ?? null) ? $op['createTime'] : '',
+						'updateTime' => is_string($op['updateTime'] ?? null) ? $op['updateTime'] : '',
+					];
+
+					if (is_array($op['error'] ?? null)) {
+						$item['error'] = [
+							'code'    => is_numeric($op['error']['code'] ?? null) ? (int) $op['error']['code'] : 500,
+							'message' => is_string($op['error']['message'] ?? null) ? $op['error']['message'] : '',
+							'status'  => is_string($op['error']['status'] ?? null) ? $op['error']['status'] : 'INTERNAL',
+						];
+					}
+
+					$ops[] = $item;
+				}
 
 				return [
 					'operations' => $ops,
-					'totalSize'  => count($ops),
+					'totalSize'  => count($rawOps),
 				];
 			},
 		]);

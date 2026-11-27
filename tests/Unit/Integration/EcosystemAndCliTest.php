@@ -203,7 +203,10 @@ final class EcosystemAndCliTest extends TestCase {
 	public function testMcpAbilitiesRegistrationAndExecution(): void {
 		$repo     = InMemoryApiRepository::withDefaultFixtures();
 		$registry = new ResourceRegistry();
-		(new OperationManager($repo))->create(1, 'device.poll', 'devices/1', [], 1700000000);
+		$opMgr    = new OperationManager($repo);
+		$opMgr->create(1, 'device.poll', 'devices/1', [], 1700000000);
+		$cancelled = $opMgr->create(1, 'device.reindex', 'devices/2', [], 1700000010);
+		$opMgr->cancel((string) $cancelled['id'], 1, true, 1700000020);
 
 		$registered = [];
 		$registrar  = new class ($registered) {
@@ -235,19 +238,12 @@ final class EcosystemAndCliTest extends TestCase {
 
 		$this->assertSame(['api-get-status', 'api-list-operations', 'api-get-openapi'], array_keys($registered));
 
-		// Every type: array in input_schema/output_schema must define both items and maxItems.
+		// Recursively verify every object schema is closed and every array schema declares items + maxItems.
 		foreach ($registered as $abilityId => $spec) {
 			foreach (['input_schema', 'output_schema'] as $schemaKey) {
 				$schema = $spec[$schemaKey] ?? [];
-
-				if (is_array($schema) && is_array($schema['properties'] ?? null)) {
-					foreach ($schema['properties'] as $propName => $propSchema) {
-						if (is_array($propSchema) && ($propSchema['type'] ?? null) === 'array') {
-							$this->assertArrayHasKey('items', $propSchema, sprintf('%s.%s.%s missing items', $abilityId, $schemaKey, $propName));
-							$this->assertIsInt($propSchema['maxItems'] ?? null, sprintf('%s.%s.%s missing integer maxItems', $abilityId, $schemaKey, $propName));
-						}
-					}
-				}
+				$this->assertIsArray($schema);
+				$this->assertSchemaClosedAndBounded($schema, $abilityId . '.' . $schemaKey);
 			}
 		}
 
@@ -258,11 +254,52 @@ final class EcosystemAndCliTest extends TestCase {
 		$this->assertSame(1, $status['pendingOperations']);
 
 		$ops = ($registered['api-list-operations']['execute'])(1, new \stdClass());
-		$this->assertSame(1, $ops['totalSize']);
+		$this->assertSame(2, $ops['totalSize']);
+		$this->assertCount(2, $ops['operations']);
+		$this->assertSame('device.poll', $ops['operations'][0]['metadata']['operationType']);
+		$this->assertArrayHasKey('error', $ops['operations'][1]);
+		$this->assertSame('CANCELLED', $ops['operations'][1]['error']['status']);
 
 		$openapi = ($registered['api-get-openapi']['execute'])(1, new \stdClass());
 		$this->assertSame('3.1.0', $openapi['openapi']);
 		$this->assertGreaterThan(15, $openapi['pathCount']);
+	}
+
+	/**
+	 * Recursively verify every JSON schema object is closed and every array declares items and maxItems.
+	 *
+	 * @param array<string, mixed> $schema Schema node.
+	 * @param string               $path   Context path for assertion messages.
+	 * @return void
+	 */
+	private function assertSchemaClosedAndBounded(array $schema, string $path): void {
+		$type = is_array($schema['type'] ?? null) ? ($schema['type'][0] ?? null) : ($schema['type'] ?? null);
+
+		if ($type === 'object') {
+			$this->assertArrayHasKey('properties', $schema, $path . ' missing properties');
+			$this->assertFalse($schema['additionalProperties'] ?? null, $path . ' must set additionalProperties=false');
+			$props = is_array($schema['properties']) ? $schema['properties'] : (array) $schema['properties'];
+
+			foreach ((array) ($schema['required'] ?? []) as $req) {
+				$this->assertArrayHasKey((string) $req, $props, $path . ' required field missing from properties: ' . (string) $req);
+			}
+
+			foreach ($props as $k => $prop) {
+				if (is_array($prop)) {
+					$this->assertSchemaClosedAndBounded($prop, $path . '.' . $k);
+				}
+			}
+		}
+
+		if ($type === 'array') {
+			$this->assertArrayHasKey('items', $schema, $path . ' missing items');
+			$this->assertArrayHasKey('maxItems', $schema, $path . ' missing maxItems');
+			$this->assertIsInt($schema['maxItems'], $path . ' maxItems must be int');
+
+			if (is_array($schema['items'])) {
+				$this->assertSchemaClosedAndBounded($schema['items'], $path . '[]');
+			}
+		}
 	}
 
 	/**
