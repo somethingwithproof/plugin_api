@@ -532,6 +532,40 @@ function api_doctor_register_checks($checks) {
 }
 
 /**
+ * Decoupled doctor_register_debug_info hook returning a redacted diagnostic snapshot.
+ *
+ * @param mixed $info Existing diagnostic debug info sections map.
+ * @return mixed
+ */
+function api_doctor_register_debug_info($info) {
+	if (!api_boot()) {
+		return $info;
+	}
+
+	$version  = plugin_api_version();
+	$snapshot = \Somethingwithproof\Api\Integration\DoctorChecks::debugInfo(
+		static function (): \Somethingwithproof\Api\Repository\ApiRepositoryInterface {
+			return new \Somethingwithproof\Api\Repository\CactiApiRepository(false);
+		},
+		static function (): \Somethingwithproof\Api\Settings {
+			return api_settings();
+		},
+		static function (): \Somethingwithproof\Api\Extension\ResourceRegistry {
+			return api_resource_registry();
+		},
+		$version['version'] ?? '0.1.0'
+	);
+
+	if (is_array($info)) {
+		$info['api'] = $snapshot;
+
+		return $info;
+	}
+
+	return array('api' => $snapshot);
+}
+
+/**
  * Decoupled abilities_register hook exposing api-get-status, api-list-operations, and api-get-openapi.
  *
  * @param mixed $registrar Abilities registrar object.

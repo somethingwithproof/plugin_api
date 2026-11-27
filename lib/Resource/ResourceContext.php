@@ -83,11 +83,10 @@ final class ResourceContext {
 	 * @return array<string, mixed> AIP-158 list envelope with collection key, nextPageToken, and totalSize.
 	 */
 	public function paginate(string $collection, array $items, Request $request, array $readable): array {
-		$pageSize   = PageToken::clampPageSize($request->queryParam('page_size'));
-		$filterRaw  = $request->queryParam('filter') ?? '';
-		$orderRaw   = $request->queryParam('order_by') ?? '';
-		$tokenRaw   = $request->queryParam('page_token');
-		$contextKey = PageToken::contextHash($collection, $filterRaw, $orderRaw);
+		$pageSize  = PageToken::clampPageSize($request->queryParam('page_size'));
+		$filterRaw = $request->queryParam('filter') ?? '';
+		$orderRaw  = $request->queryParam('order_by') ?? '';
+		$tokenRaw  = $request->queryParam('page_token');
 
 		$readMask = FieldMask::parse($request->queryParam('read_mask'), 'read_mask');
 
@@ -95,12 +94,14 @@ final class ResourceContext {
 			$readMask->validateReadMask($readable, $collection);
 		}
 
-		$totalSize = count($items);
-		$startIdx  = 0;
+		$totalSize  = count($items);
+		$startIdx   = 0;
+		$contextKey = null;
 
 		if ($tokenRaw !== null && $tokenRaw !== '') {
-			$cursor  = PageToken::decode($tokenRaw, $contextKey, $this->pageTokenSecret);
-			$foundAt = null;
+			$contextKey = PageToken::contextHash($collection, $filterRaw, $orderRaw);
+			$cursor     = PageToken::decode($tokenRaw, $contextKey, $this->pageTokenSecret);
+			$foundAt    = null;
 
 			foreach ($items as $idx => $item) {
 				$itemId = is_scalar($item['id'] ?? null) ? (string) $item['id'] : (is_string($item['name'] ?? null) ? $item['name'] : '');
@@ -121,9 +122,10 @@ final class ResourceContext {
 		$nextPageToken = '';
 
 		if ($hasMore && $slice !== []) {
-			$last   = $slice[count($slice) - 1];
-			$lastId = is_scalar($last['id'] ?? null) ? (string) $last['id'] : (is_string($last['name'] ?? null) ? $last['name'] : '');
-			$nextPageToken = PageToken::encode($lastId, $contextKey, $this->pageTokenSecret);
+			$contextKey    ??= PageToken::contextHash($collection, $filterRaw, $orderRaw);
+			$last            = $slice[count($slice) - 1];
+			$lastId          = is_scalar($last['id'] ?? null) ? (string) $last['id'] : (is_string($last['name'] ?? null) ? $last['name'] : '');
+			$nextPageToken   = PageToken::encode($lastId, $contextKey, $this->pageTokenSecret);
 		}
 
 		if (!$readMask->isEmpty()) {

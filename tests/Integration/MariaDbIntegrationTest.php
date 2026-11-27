@@ -127,6 +127,22 @@ final class MariaDbIntegrationTest extends TestCase {
 		$this->assertSame(200, $cancelOp->statusCode);
 		$this->assertTrue($cancelOp->body['done'] ?? false);
 
+		// Verify self-graphing script-server telemetry and redacted doctor_register_debug_info on live MariaDB.
+		$called_by_script_server = true;
+		require_once dirname(__DIR__, 2) . '/scripts/ss_api_stats.php';
+		$metricsLine = ss_api_stats();
+		$this->assertStringContainsString('active_tokens:1', $metricsLine);
+		$this->assertStringContainsString('idempotency_keys:1', $metricsLine);
+		$this->assertStringContainsString('registered_collections:', $metricsLine);
+		$this->assertStringNotContainsString('cacti_pat_', $metricsLine);
+
+		$debugInfo = api_doctor_register_debug_info([]);
+		$this->assertIsArray($debugInfo);
+		$this->assertTrue($debugInfo['api']['redacted'] ?? false);
+		$this->assertSame(1, $debugInfo['api']['metrics']['active_tokens'] ?? 0);
+		$debugJson = json_encode($debugInfo, JSON_THROW_ON_ERROR);
+		$this->assertStringNotContainsString($issued['token'], $debugJson);
+
 		// Clean up created records and revoke token; verify revoked token returns 401.
 		$this->assertSame(204, $router->handle(new Request('DELETE', '/v1/devices/' . $devId, [], $auth))->statusCode);
 		$this->assertSame(204, $router->handle(new Request('DELETE', '/v1/sites/' . $siteId, [], $auth))->statusCode);

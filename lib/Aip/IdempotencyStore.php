@@ -65,7 +65,7 @@ final class IdempotencyStore {
 	public static function validateRequestId(string $requestId): string {
 		$trimmed = trim($requestId);
 
-		if (preg_match(self::UUID_V4_PATTERN, $trimmed) !== 1) {
+		if (strlen($trimmed) !== 36 || preg_match(self::UUID_V4_PATTERN, $trimmed) !== 1) {
 			throw ApiException::invalidArgument(
 				'request_id must be a valid RFC 4122 UUIDv4.',
 				[['field' => 'request_id', 'description' => 'Expected lowercase/uppercase UUID version 4 format.']]
@@ -205,7 +205,9 @@ final class IdempotencyStore {
 		}
 
 		foreach ($value as $k => $v) {
-			$value[$k] = self::sortRecursive($v);
+			if (is_array($v)) {
+				$value[$k] = self::sortRecursive($v);
+			}
 		}
 
 		return $value;

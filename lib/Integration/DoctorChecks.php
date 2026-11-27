@@ -22,11 +22,15 @@ declare(strict_types=1);
 namespace Somethingwithproof\Api\Integration;
 
 use Somethingwithproof\Api\Extension\ResourceRegistry;
+use Somethingwithproof\Api\Http\Router;
+use Somethingwithproof\Api\Metrics\ApiMetricsCollector;
 use Somethingwithproof\Api\Repository\ApiRepositoryInterface;
+use Somethingwithproof\Api\Schema;
 use Somethingwithproof\Api\Settings;
 
 /**
- * Diagnostic checks exposed to plugin_doctor via the doctor_register_checks hook.
+ * Diagnostic checks and redacted debug info exposed to plugin_doctor via the
+ * doctor_register_checks and doctor_register_debug_info hooks.
  */
 final class DoctorChecks {
 	/**
@@ -162,6 +166,79 @@ final class DoctorChecks {
 						],
 					];
 				},
+			],
+		];
+	}
+
+	/**
+	 * Build a redacted diagnostic snapshot compatible with doctor_register_debug_info.
+	 *
+	 * Never includes raw Application Passwords, token prefixes, token SHA-256 digests,
+	 * page-token HMAC keys, CSRF tokens, or user credentials.
+	 *
+	 * @param callable(): ApiRepositoryInterface $repoFactory     Repository factory.
+	 * @param callable(): Settings               $settingsFactory Settings factory.
+	 * @param callable(): ResourceRegistry       $registryFactory Extension resource registry factory.
+	 * @param string                             $apiVersion      Plugin version string.
+	 * @param (callable(): int)|null             $clock           Optional clock callback for deterministic testing.
+	 * @return array<string, mixed>
+	 */
+	public static function debugInfo(
+		callable $repoFactory,
+		callable $settingsFactory,
+		callable $registryFactory,
+		string $apiVersion = '0.1.0',
+		?callable $clock = null,
+	): array {
+		$nowFn    = $clock ?? static fn (): int => time();
+		$repo     = $repoFactory();
+		$settings = $settingsFactory();
+		$registry = $registryFactory();
+		$metrics  = (new ApiMetricsCollector($repo, $registry))->collect($nowFn());
+
+		$extensions     = $registry->all();
+		$extCollections = [];
+		$extPlugins     = [];
+
+		foreach ($extensions as $descriptor) {
+			$extCollections[]               = $descriptor->collection;
+			$extPlugins[$descriptor->plugin] = true;
+		}
+
+		$coreCollections = array_keys(Router::CORE_COLLECTIONS);
+		sort($coreCollections, SORT_STRING);
+
+		$pluginSlugs = array_keys($extPlugins);
+		sort($pluginSlugs, SORT_STRING);
+
+		return [
+			'label'          => 'REST API (plugin_api)',
+			'plugin'         => 'api',
+			'version'        => $apiVersion,
+			'schema_version' => Schema::VERSION,
+			'php_version'    => PHP_VERSION,
+			'redacted'       => true,
+			'secret_storage' => 'sha256_hashed_at_rest',
+			'settings'       => [
+				'enabled'                 => $settings->enabled,
+				'rate_limit_per_min'      => $settings->rateLimitPerMin,
+				'default_token_ttl_days'  => $settings->defaultTokenTtlDays,
+				'require_tls'             => $settings->requireTls,
+				'max_body_bytes'          => $settings->maxBodyBytes,
+				'enable_yaml_negotiation' => $settings->enableYamlNegotiation,
+				'uninstall_keep_tables'   => $settings->uninstallKeepTables,
+				'cors_origin_count'       => count($settings->corsOrigins),
+				'cors_allow_credentials'  => $settings->corsAllowCredentials,
+			],
+			'metrics'     => $metrics,
+			'collections' => [
+				'core'      => $coreCollections,
+				'extension' => $extCollections,
+			],
+			'extensions' => [
+				'plugins'     => $pluginSlugs,
+				'fault_count' => count($registry->faults()),
+				'faults'      => $registry->faults(),
 			],
 		];
 	}

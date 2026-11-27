@@ -41,6 +41,13 @@ final class ResourceRegistry {
 	private array $resources = [];
 
 	/**
+	 * Cached sorted list of registered descriptors, invalidated on mutation.
+	 *
+	 * @var list<ExtensionResourceDescriptor>|null
+	 */
+	private ?array $sortedCache = null;
+
+	/**
 	 * Isolated registration faults captured during hook dispatch.
 	 *
 	 * @var list<array{plugin: string, reason: string}>
@@ -64,6 +71,7 @@ final class ResourceRegistry {
 		}
 
 		$this->resources[$descriptor->collection] = $descriptor;
+		$this->sortedCache                        = null;
 	}
 
 	/**
@@ -82,10 +90,15 @@ final class ResourceRegistry {
 	 * @return list<ExtensionResourceDescriptor>
 	 */
 	public function all(): array {
+		if ($this->sortedCache !== null) {
+			return $this->sortedCache;
+		}
+
 		$copy = $this->resources;
 		ksort($copy, SORT_STRING);
+		$this->sortedCache = array_values($copy);
 
-		return array_values($copy);
+		return $this->sortedCache;
 	}
 
 	/**
@@ -126,7 +139,10 @@ final class ResourceRegistry {
 				continue;
 			}
 
-			$scratch = clone $this;
+			// Stage only this hook's descriptors in a local batch for O(k) atomic commit instead of O(N) cloning.
+			$batch      = [];
+			$baseCount  = count($this->resources);
+			$batchCount = 0;
 
 			try {
 				if ($fileResolver !== null) {
@@ -156,10 +172,26 @@ final class ResourceRegistry {
 						throw new \InvalidArgumentException('Each resource descriptor must be an array.');
 					}
 
-					$scratch->register(ExtensionResourceDescriptor::fromArray($rawDescriptor, $slug));
+					$descriptor = ExtensionResourceDescriptor::fromArray($rawDescriptor, $slug);
+
+					if (isset($this->resources[$descriptor->collection]) || isset($batch[$descriptor->collection])) {
+						throw new \LogicException(sprintf('Duplicate extension collection "%s".', $descriptor->collection));
+					}
+
+					if ($baseCount + $batchCount >= self::MAX_RESOURCES) {
+						throw new \LogicException('Maximum extension resource limit reached.');
+					}
+
+					$batch[$descriptor->collection] = $descriptor;
+					$batchCount++;
 				}
 
-				$this->resources = $scratch->resources;
+				if ($batch !== []) {
+					foreach ($batch as $col => $desc) {
+						$this->resources[$col] = $desc;
+					}
+					$this->sortedCache = null;
+				}
 			} catch (\Throwable $e) {
 				$this->recordFault($slug, $e::class . ': ' . $e->getMessage());
 			}

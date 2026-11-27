@@ -58,11 +58,28 @@ use Somethingwithproof\Api\Settings;
  */
 final class Router {
 	/**
-	 * Core resource handlers keyed by collection slug.
+	 * Core resource collection slugs mapped to lazily instantiated handler classes.
+	 *
+	 * @var array<string, class-string<ResourceHandlerInterface>>
+	 */
+	public const CORE_COLLECTIONS = [
+		'sites'       => SitesResource::class,
+		'pollers'     => PollersResource::class,
+		'devices'     => DevicesResource::class,
+		'graphs'      => GraphsResource::class,
+		'dataSources' => DataSourcesResource::class,
+		'trees'       => TreesResource::class,
+		'plugins'     => PluginsResource::class,
+		'operations'  => OperationsResource::class,
+		'tokens'      => TokensResource::class,
+	];
+
+	/**
+	 * Lazily instantiated core resource handlers keyed by collection slug.
 	 *
 	 * @var array<string, ResourceHandlerInterface>
 	 */
-	private readonly array $handlers;
+	private array $handlers = [];
 
 	/**
 	 * Application Password authentication service.
@@ -122,26 +139,21 @@ final class Router {
 		$this->idempotency   = new IdempotencyStore($repository);
 		$this->operations    = new OperationManager($repository);
 		$this->csrfValidator = $csrfValidator;
+	}
 
-		$core = [
-			new SitesResource(),
-			new PollersResource(),
-			new DevicesResource(),
-			new GraphsResource(),
-			new DataSourcesResource(),
-			new TreesResource(),
-			new PluginsResource(),
-			new OperationsResource(),
-			new TokensResource(),
-		];
-
-		$map = [];
-
-		foreach ($core as $handler) {
-			$map[$handler->collection()] = $handler;
+	/**
+	 * Return a lazily instantiated core resource handler for a known collection slug.
+	 *
+	 * @param string $collection Core collection identifier.
+	 * @return ResourceHandlerInterface
+	 */
+	private function handlerFor(string $collection): ResourceHandlerInterface {
+		if (!isset($this->handlers[$collection])) {
+			$class                       = self::CORE_COLLECTIONS[$collection];
+			$this->handlers[$collection] = new $class();
 		}
 
-		$this->handlers = $map;
+		return $this->handlers[$collection];
 	}
 
 	/**
@@ -360,13 +372,13 @@ final class Router {
 			}
 		}
 
-		$segments = explode('/', $relative);
+		$segments = explode('/', $relative, 6);
 		$count    = count($segments);
 
 		// Nested device graphs: /v1/devices/{device}/graphs[/{graph}[:render]]
 		if ($count >= 3 && $segments[0] === 'devices' && $segments[2] === 'graphs') {
 			$deviceId = $segments[1];
-			$handler  = $this->handlers['graphs'];
+			$handler  = $this->handlerFor('graphs');
 
 			if ($count === 3) {
 				if ($customMethod !== null || $request->method !== 'GET') {
@@ -397,8 +409,8 @@ final class Router {
 
 		$collection = $segments[0];
 
-		if (isset($this->handlers[$collection])) {
-			return $this->dispatchHandler($this->handlers[$collection], $segments, $customMethod, $request, $ctx);
+		if (isset(self::CORE_COLLECTIONS[$collection])) {
+			return $this->dispatchHandler($this->handlerFor($collection), $segments, $customMethod, $request, $ctx);
 		}
 
 		$extension = $this->extensionRegistry->get($collection);
@@ -518,10 +530,7 @@ final class Router {
 			$filter = FilterParser::parse($request->queryParam('filter') ?? '');
 
 			if ($filter !== null) {
-				$items = array_values(array_filter(
-					$items,
-					static fn (array $r): bool => SqlFilterCompiler::matchesRecord($filter, $r, $descriptor->filterFields)
-				));
+				$items = SqlFilterCompiler::filterRecords($items, $filter, $descriptor->filterFields);
 			}
 
 			$orderMap = [];

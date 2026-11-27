@@ -351,10 +351,10 @@ interface ApiRepositoryInterface {
 	public function incrementRateLimitBucket(string $bucketKey, int $windowStart): int;
 
 	/**
-	 * Return operational counts for diagnostics and health checks.
+	 * Return operational counts for diagnostics, self-graphing telemetry, and health checks.
 	 *
 	 * @param int $now Current Unix timestamp.
-	 * @return array{active_tokens: int, expired_tokens: int, revoked_tokens: int, pending_operations: int, stuck_operations: int, rate_limit_rows: int}
+	 * @return array{active_tokens: int, expired_tokens: int, revoked_tokens: int, pending_operations: int, operations_pending: int, operations_running: int, operations_failed: int, stuck_operations: int, idempotency_keys: int, rate_limit_rows: int}
 	 */
 	public function getHealthStats(int $now): array;
 

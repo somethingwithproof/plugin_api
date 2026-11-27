@@ -12,7 +12,8 @@ Cacti 1.2 ships a web console and CLI scripts, but automation tools such as Terr
 - **Application Passwords authentication:** Issues per-user revocable bearer tokens (`cacti_pat_<8-hex-prefix>_<48-hex-secret>`) inspired by WordPress Application Passwords. Tokens are stored as SHA-256 digests, verified with `hash_equals()`, bound to the owner's Cacti RBAC realms, and restricted by optional scopes (`read`, `write`, `admin`), expiration timestamps, and IPv4/IPv6 CIDR allowlists.
 - **Composable authorization:** Uses a Drupal-inspired tri-state `AccessResult` (`allowed`, `forbidden`, `neutral`) where explicit denial always dominates, combining token scopes, Cacti realm permissions, and Cacti per-object ACLs (`policy_hosts`, `policy_graphs`, `policy_trees`, and `user_auth_perms`).
 - **Live OpenAPI 3.1 discovery:** Serves `/v1/openapi.json` dynamically describing all core endpoints and any sibling plugin collections registered through `api_register_resources`.
-- **Decoupled plugin ecosystem hooks:** Zero hard PHP imports of sibling plugins. Sibling plugins optionally register collections via plain PHP array descriptors (`api_register_resources`), while `plugin_api` registers `casc_register_providers` (`slug: api`, declarative config only), `doctor_register_checks`, and `abilities_register` (`api-get-status`, `api-list-operations`, `api-get-openapi`), alongside static `schema/api.schema.yaml` separating Config from State.
+- **Decoupled plugin ecosystem hooks:** Zero hard PHP imports of sibling plugins. Sibling plugins optionally register collections via plain PHP array descriptors (`api_register_resources`), while `plugin_api` registers `casc_register_providers` (`slug: api`, declarative config only), `doctor_register_checks`, `doctor_register_debug_info` (redacted diagnostic snapshot with zero tokens or hashes), and `abilities_register` (`api-get-status`, `api-list-operations`, `api-get-openapi`), alongside static `schema/api.schema.yaml` separating Config from State.
+- **Self-graphing Cacti telemetry:** Ships a PHP 8.0-parseable Cacti script-server entry point (`scripts/ss_api_stats.php`) backed by `lib/Metrics/ApiMetricsCollector.php` emitting `active_tokens`, `revoked_tokens`, `operations_pending`, `operations_running`, `operations_failed`, `idempotency_keys`, `rate_limit_buckets`, and `registered_collections` in Cacti `field:value` format (or `field:U` on database/runtime failure).
 - **Console UI and CLI:** Provides 3-tier RBAC Console pages (`api_view.php`, `api_tokens.php`, `api_admin.php`) and `cli/api.php` for token lifecycle management, OpenAPI export, operations listing, and health checks.
 
 ## Architecture
@@ -126,7 +127,7 @@ function myplugin_api_register_resources(array $registrar): array {
 ## Requirements and compatibility
 
 - **Cacti:** 1.2.31 or later in the 1.2.x series.
-- **PHP:** 8.2, 8.3, 8.4, or 8.5 at runtime (`setup.php`, `api.php`, Console pages, `include/autoload.php`, and `cli/api.php` remain PHP 8.0 parseable so older runtimes fail cleanly without parse errors).
+- **PHP:** 8.2, 8.3, 8.4, or 8.5 at runtime (`setup.php`, `api.php`, Console pages, `include/autoload.php`, `cli/api.php`, and `scripts/ss_api_stats.php` remain PHP 8.0 parseable so older runtimes fail cleanly without parse errors).
 - **Runtime dependencies:** None (`ext-json` only).
 
 ## Development and testing

@@ -26,6 +26,11 @@ namespace Somethingwithproof\Api\Aip;
  */
 final class Etag {
 	/**
+	 * Maximum number of comma-separated tags evaluated in an If-Match header.
+	 */
+	private const MAX_IF_MATCH_TAGS = 32;
+
+	/**
 	 * Compute a canonical strong ETag for a resource state array.
 	 *
 	 * Excludes any pre-existing "etag" key before canonical JSON hashing so
@@ -79,9 +84,11 @@ final class Etag {
 		}
 
 		$normExpected = self::normalize($expected);
+		$candidates   = explode(',', $trimmed, self::MAX_IF_MATCH_TAGS + 1);
+		$limit        = min(count($candidates), self::MAX_IF_MATCH_TAGS);
 
-		foreach (explode(',', $trimmed) as $candidate) {
-			$normCandidate = self::normalize($candidate);
+		for ($i = 0; $i < $limit; $i++) {
+			$normCandidate = self::normalize($candidates[$i]);
 
 			if ($normCandidate !== '' && hash_equals($normExpected, $normCandidate)) {
 				return true;
@@ -138,7 +145,9 @@ final class Etag {
 		}
 
 		foreach ($value as $k => $v) {
-			$value[$k] = self::canonicalize($v);
+			if (is_array($v)) {
+				$value[$k] = self::canonicalize($v);
+			}
 		}
 
 		return $value;

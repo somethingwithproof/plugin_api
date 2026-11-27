@@ -142,7 +142,7 @@ final class TokenService {
 	 * @throws ApiException With 401 UNAUTHENTICATED or 403 PERMISSION_DENIED on invalid credentials.
 	 */
 	public function authenticate(string $rawToken, string $clientIp, int $now): Principal {
-		if (preg_match(self::TOKEN_PATTERN, $rawToken, $matches) !== 1) {
+		if (strlen($rawToken) !== 67 || preg_match(self::TOKEN_PATTERN, $rawToken, $matches) !== 1) {
 			throw ApiException::unauthenticated('Invalid bearer token format.');
 		}
 
@@ -171,7 +171,7 @@ final class TokenService {
 		}
 
 		if ($matched['cidr_allowlist'] !== '') {
-			$cidrs = array_values(array_filter(array_map('trim', explode(',', $matched['cidr_allowlist']))));
+			$cidrs = self::splitCsv($matched['cidr_allowlist']);
 
 			if ($cidrs !== [] && !self::ipMatchesAnyCidr($clientIp, $cidrs)) {
 				throw ApiException::permissionDenied('Client IP address is outside this token\'s CIDR allowlist.');
@@ -187,7 +187,7 @@ final class TokenService {
 		$this->repository->touchTokenLastUsed($matched['id'], $now);
 
 		$realms  = $this->repository->getUserRealms($user['id']);
-		$scopes  = array_values(array_filter(array_map('trim', explode(',', $matched['scopes']))));
+		$scopes  = self::splitCsv($matched['scopes']);
 		$isAdmin = in_array(Pages::ADMIN, $realms, true) && in_array(Principal::SCOPE_ADMIN, $scopes, true);
 
 		return new Principal(
@@ -409,6 +409,30 @@ final class TokenService {
 	}
 
 	/**
+	 * Split a comma-separated string into trimmed non-empty items in a single pass.
+	 *
+	 * @param string $csv Comma-separated values.
+	 * @return list<string>
+	 */
+	private static function splitCsv(string $csv): array {
+		if ($csv === '') {
+			return [];
+		}
+
+		$out = [];
+
+		foreach (explode(',', $csv) as $part) {
+			$trimmed = trim($part);
+
+			if ($trimmed !== '') {
+				$out[] = $trimmed;
+			}
+		}
+
+		return $out;
+	}
+
+	/**
 	 * Compare the leading $prefix bits of two equal-length binary IP strings.
 	 *
 	 * @param string $ipBin  Packed client IP bytes.
@@ -420,7 +444,7 @@ final class TokenService {
 		$fullBytes = intdiv($prefix, 8);
 		$remBits   = $prefix % 8;
 
-		if ($fullBytes > 0 && substr($ipBin, 0, $fullBytes) !== substr($netBin, 0, $fullBytes)) {
+		if ($fullBytes > 0 && strncmp($ipBin, $netBin, $fullBytes) !== 0) {
 			return false;
 		}
 

@@ -47,11 +47,85 @@ final class FilterParser {
 	private const MAX_DEPTH = 16;
 
 	/**
-	 * Token stream produced by lexing.
-	 *
-	 * @var list<array{type: string, value: string}>
+	 * Token type: left parenthesis.
 	 */
-	private array $tokens = [];
+	private const TOK_LPAREN = 1;
+
+	/**
+	 * Token type: right parenthesis.
+	 */
+	private const TOK_RPAREN = 2;
+
+	/**
+	 * Token type: comparison operator.
+	 */
+	private const TOK_OP = 3;
+
+	/**
+	 * Token type: logical negation.
+	 */
+	private const TOK_NOT = 4;
+
+	/**
+	 * Token type: logical conjunction.
+	 */
+	private const TOK_AND = 5;
+
+	/**
+	 * Token type: logical disjunction.
+	 */
+	private const TOK_OR = 6;
+
+	/**
+	 * Token type: quoted string literal.
+	 */
+	private const TOK_STRING = 7;
+
+	/**
+	 * Token type: numeric literal.
+	 */
+	private const TOK_NUMBER = 8;
+
+	/**
+	 * Token type: identifier or bare keyword literal.
+	 */
+	private const TOK_IDENT = 9;
+
+	/**
+	 * ASCII whitespace mask for C-speed strspn scanning.
+	 */
+	private const WS_CHARS = " \t\n\r\f\v";
+
+	/**
+	 * ASCII digit mask for C-speed strspn scanning.
+	 */
+	private const DIGIT_CHARS = '0123456789';
+
+	/**
+	 * ASCII identifier continuation mask for C-speed strspn scanning.
+	 */
+	private const IDENT_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.-';
+
+	/**
+	 * Parallel array of integer token type codes produced by lexing.
+	 *
+	 * @var list<int>
+	 */
+	private array $tokenTypes = [];
+
+	/**
+	 * Parallel array of token lexeme values produced by lexing.
+	 *
+	 * @var list<string>
+	 */
+	private array $tokenValues = [];
+
+	/**
+	 * Cached token count for O(1) cursor bounds checks.
+	 *
+	 * @var int
+	 */
+	private int $tokenCount = 0;
 
 	/**
 	 * Current token cursor index.
@@ -81,18 +155,17 @@ final class FilterParser {
 			);
 		}
 
-		$parser         = new self();
-		$parser->tokens = $parser->tokenize($trimmed);
-		$parser->pos    = 0;
+		$parser = new self();
+		$parser->tokenize($trimmed);
 
-		if ($parser->tokens === []) {
+		if ($parser->tokenCount === 0) {
 			return null;
 		}
 
 		$node = $parser->parseOr(0);
 
-		if ($parser->pos < count($parser->tokens)) {
-			$unexpected = $parser->tokens[$parser->pos]['value'];
+		if ($parser->pos < $parser->tokenCount) {
+			$unexpected = $parser->tokenValues[$parser->pos];
 
 			throw ApiException::invalidArgument(
 				sprintf('Unexpected token "%s" in filter expression.', $unexpected),
@@ -104,79 +177,120 @@ final class FilterParser {
 	}
 
 	/**
-	 * Tokenize an AIP-160 filter string.
+	 * Single-pass O(N) tokenizer storing parallel type/value arrays to avoid per-token hash tables.
 	 *
 	 * @param string $input Trimmed filter expression.
-	 * @return list<array{type: string, value: string}>
-	 * @throws ApiException On invalid characters or unterminated string literals.
+	 * @return void
+	 * @throws ApiException On invalid characters, token limit overflow, or unterminated strings.
 	 */
-	private function tokenize(string $input): array {
-		$tokens = [];
+	private function tokenize(string $input): void {
+		$types  = [];
+		$values = [];
+		$count  = 0;
 		$len    = strlen($input);
 		$i      = 0;
 
 		while ($i < $len) {
-			$ch = $input[$i];
+			$ws = strspn($input, self::WS_CHARS, $i);
 
-			if (ctype_space($ch)) {
-				$i++;
+			if ($ws > 0) {
+				$i += $ws;
 
-				continue;
+				if ($i >= $len) {
+					break;
+				}
 			}
 
-			if (count($tokens) >= self::MAX_TOKENS) {
+			if ($count >= self::MAX_TOKENS) {
 				throw ApiException::invalidArgument(
 					'Filter expression exceeds maximum token limit.',
 					[['field' => 'filter', 'description' => sprintf('At most %d tokens allowed.', self::MAX_TOKENS)]]
 				);
 			}
 
+			$ch = $input[$i];
+
 			if ($ch === '(') {
-				$tokens[] = ['type' => 'LPAREN', 'value' => '('];
+				$types[]  = self::TOK_LPAREN;
+				$values[] = '(';
+				$count++;
 				$i++;
 
 				continue;
 			}
 
 			if ($ch === ')') {
-				$tokens[] = ['type' => 'RPAREN', 'value' => ')'];
+				$types[]  = self::TOK_RPAREN;
+				$values[] = ')';
+				$count++;
 				$i++;
 
 				continue;
 			}
 
-			if ($i + 1 < $len) {
-				$two = $ch . $input[$i + 1];
+			if ($ch === '=' || $ch === ':') {
+				$types[]  = self::TOK_OP;
+				$values[] = $ch;
+				$count++;
+				$i++;
 
-				if ($two === '!=' || $two === '<=' || $two === '>=') {
-					$tokens[] = ['type' => 'OP', 'value' => $two];
+				continue;
+			}
+
+			if ($ch === '!' && $i + 1 < $len && $input[$i + 1] === '=') {
+				$types[]  = self::TOK_OP;
+				$values[] = '!=';
+				$count++;
+				$i += 2;
+
+				continue;
+			}
+
+			if ($ch === '<' || $ch === '>') {
+				if ($i + 1 < $len && $input[$i + 1] === '=') {
+					$types[]  = self::TOK_OP;
+					$values[] = $ch . '=';
 					$i        += 2;
+				} else {
+					$types[]  = self::TOK_OP;
+					$values[] = $ch;
+					$i++;
+				}
+				$count++;
+
+				continue;
+			}
+
+			if ($ch === '-') {
+				if ($i + 1 >= $len || $input[$i + 1] < '0' || $input[$i + 1] > '9') {
+					$types[]  = self::TOK_NOT;
+					$values[] = '-';
+					$count++;
+					$i++;
 
 					continue;
 				}
 			}
 
-			if ($ch === '=' || $ch === '<' || $ch === '>' || $ch === ':') {
-				$tokens[] = ['type' => 'OP', 'value' => $ch];
-				$i++;
-
-				continue;
-			}
-
-			if ($ch === '-' && ($i + 1 >= $len || !ctype_digit($input[$i + 1]))) {
-				$tokens[] = ['type' => 'NOT', 'value' => '-'];
-				$i++;
-
-				continue;
-			}
-
 			if ($ch === '"' || $ch === "'") {
-				$quote = $ch;
+				$quote  = $ch;
+				$stop   = $quote . '\\';
 				$i++;
 				$buf    = '';
 				$closed = false;
 
 				while ($i < $len) {
+					$span = strcspn($input, $stop, $i);
+
+					if ($span > 0) {
+						$buf .= substr($input, $i, $span);
+						$i   += $span;
+					}
+
+					if ($i >= $len) {
+						break;
+					}
+
 					$c = $input[$i];
 
 					if ($c === '\\' && $i + 1 < $len) {
@@ -204,50 +318,51 @@ final class FilterParser {
 					);
 				}
 
-				$tokens[] = ['type' => 'STRING', 'value' => $buf];
+				$types[]  = self::TOK_STRING;
+				$values[] = $buf;
+				$count++;
 
 				continue;
 			}
 
-			if ($ch === '-' || ctype_digit($ch)) {
+			if ($ch === '-' || ($ch >= '0' && $ch <= '9')) {
 				$start = $i;
 
 				if ($ch === '-') {
 					$i++;
 				}
 
-				$dots = 0;
+				$i += strspn($input, self::DIGIT_CHARS, $i);
 
-				while ($i < $len && (ctype_digit($input[$i]) || ($input[$i] === '.' && $dots === 0))) {
-					if ($input[$i] === '.') {
-						$dots++;
-					}
+				if ($i < $len && $input[$i] === '.') {
 					$i++;
+					$i += strspn($input, self::DIGIT_CHARS, $i);
 				}
 
-				$tokens[] = ['type' => 'NUMBER', 'value' => substr($input, $start, $i - $start)];
+				$types[]  = self::TOK_NUMBER;
+				$values[] = substr($input, $start, $i - $start);
+				$count++;
 
 				continue;
 			}
 
-			if (ctype_alpha($ch) || $ch === '_') {
-				$start = $i;
-
-				while ($i < $len && (ctype_alnum($input[$i]) || $input[$i] === '_' || $input[$i] === '.' || $input[$i] === '-')) {
-					$i++;
-				}
-
-				$word = substr($input, $start, $i - $start);
+			if (($ch >= 'a' && $ch <= 'z') || ($ch >= 'A' && $ch <= 'Z') || $ch === '_') {
+				$span = strspn($input, self::IDENT_CHARS, $i);
+				$word = substr($input, $i, $span);
+				$i   += $span;
 
 				if ($word === 'AND') {
-					$tokens[] = ['type' => 'AND', 'value' => $word];
+					$types[] = self::TOK_AND;
 				} elseif ($word === 'OR') {
-					$tokens[] = ['type' => 'OR', 'value' => $word];
+					$types[] = self::TOK_OR;
 				} elseif ($word === 'NOT') {
-					$tokens[] = ['type' => 'NOT', 'value' => $word];
+					$types[] = self::TOK_NOT;
 				} else {
-					$tokens[] = ['type' => 'IDENT', 'value' => $word];
+					$types[] = self::TOK_IDENT;
 				}
+
+				$values[] = $word;
+				$count++;
 
 				continue;
 			}
@@ -258,7 +373,10 @@ final class FilterParser {
 			);
 		}
 
-		return $tokens;
+		$this->tokenTypes  = $types;
+		$this->tokenValues = $values;
+		$this->tokenCount  = $count;
+		$this->pos         = 0;
 	}
 
 	/**
@@ -270,7 +388,7 @@ final class FilterParser {
 	private function parseOr(int $depth): FilterNode {
 		$left = $this->parseAnd($depth);
 
-		while ($this->peekType() === 'OR') {
+		while ($this->pos < $this->tokenCount && $this->tokenTypes[$this->pos] === self::TOK_OR) {
 			$this->pos++;
 			$right = $this->parseAnd($depth);
 			$left  = FilterNode::logicalOr($left, $right);
@@ -288,7 +406,7 @@ final class FilterParser {
 	private function parseAnd(int $depth): FilterNode {
 		$left = $this->parseFactor($depth);
 
-		while ($this->peekType() === 'AND') {
+		while ($this->pos < $this->tokenCount && $this->tokenTypes[$this->pos] === self::TOK_AND) {
 			$this->pos++;
 			$right = $this->parseFactor($depth);
 			$left  = FilterNode::logicalAnd($left, $right);
@@ -311,19 +429,19 @@ final class FilterParser {
 			);
 		}
 
-		$type = $this->peekType();
+		$type = $this->pos < $this->tokenCount ? $this->tokenTypes[$this->pos] : 0;
 
-		if ($type === 'NOT') {
+		if ($type === self::TOK_NOT) {
 			$this->pos++;
 
 			return FilterNode::logicalNot($this->parseFactor($depth + 1));
 		}
 
-		if ($type === 'LPAREN') {
+		if ($type === self::TOK_LPAREN) {
 			$this->pos++;
 			$node = $this->parseOr($depth + 1);
 
-			if ($this->peekType() !== 'RPAREN') {
+			if ($this->pos >= $this->tokenCount || $this->tokenTypes[$this->pos] !== self::TOK_RPAREN) {
 				throw ApiException::invalidArgument(
 					'Missing closing parenthesis in filter expression.',
 					[['field' => 'filter', 'description' => 'Expected ")".']]
@@ -344,11 +462,11 @@ final class FilterParser {
 	 * @return FilterNode
 	 */
 	private function parseComparison(): FilterNode {
-		$fieldToken = $this->consume('IDENT', 'Expected field identifier in filter expression.');
-		$opToken    = $this->consume('OP', 'Expected comparison operator (=, !=, <, <=, >, >=, :) in filter expression.');
-		$value      = $this->consumeLiteral();
+		$field = $this->consumeValue(self::TOK_IDENT, 'Expected field identifier in filter expression.');
+		$op    = $this->consumeValue(self::TOK_OP, 'Expected comparison operator (=, !=, <, <=, >, >=, :) in filter expression.');
+		$value = $this->consumeLiteral();
 
-		return FilterNode::comparison($fieldToken['value'], $opToken['value'], $value);
+		return FilterNode::comparison($field, $op, $value);
 	}
 
 	/**
@@ -357,26 +475,27 @@ final class FilterParser {
 	 * @return string|int|float|bool|null
 	 */
 	private function consumeLiteral(): string|int|float|bool|null {
-		if ($this->pos >= count($this->tokens)) {
+		if ($this->pos >= $this->tokenCount) {
 			throw ApiException::invalidArgument(
 				'Expected comparison value in filter expression.',
 				[['field' => 'filter', 'description' => 'Unexpected end of filter expression.']]
 			);
 		}
 
-		$token = $this->tokens[$this->pos];
+		$type  = $this->tokenTypes[$this->pos];
+		$value = $this->tokenValues[$this->pos];
 		$this->pos++;
 
-		if ($token['type'] === 'STRING') {
-			return $token['value'];
+		if ($type === self::TOK_STRING) {
+			return $value;
 		}
 
-		if ($token['type'] === 'NUMBER') {
-			return str_contains($token['value'], '.') ? (float) $token['value'] : (int) $token['value'];
+		if ($type === self::TOK_NUMBER) {
+			return str_contains($value, '.') ? (float) $value : (int) $value;
 		}
 
-		if ($token['type'] === 'IDENT') {
-			$lower = strtolower($token['value']);
+		if ($type === self::TOK_IDENT) {
+			$lower = strtolower($value);
 
 			if ($lower === 'true') {
 				return true;
@@ -390,42 +509,33 @@ final class FilterParser {
 				return null;
 			}
 
-			return $token['value'];
+			return $value;
 		}
 
 		throw ApiException::invalidArgument(
-			sprintf('Invalid literal value "%s" in filter expression.', $token['value']),
+			sprintf('Invalid literal value "%s" in filter expression.', $value),
 			[['field' => 'filter', 'description' => 'Expected string, number, boolean, or identifier literal.']]
 		);
 	}
 
 	/**
-	 * Peek the type of the next token or null at end-of-stream.
+	 * Consume a token of the expected type and return its lexeme or throw INVALID_ARGUMENT.
 	 *
-	 * @return string|null
-	 */
-	private function peekType(): ?string {
-		return $this->tokens[$this->pos]['type'] ?? null;
-	}
-
-	/**
-	 * Consume a token of the expected type or throw INVALID_ARGUMENT.
-	 *
-	 * @param string $expectedType Expected token type.
+	 * @param int    $expectedType Expected token type constant.
 	 * @param string $errorMessage Message if token is missing or mismatched.
-	 * @return array{type: string, value: string}
+	 * @return string
 	 */
-	private function consume(string $expectedType, string $errorMessage): array {
-		if ($this->pos >= count($this->tokens) || $this->tokens[$this->pos]['type'] !== $expectedType) {
+	private function consumeValue(int $expectedType, string $errorMessage): string {
+		if ($this->pos >= $this->tokenCount || $this->tokenTypes[$this->pos] !== $expectedType) {
 			throw ApiException::invalidArgument(
 				$errorMessage,
 				[['field' => 'filter', 'description' => $errorMessage]]
 			);
 		}
 
-		$token = $this->tokens[$this->pos];
+		$value = $this->tokenValues[$this->pos];
 		$this->pos++;
 
-		return $token;
+		return $value;
 	}
 }

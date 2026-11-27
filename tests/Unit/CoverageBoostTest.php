@@ -70,6 +70,7 @@ final class CoverageBoostTest extends TestCase {
 				if (str_contains($sql, "information_schema.TABLES")) { return 1; }
 				return $GLOBALS["__db_cell"];
 			}
+			function db_fetch_row_prepared($sql, $params = [], $log = true, $db_conn = false) { return []; }
 			function db_fetch_assoc_prepared($sql, $params = [], $log = true, $db_conn = false) { return []; }
 			function db_execute_prepared($sql, $params = [], $log = true, $db_conn = false) {
 				$GLOBALS["__setup_calls"][] = $sql;
@@ -129,6 +130,11 @@ final class CoverageBoostTest extends TestCase {
 		$checks = api_doctor_register_checks([]);
 		$this->assertIsArray($checks);
 		$this->assertCount(4, $checks);
+
+		$debugInfo = api_doctor_register_debug_info([]);
+		$this->assertIsArray($debugInfo);
+		$this->assertArrayHasKey('api', $debugInfo);
+		$this->assertTrue($debugInfo['api']['redacted'] ?? false);
 
 		$captured = [];
 		$abReg    = new class ($captured) {

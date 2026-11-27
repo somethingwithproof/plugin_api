@@ -30,6 +30,33 @@ use Somethingwithproof\Api\Extension\ResourceRegistry;
  */
 final class OpenApiGenerator {
 	/**
+	 * Reusable AIP-193 error response schema reference shared via copy-on-write.
+	 *
+	 * @var array<string, mixed>
+	 */
+	private const ERROR_RESPONSE_REF = [
+		'description' => 'AIP-193 canonical error',
+		'content'     => [
+			'application/json' => [
+				'schema' => ['$ref' => '#/components/schemas/GoogleRpcStatus'],
+			],
+		],
+	];
+
+	/**
+	 * Reusable AIP-158/160/132/161 list query parameters shared across collection endpoints.
+	 *
+	 * @var list<array<string, mixed>>
+	 */
+	private const LIST_PARAMS = [
+		['name' => 'page_size', 'in' => 'query', 'schema' => ['type' => 'integer', 'minimum' => 1, 'maximum' => 1000, 'default' => 50]],
+		['name' => 'page_token', 'in' => 'query', 'schema' => ['type' => 'string']],
+		['name' => 'filter', 'in' => 'query', 'schema' => ['type' => 'string']],
+		['name' => 'order_by', 'in' => 'query', 'schema' => ['type' => 'string']],
+		['name' => 'read_mask', 'in' => 'query', 'schema' => ['type' => 'string']],
+	];
+
+	/**
 	 * Generate a complete OpenAPI 3.1.0 document as an associative array.
 	 *
 	 * @param ResourceRegistry $registry   Active extension resource registry.
@@ -44,8 +71,9 @@ final class OpenApiGenerator {
 	): array {
 		$paths = self::corePaths();
 
+		// Append extension paths directly in-place to keep generation O(N) instead of O(N^2) array_merge copies.
 		foreach ($registry->all() as $descriptor) {
-			$paths = array_merge($paths, self::extensionPaths($descriptor));
+			self::appendExtensionPaths($paths, $descriptor);
 		}
 
 		return [
@@ -120,15 +148,8 @@ final class OpenApiGenerator {
 	 * @return array<string, array<string, mixed>>
 	 */
 	private static function corePaths(): array {
-		$errRef = ['description' => 'AIP-193 canonical error', 'content' => ['application/json' => ['schema' => ['$ref' => '#/components/schemas/GoogleRpcStatus']]]];
-
-		$listParams = [
-			['name' => 'page_size', 'in' => 'query', 'schema' => ['type' => 'integer', 'minimum' => 1, 'maximum' => 1000, 'default' => 50]],
-			['name' => 'page_token', 'in' => 'query', 'schema' => ['type' => 'string']],
-			['name' => 'filter', 'in' => 'query', 'schema' => ['type' => 'string']],
-			['name' => 'order_by', 'in' => 'query', 'schema' => ['type' => 'string']],
-			['name' => 'read_mask', 'in' => 'query', 'schema' => ['type' => 'string']],
-		];
+		$errRef     = self::ERROR_RESPONSE_REF;
+		$listParams = self::LIST_PARAMS;
 
 		return [
 			'/v1/openapi.json' => [
@@ -234,33 +255,34 @@ final class OpenApiGenerator {
 	}
 
 	/**
-	 * Build OpenAPI path items for a dynamically registered sibling plugin collection.
+	 * Append OpenAPI path items for a dynamically registered sibling plugin collection directly into $paths.
 	 *
-	 * @param ExtensionResourceDescriptor $descriptor Validated sibling plugin descriptor.
-	 * @return array<string, array<string, mixed>>
+	 * @param array<string, array<string, mixed>> $paths      Target OpenAPI paths map mutated in-place.
+	 * @param ExtensionResourceDescriptor         $descriptor Validated sibling plugin descriptor.
+	 * @return void
 	 */
-	private static function extensionPaths(ExtensionResourceDescriptor $descriptor): array {
-		$errRef     = ['description' => 'AIP-193 canonical error', 'content' => ['application/json' => ['schema' => ['$ref' => '#/components/schemas/GoogleRpcStatus']]]];
+	private static function appendExtensionPaths(array &$paths, ExtensionResourceDescriptor $descriptor): void {
+		$errRef     = self::ERROR_RESPONSE_REF;
 		$collection = $descriptor->collection;
 		$singleton  = $descriptor->singleton;
-		$paths      = [];
+		$tags       = ['plugin:' . $descriptor->plugin];
 
 		$colOps = [];
 
 		if (isset($descriptor->handlers['list'])) {
 			$colOps['get'] = [
-				'summary'     => sprintf('List %s (%s plugin)', $collection, $descriptor->plugin),
+				'summary'     => 'List ' . $collection . ' (' . $descriptor->plugin . ' plugin)',
 				'description' => $descriptor->description,
-				'tags'        => ['plugin:' . $descriptor->plugin],
+				'tags'        => $tags,
 				'responses'   => ['200' => ['description' => 'Resource list'], 'default' => $errRef],
 			];
 		}
 
 		if (isset($descriptor->handlers['create'])) {
 			$colOps['post'] = [
-				'summary'     => sprintf('Create %s (%s plugin)', $singleton, $descriptor->plugin),
+				'summary'     => 'Create ' . $singleton . ' (' . $descriptor->plugin . ' plugin)',
 				'description' => $descriptor->description,
-				'tags'        => ['plugin:' . $descriptor->plugin],
+				'tags'        => $tags,
 				'responses'   => ['201' => ['description' => 'Created resource'], 'default' => $errRef],
 			];
 		}
@@ -273,24 +295,24 @@ final class OpenApiGenerator {
 
 		if (isset($descriptor->handlers['get'])) {
 			$itemOps['get'] = [
-				'summary'   => sprintf('Get %s (%s plugin)', $singleton, $descriptor->plugin),
-				'tags'      => ['plugin:' . $descriptor->plugin],
+				'summary'   => 'Get ' . $singleton . ' (' . $descriptor->plugin . ' plugin)',
+				'tags'      => $tags,
 				'responses' => ['200' => ['description' => 'Resource item'], 'default' => $errRef],
 			];
 		}
 
 		if (isset($descriptor->handlers['update'])) {
 			$itemOps['patch'] = [
-				'summary'   => sprintf('Update %s (%s plugin)', $singleton, $descriptor->plugin),
-				'tags'      => ['plugin:' . $descriptor->plugin],
+				'summary'   => 'Update ' . $singleton . ' (' . $descriptor->plugin . ' plugin)',
+				'tags'      => $tags,
 				'responses' => ['200' => ['description' => 'Updated resource'], 'default' => $errRef],
 			];
 		}
 
 		if (isset($descriptor->handlers['delete'])) {
 			$itemOps['delete'] = [
-				'summary'   => sprintf('Delete %s (%s plugin)', $singleton, $descriptor->plugin),
-				'tags'      => ['plugin:' . $descriptor->plugin],
+				'summary'   => 'Delete ' . $singleton . ' (' . $descriptor->plugin . ' plugin)',
+				'tags'      => $tags,
 				'responses' => ['204' => ['description' => 'Deleted'], 'default' => $errRef],
 			];
 		}
@@ -298,7 +320,5 @@ final class OpenApiGenerator {
 		if ($itemOps !== []) {
 			$paths['/v1/' . $collection . '/{' . $singleton . '}'] = $itemOps;
 		}
-
-		return $paths;
 	}
 }

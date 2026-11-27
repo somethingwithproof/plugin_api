@@ -693,19 +693,39 @@ final class CactiApiRepository implements ApiRepositoryInterface {
 	 * {@inheritdoc}
 	 */
 	public function getHealthStats(int $now): array {
-		$activeTokens  = $this->fetchIntCell('SELECT COUNT(*) FROM plugin_api_tokens WHERE revoked_at IS NULL AND (expires_at IS NULL OR expires_at > ?)', [$now]);
-		$expiredTokens = $this->fetchIntCell('SELECT COUNT(*) FROM plugin_api_tokens WHERE revoked_at IS NULL AND expires_at IS NOT NULL AND expires_at <= ?', [$now]);
-		$revokedTokens = $this->fetchIntCell('SELECT COUNT(*) FROM plugin_api_tokens WHERE revoked_at IS NOT NULL', []);
-		$pendingOps    = $this->fetchIntCell('SELECT COUNT(*) FROM plugin_api_operations WHERE done = 0', []);
-		$stuckOps      = $this->fetchIntCell('SELECT COUNT(*) FROM plugin_api_operations WHERE done = 0 AND created_at < ?', [$now - 3600]);
-		$rateRows      = $this->fetchIntCell('SELECT COUNT(*) FROM plugin_api_rate_limits', []);
+		$tokenRow = $this->fetchRow(
+			'SELECT '
+				. 'COALESCE(SUM(CASE WHEN revoked_at IS NULL AND (expires_at IS NULL OR expires_at > ?) THEN 1 ELSE 0 END), 0) AS active_tokens, '
+				. 'COALESCE(SUM(CASE WHEN revoked_at IS NULL AND expires_at IS NOT NULL AND expires_at <= ? THEN 1 ELSE 0 END), 0) AS expired_tokens, '
+				. 'COALESCE(SUM(CASE WHEN revoked_at IS NOT NULL THEN 1 ELSE 0 END), 0) AS revoked_tokens '
+				. 'FROM plugin_api_tokens',
+			[$now, $now]
+		);
+
+		$opRow = $this->fetchRow(
+			'SELECT '
+				. 'COALESCE(SUM(CASE WHEN done = 0 THEN 1 ELSE 0 END), 0) AS pending_operations, '
+				. 'COALESCE(SUM(CASE WHEN done = 0 AND updated_at <= created_at AND metadata_json NOT LIKE ? THEN 1 ELSE 0 END), 0) AS operations_pending, '
+				. 'COALESCE(SUM(CASE WHEN done = 0 AND (updated_at > created_at OR metadata_json LIKE ?) THEN 1 ELSE 0 END), 0) AS operations_running, '
+				. 'COALESCE(SUM(CASE WHEN done = 1 AND cancelled = 0 AND error_json IS NOT NULL THEN 1 ELSE 0 END), 0) AS operations_failed, '
+				. 'COALESCE(SUM(CASE WHEN done = 0 AND created_at < ? THEN 1 ELSE 0 END), 0) AS stuck_operations '
+				. 'FROM plugin_api_operations',
+			['%"state":"running"%', '%"state":"running"%', $now - 3600]
+		);
+
+		$idempotencyKeys = $this->fetchIntCell('SELECT COUNT(*) FROM plugin_api_idempotency WHERE expires_at > ?', [$now]);
+		$rateRows        = $this->fetchIntCell('SELECT COUNT(*) FROM plugin_api_rate_limits', []);
 
 		return [
-			'active_tokens'      => $activeTokens,
-			'expired_tokens'     => $expiredTokens,
-			'revoked_tokens'     => $revokedTokens,
-			'pending_operations' => $pendingOps,
-			'stuck_operations'   => $stuckOps,
+			'active_tokens'      => self::intVal($tokenRow['active_tokens'] ?? 0, 0),
+			'expired_tokens'     => self::intVal($tokenRow['expired_tokens'] ?? 0, 0),
+			'revoked_tokens'     => self::intVal($tokenRow['revoked_tokens'] ?? 0, 0),
+			'pending_operations' => self::intVal($opRow['pending_operations'] ?? 0, 0),
+			'operations_pending' => self::intVal($opRow['operations_pending'] ?? 0, 0),
+			'operations_running' => self::intVal($opRow['operations_running'] ?? 0, 0),
+			'operations_failed'  => self::intVal($opRow['operations_failed'] ?? 0, 0),
+			'stuck_operations'   => self::intVal($opRow['stuck_operations'] ?? 0, 0),
+			'idempotency_keys'   => $idempotencyKeys,
 			'rate_limit_rows'    => $rateRows,
 		];
 	}

@@ -36,7 +36,10 @@ final class PhpDocCoverageTest extends TestCase {
 	 */
 	public function testAllSymbolsHavePhpDoc(): void {
 		$root  = dirname(__DIR__, 2);
-		$files = [$root . '/setup.php'];
+		$files = [
+			$root . '/setup.php',
+			$root . '/scripts/ss_api_stats.php',
+		];
 
 		$iter = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($root . '/lib'));
 
@@ -222,6 +225,7 @@ final class PhpDocCoverageTest extends TestCase {
 			$root . '/api_tokens.php',
 			$root . '/api_admin.php',
 			$root . '/cli/api.php',
+			$root . '/scripts/ss_api_stats.php',
 		];
 
 		$iter = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($root . '/lib'));

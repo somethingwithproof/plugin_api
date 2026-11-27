@@ -36,6 +36,11 @@ final class PageToken {
 	public const MAX_PAGE_SIZE = 1000;
 
 	/**
+	 * Maximum accepted encoded cursor length in bytes guarding against oversized HMAC/base64 DoS.
+	 */
+	private const MAX_TOKEN_LENGTH = 512;
+
+	/**
 	 * Construct a decoded pagination cursor.
 	 *
 	 * @param string $afterId    Last seen resource ID cursor boundary.
@@ -121,9 +126,16 @@ final class PageToken {
 	 * @throws ApiException If the token is malformed, forged, or used with different query parameters.
 	 */
 	public static function decode(string $token, string $contextKey, string $secret): self {
+		if ($token === '' || strlen($token) > self::MAX_TOKEN_LENGTH) {
+			throw ApiException::invalidArgument(
+				'Invalid page_token.',
+				[['field' => 'page_token', 'description' => 'Token is malformed or exceeds maximum length.']]
+			);
+		}
+
 		$parts = explode('.', $token, 2);
 
-		if (count($parts) !== 2 || $parts[0] === '' || $parts[1] === '') {
+		if (count($parts) !== 2 || $parts[0] === '' || strlen($parts[1]) !== 43) {
 			throw ApiException::invalidArgument(
 				'Invalid page_token.',
 				[['field' => 'page_token', 'description' => 'Token is malformed.']]

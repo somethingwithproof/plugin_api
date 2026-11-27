@@ -34,13 +34,14 @@ final class Schema {
 	 * Cacti hooks registered by plugin_api.
 	 */
 	public const HOOKS = [
-		'auth_alternate_realms'  => 'api_auth_alternate_realms',
-		'config_arrays'          => 'api_config_arrays',
-		'config_settings'        => 'api_config_settings',
-		'draw_navigation_text'   => 'api_draw_navigation_text',
-		'casc_register_providers' => 'api_casc_register_providers',
-		'doctor_register_checks' => 'api_doctor_register_checks',
-		'abilities_register'     => 'api_abilities_register',
+		'auth_alternate_realms'      => 'api_auth_alternate_realms',
+		'config_arrays'              => 'api_config_arrays',
+		'config_settings'            => 'api_config_settings',
+		'draw_navigation_text'       => 'api_draw_navigation_text',
+		'casc_register_providers'    => 'api_casc_register_providers',
+		'doctor_register_checks'     => 'api_doctor_register_checks',
+		'doctor_register_debug_info' => 'api_doctor_register_debug_info',
+		'abilities_register'         => 'api_abilities_register',
 	];
 
 	/**

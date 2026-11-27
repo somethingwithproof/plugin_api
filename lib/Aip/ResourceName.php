@@ -26,6 +26,11 @@ namespace Somethingwithproof\Api\Aip;
  */
 final class ResourceName {
 	/**
+	 * Maximum permitted length of a canonical resource name string (3 collection/id pairs).
+	 */
+	private const MAX_LENGTH = 600;
+
+	/**
 	 * Allowed pattern for single resource identifier segments.
 	 */
 	public const ID_PATTERN = '/^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$/';
@@ -79,16 +84,18 @@ final class ResourceName {
 	public static function parse(string $name): self {
 		$trimmed = trim($name, '/');
 
-		if ($trimmed === '' || str_contains($trimmed, '..') || str_contains($trimmed, "\0")) {
+		if ($trimmed === '' || strlen($trimmed) > self::MAX_LENGTH || str_contains($trimmed, '..') || str_contains($trimmed, "\0")) {
 			throw ApiException::invalidArgument(
 				sprintf('Invalid resource name "%s".', $name),
 				[['field' => 'name', 'description' => 'Resource name must be a non-empty relative path.']]
 			);
 		}
 
-		$parts = explode('/', $trimmed);
+		// Bound explode() so adversarial paths with thousands of slashes reject in O(1).
+		$parts = explode('/', $trimmed, 8);
+		$count = count($parts);
 
-		if (count($parts) < 2 || count($parts) % 2 !== 0 || count($parts) > 6) {
+		if ($count < 2 || $count % 2 !== 0 || $count > 6) {
 			throw ApiException::invalidArgument(
 				sprintf('Invalid resource name "%s".', $name),
 				[['field' => 'name', 'description' => 'Resource name must consist of collection/id segment pairs.']]
@@ -96,7 +103,6 @@ final class ResourceName {
 		}
 
 		$segments = [];
-		$count    = count($parts);
 
 		for ($i = 0; $i < $count; $i += 2) {
 			$col = $parts[$i];
@@ -161,13 +167,23 @@ final class ResourceName {
 	 * @throws ApiException If the leaf identifier is not a positive integer.
 	 */
 	public function intId(): int {
-		if (preg_match('/^[1-9][0-9]*$/', $this->id) !== 1) {
+		$id  = $this->id;
+		$len = strlen($id);
+
+		if (
+			$len === 0
+			|| $len > 19
+			|| $id[0] < '1'
+			|| $id[0] > '9'
+			|| !ctype_digit($id)
+			|| ($len === 19 && $id > '9223372036854775807')
+		) {
 			throw ApiException::invalidArgument(
 				sprintf('Resource identifier "%s" must be a positive integer.', $this->id),
 				[['field' => 'name', 'description' => 'Expected a positive integer identifier.']]
 			);
 		}
 
-		return (int) $this->id;
+		return (int) $id;
 	}
 }

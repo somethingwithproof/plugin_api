@@ -31,6 +31,11 @@ final class OrderByParser {
 	private const SAFE_COLUMN_PATTERN = '/^[a-zA-Z_][a-zA-Z0-9_]*(\.[a-zA-Z_][a-zA-Z0-9_]*)?$/';
 
 	/**
+	 * Maximum accepted order_by string length in bytes.
+	 */
+	private const MAX_LENGTH = 512;
+
+	/**
 	 * Parse an AIP-132 order_by clause into allowlisted field/direction directives.
 	 *
 	 * @param string                $orderBy   Raw order_by query string (e.g. "hostname asc, id desc").
@@ -45,7 +50,14 @@ final class OrderByParser {
 			return [];
 		}
 
-		$clauses = explode(',', $trimmed);
+		if (strlen($trimmed) > self::MAX_LENGTH) {
+			throw ApiException::invalidArgument(
+				'order_by expression exceeds maximum length.',
+				[['field' => 'order_by', 'description' => sprintf('order_by must be at most %d bytes.', self::MAX_LENGTH)]]
+			);
+		}
+
+		$clauses = explode(',', $trimmed, 10);
 
 		if (count($clauses) > 8) {
 			throw ApiException::invalidArgument(
@@ -66,7 +78,7 @@ final class OrderByParser {
 				);
 			}
 
-			$parts = preg_split('/\s+/', $clause) ?: [];
+			$parts = preg_split('/\s+/', $clause, 3) ?: [];
 
 			if (count($parts) > 2) {
 				throw ApiException::invalidArgument(

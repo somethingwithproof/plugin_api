@@ -32,6 +32,16 @@ final class FieldMask {
 	private const PATH_PATTERN = '/^[a-zA-Z_][a-zA-Z0-9_]*(\.[a-zA-Z_][a-zA-Z0-9_]*)*$/';
 
 	/**
+	 * Maximum accepted raw field mask string length in bytes.
+	 */
+	private const MAX_LENGTH = 2048;
+
+	/**
+	 * Maximum permitted number of distinct field paths in a mask.
+	 */
+	private const MAX_PATHS = 64;
+
+	/**
 	 * Construct a validated FieldMask instance.
 	 *
 	 * @param list<string> $paths Validated field paths.
@@ -45,15 +55,35 @@ final class FieldMask {
 	 * @param string|list<string>|null $raw       Raw mask from query parameter or request body.
 	 * @param string                   $paramName Parameter name for BadRequest error reporting.
 	 * @return self
-	 * @throws ApiException If any path has invalid syntax.
+	 * @throws ApiException If any path has invalid syntax or exceeds safety bounds.
 	 */
 	public static function parse(string|array|null $raw, string $paramName = 'update_mask'): self {
 		if ($raw === null || $raw === '' || $raw === []) {
 			return new self([]);
 		}
 
-		$rawParts = is_array($raw) ? $raw : explode(',', $raw);
-		$paths    = [];
+		if (is_string($raw)) {
+			if (strlen($raw) > self::MAX_LENGTH) {
+				throw ApiException::invalidArgument(
+					sprintf('%s exceeds maximum length.', $paramName),
+					[['field' => $paramName, 'description' => sprintf('Field mask must be at most %d bytes.', self::MAX_LENGTH)]]
+				);
+			}
+
+			$rawParts = explode(',', $raw, self::MAX_PATHS + 2);
+		} else {
+			$rawParts = $raw;
+		}
+
+		if (count($rawParts) > self::MAX_PATHS) {
+			throw ApiException::invalidArgument(
+				sprintf('%s exceeds maximum field count.', $paramName),
+				[['field' => $paramName, 'description' => sprintf('At most %d field paths are permitted.', self::MAX_PATHS)]]
+			);
+		}
+
+		$paths = [];
+		$seen  = [];
 
 		foreach ($rawParts as $part) {
 			$trimmed = trim($part);
@@ -76,10 +106,13 @@ final class FieldMask {
 				);
 			}
 
-			$paths[] = $trimmed;
+			if (!isset($seen[$trimmed])) {
+				$seen[$trimmed] = true;
+				$paths[]        = $trimmed;
+			}
 		}
 
-		return new self(array_values(array_unique($paths)));
+		return new self($paths);
 	}
 
 	/**
@@ -98,10 +131,14 @@ final class FieldMask {
 			);
 		}
 
+		$useMap     = count($mutableFields) > 24;
+		$allowedMap = $useMap ? array_fill_keys($mutableFields, true) : [];
 		$violations = [];
 
 		foreach ($this->paths as $path) {
-			if (!in_array($path, $mutableFields, true)) {
+			$ok = $useMap ? isset($allowedMap[$path]) : in_array($path, $mutableFields, true);
+
+			if (!$ok) {
 				$violations[] = [
 					'field'       => 'update_mask',
 					'description' => sprintf('Field "%s" is not mutable on %s.', $path, $resourceLabel),
@@ -126,10 +163,14 @@ final class FieldMask {
 	 * @throws ApiException If any requested field is outside the readable allowlist.
 	 */
 	public function validateReadMask(array $readableFields, string $resourceLabel): void {
+		$useMap     = count($readableFields) > 24;
+		$allowedMap = $useMap ? array_fill_keys($readableFields, true) : [];
 		$violations = [];
 
 		foreach ($this->paths as $path) {
-			if (!in_array($path, $readableFields, true)) {
+			$ok = $useMap ? isset($allowedMap[$path]) : in_array($path, $readableFields, true);
+
+			if (!$ok) {
 				$violations[] = [
 					'field'       => 'read_mask',
 					'description' => sprintf('Field "%s" is not readable on %s.', $path, $resourceLabel),

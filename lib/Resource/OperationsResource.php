@@ -67,10 +67,7 @@ final class OperationsResource implements ResourceHandlerInterface {
 		$filter = FilterParser::parse($request->queryParam('filter') ?? '');
 
 		if ($filter !== null) {
-			$items = array_values(array_filter(
-				$items,
-				static fn (array $op): bool => SqlFilterCompiler::matchesRecord($filter, $op, ['id', 'done'])
-			));
+			$items = SqlFilterCompiler::filterRecords($items, $filter, ['id', 'done']);
 		}
 
 		return Response::ok($ctx->paginate('operations', $items, $request, self::READABLE_FIELDS));

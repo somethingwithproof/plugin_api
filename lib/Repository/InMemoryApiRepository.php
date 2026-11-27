@@ -725,16 +725,37 @@ final class InMemoryApiRepository implements ApiRepositoryInterface {
 			}
 		}
 
-		$pending = 0;
-		$stuck   = 0;
+		$pendingAll = 0;
+		$opsPending = 0;
+		$opsRunning = 0;
+		$opsFailed  = 0;
+		$stuck      = 0;
 
 		foreach ($this->operations as $op) {
 			if (!$op['done']) {
-				$pending++;
+				$pendingAll++;
+				$isRunning = $op['updated_at'] > $op['created_at']
+					|| (($op['metadata']['state'] ?? null) === 'running');
+
+				if ($isRunning) {
+					$opsRunning++;
+				} else {
+					$opsPending++;
+				}
 
 				if ($now - $op['created_at'] > 3600) {
 					$stuck++;
 				}
+			} elseif (!$op['cancelled'] && $op['error'] !== null) {
+				$opsFailed++;
+			}
+		}
+
+		$idempotencyKeys = 0;
+
+		foreach ($this->idempotency as $rec) {
+			if ($rec['expires_at'] > $now) {
+				$idempotencyKeys++;
 			}
 		}
 
@@ -742,8 +763,12 @@ final class InMemoryApiRepository implements ApiRepositoryInterface {
 			'active_tokens'      => $active,
 			'expired_tokens'     => $expired,
 			'revoked_tokens'     => $revoked,
-			'pending_operations' => $pending,
+			'pending_operations' => $pendingAll,
+			'operations_pending' => $opsPending,
+			'operations_running' => $opsRunning,
+			'operations_failed'  => $opsFailed,
 			'stuck_operations'   => $stuck,
+			'idempotency_keys'   => $idempotencyKeys,
 			'rate_limit_rows'    => count($this->rateLimits),
 		];
 	}
@@ -801,10 +826,7 @@ final class InMemoryApiRepository implements ApiRepositoryInterface {
 		string $tieField,
 	): array {
 		if ($filter !== null) {
-			$rows = array_values(array_filter(
-				$rows,
-				static fn (array $r): bool => SqlFilterCompiler::matchesRecord($filter, $r, $allowedFields)
-			));
+			$rows = SqlFilterCompiler::filterRecords($rows, $filter, $allowedFields);
 		}
 
 		return OrderByParser::sortRecords($rows, $orderBy, $tieField);
