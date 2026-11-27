@@ -1,0 +1,69 @@
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+# SPDX-License-Identifier: GPL-2.0-or-later
+#
+# Static configuration schema for plugin_api (Config vs State separation).
+# Describes declarative configuration keys managed by Cacti settings and
+# CasC providers. Runtime state tables (plugin_api_tokens,
+# plugin_api_operations, plugin_api_idempotency, plugin_api_rate_limits) are
+# explicitly excluded from declarative export.
+
+api.settings:
+  type: config_object
+  label: 'REST API Plugin Settings'
+  mapping:
+    api_enabled:
+      type: boolean
+      label: 'Enable HTTP REST API'
+      default: true
+    api_rate_limit_per_min:
+      type: integer
+      label: 'Requests per minute per principal'
+      default: 120
+      constraints:
+        min: 1
+        max: 100000
+    api_default_token_ttl_days:
+      type: integer
+      label: 'Default token lifetime in days (0 for non-expiring)'
+      default: 90
+      constraints:
+        min: 0
+        max: 3650
+    api_cors_origins:
+      type: sequence
+      label: 'Allowlisted CORS origins'
+      default: []
+      sequence:
+        type: string
+    api_cors_allow_credentials:
+      type: boolean
+      label: 'Allow CORS credentials for allowlisted origins'
+      default: false
+    api_require_tls:
+      type: boolean
+      label: 'Require HTTPS for API requests'
+      default: false
+    api_max_body_bytes:
+      type: integer
+      label: 'Maximum HTTP request body size in bytes'
+      default: 1048576
+      constraints:
+        min: 1024
+        max: 10485760
+    api_enable_yaml_negotiation:
+      type: boolean
+      label: 'Enable application/yaml content negotiation'
+      default: false
+    api_uninstall_keep_tables:
+      type: boolean
+      label: 'Preserve API state tables on uninstall'
+      default: false
+
+api.state:
+  type: state_boundary
+  exportable: false
+  tables:
+    - plugin_api_tokens
+    - plugin_api_operations
+    - plugin_api_idempotency
+    - plugin_api_rate_limits

@@ -1,0 +1,32 @@
+{
+  "name": "somethingwithproof/plugin-api",
+  "description": "Google AIP-compliant REST API plugin for Cacti 1.2 with OpenAPI 3.1, Application Passwords, and decoupled plugin hooks",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=8.2",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^11.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Somethingwithproof\\Api\\": "lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Somethingwithproof\\Api\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit -c phpunit.xml",
+    "test:integration": "phpunit -c phpunit-integration.xml",
+    "phpstan": "phpstan analyse -c phpstan.neon --memory-limit=1G --no-progress"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
