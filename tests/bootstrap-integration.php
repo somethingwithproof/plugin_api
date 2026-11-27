@@ -17,38 +17,12 @@
  * more details.
  */
 
-/*
- * PHPUnit loads bootstrap files inside a method scope, whereas Cacti's
- * include/global.php expects top-level file scope for its globals. Bind
- * Cacti's globals explicitly before loading include/cli_check.php.
- */
-global $config, $cnn_id, $database_sessions, $database_type, $database_default,
-	$database_hostname, $database_username, $database_password, $database_port,
-	$database_retries, $database_ssl, $database_ssl_key, $database_ssl_cert,
-	$database_ssl_ca, $database_ssl_capath, $database_ssl_verify_server_cert,
-	$database_persist, $rdatabase_type, $rdatabase_default, $rdatabase_hostname,
-	$rdatabase_username, $rdatabase_password, $rdatabase_port, $rdatabase_retries,
-	$rdatabase_ssl, $rdatabase_ssl_key, $rdatabase_ssl_cert, $rdatabase_ssl_ca,
-	$poller_id, $url_path, $cacti_session_name, $cacti_db_session,
-	$disable_log_rotation, $proxy_headers, $no_http_headers, $cacti_version,
-	$plugin_hooks, $plugin_realms, $plugins, $plugins_integrated,
-	$user_auth_realm_filenames, $menu, $tabs, $settings, $current_user,
-	$messages, $colors;
+if (defined('CACTI_CLI_ONLY')) {
+	require_once dirname(__DIR__) . '/setup.php';
+	api_boot();
 
-$cactiRoot = rtrim((string) getenv('CACTI_PATH'), '/');
-
-if ($cactiRoot === '' || !is_file($cactiRoot . '/include/cli_check.php')) {
-	fwrite(STDERR, "Set CACTI_PATH to a configured Cacti checkout for integration tests.\n");
-	exit(2);
+	return;
 }
 
-$previousCwd = getcwd();
-chdir($cactiRoot);
-
-require_once $cactiRoot . '/include/cli_check.php';
-require_once dirname(__DIR__) . '/setup.php';
-api_boot();
-
-if (is_string($previousCwd)) {
-	chdir($previousCwd);
-}
+fwrite(STDERR, "Run integration tests with: php -d auto_prepend_file=tests/preload-cacti.php vendor/bin/phpunit -c phpunit-integration.xml\n");
+exit(2);

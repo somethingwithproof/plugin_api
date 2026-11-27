@@ -23,7 +23,7 @@
   },
   "scripts": {
     "test": "phpunit -c phpunit.xml",
-    "test:integration": "phpunit -c phpunit-integration.xml",
+    "test:integration": "php -d auto_prepend_file=tests/preload-cacti.php vendor/bin/phpunit -c phpunit-integration.xml",
     "phpstan": "phpstan analyse -c phpstan.neon --memory-limit=1G --no-progress"
   },
   "config": {

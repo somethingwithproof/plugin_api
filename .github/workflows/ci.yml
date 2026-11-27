@@ -196,7 +196,7 @@ jobs:
         working-directory: cacti/plugins/api
         env:
           CACTI_PATH: ${{ github.workspace }}/cacti
-        run: vendor/bin/phpunit -c phpunit-integration.xml
+        run: php -d auto_prepend_file=tests/preload-cacti.php vendor/bin/phpunit -c phpunit-integration.xml
 
       - name: Smoke-test CLI commands
         working-directory: cacti
