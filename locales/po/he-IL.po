@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Hebrew (Israel) <https://translate.cacti.net/projects/cacti/core/he_IL/>\n"
+"Language: he-IL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && n % 10 == 0) ? 2 : 3));\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "אסימון CSRF לא חוקי. טען מחדש את הדף ונסה שוב."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "פעולות API וניהול אסימונים"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "כל סיסמאות היישום"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "פעולות ארוכות טווח (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "סיסמאות יישום ל-API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "תווית:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "טווחי הרשאה:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "רשימת היתרים של CIDR (אופציונלי):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "צור אסימון"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "סייר וסטטוס של Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "צפייה ב-API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "אסימוני API (מפעיל)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "ניהול API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "סייר API וסטטוס"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "פעולות וניהול API"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "הפעל REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "אפשר ללקוחות מאומתים לגשת לנקודות הקצה של /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "הגבלת קצב (בקשות לדקה)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "מספר הבקשות המרבי המותר בחלון של 60 שניות לכל אסימון או כתובת IP של לקוח."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "TTL ברירת מחדל לאסימון (ימים)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "תקופת תפוגה כברירת מחדל בימים עבור סיסמאות יישום חדשות שנוצרו (0 מבטל תפוגת ברירת מחדל)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "מקורות CORS מאושרים"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "מקורות מופרדים בפסיקים או בשורות חדשות המורשים לקרוא ל-API מדפדפנים (לעולם אל תשתמש ב-* יחד עם פרטי אימות)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "אפשר פרטי אימות ב-CORS"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "שלח Access-Control-Allow-Credentials: true עבור מקורות מאושרים במפורש (מתעלם אם המקור הוא *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "דרוש HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "דחה בקשות API שאינן HTTPS עם השגיאה 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "גודל מרבי לגוף בקשה (בתים)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "גבול עליון למטען של בקשות HTTP המתקבלות על ידי ה-REST API (ברירת מחדל 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "הפעל משא ומתן על תוכן YAML"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "אפשר ללקוחות השולחים Accept: application/yaml לקבל תגובות YAML."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "שמור טבלאות מצב בעת הסרת ההתקנה"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "שמור את הטבלאות plugin_api_tokens, plugin_api_operations, plugin_api_idempotency ו-plugin_api_rate_limits בעת הסרת ההתקנה."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "סטטוס:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "מושבת"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "מופעל"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "נתיבי OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "הגבלת קצב:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "לא"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "דרוש TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "כן"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "אסימונים פעילים:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "פעולות ממתינות:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "נקודת קצה של OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "הרחבות API רשומות של תוספים"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "אין אוספי API של תוספים נוספים הרשומים כעת."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "אוסף"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "תוסף"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "תחום קריאה"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "מטפלים"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "תקלות הרחבה מבודדות"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "סיסמת יישום חדשה (מוצגת פעם אחת):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "לא הונפקו סיסמאות יישום."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "תווית"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "קידומת"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "טווחי הרשאה"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "תפוגה"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "סטטוס"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "פעולה"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "לעולם לא"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "פעיל"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "בוטל"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "בטל"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "לא נרשמו פעולות ארוכות טווח."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "פעולה"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "יעד"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "בוצע"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "נוצר"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "הושלם"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "ביטול"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "תוסף ה-REST API דורש PHP %s ומעלה. שרת זה מריץ PHP %s, ולכן התוסף לא הותקן ולא הופעל."
+
+#: setup.php
+msgid "Configuration"
+msgstr "תצורה"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "תוסף ה-REST API אינו מופעל."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "תוסף ה-REST API דורש PHP %s ומעלה."

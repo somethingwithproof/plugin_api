@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Vietnamese <https://translate.cacti.net/projects/cacti/core/vi/>\n"
+"Language: vi-VN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Token CSRF không hợp lệ. Vui lòng tải lại trang và thử lại."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "Vận hành API & Quản trị token"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Tất cả mật khẩu ứng dụng"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Tác vụ chạy dài (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "Mật khẩu ứng dụng API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Nhãn:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Phạm vi:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Danh sách cho phép CIDR (tùy chọn):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Tạo token"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Trình khám phá & Trạng thái Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "Xem API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "Token API (Vận hành viên)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "Quản trị API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "Trình khám phá & Trạng thái API"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "Vận hành & Quản trị API"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Bật REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Cho phép các máy khách đã xác thực truy cập vào các điểm cuối /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Giới hạn tần suất (Yêu cầu / Phút)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Số yêu cầu tối đa được phép trong mỗi khoảng 60 giây cho từng token hoặc địa chỉ IP máy khách."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "TTL token mặc định (Ngày)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Thời hạn hết hạn mặc định tính theo ngày cho mật khẩu ứng dụng mới tạo (0 để tắt thời hạn mặc định)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Nguồn gốc CORS được cho phép"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Danh sách nguồn gốc phân tách bằng dấu phẩy hoặc xuống dòng được phép gọi API từ trình duyệt (không bao giờ dùng * cùng với thông tin xác thực)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "CORS cho phép thông tin xác thực"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Gửi tiêu đề Access-Control-Allow-Credentials: true cho các nguồn gốc được cho phép rõ ràng (bỏ qua nếu nguồn gốc là *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Yêu cầu HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Từ chối các yêu cầu API không dùng HTTPS bằng mã lỗi 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Kích thước thân yêu cầu tối đa (Byte)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Giới hạn trên đối với tải trọng yêu cầu HTTP mà REST API chấp nhận (mặc định 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Bật thương lượng nội dung YAML"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Cho phép máy khách gửi Accept: application/yaml nhận phản hồi định dạng YAML."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Giữ lại bảng trạng thái khi gỡ cài đặt"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Giữ nguyên các bảng plugin_api_tokens, plugin_api_operations, plugin_api_idempotency và plugin_api_rate_limits khi gỡ cài đặt."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Trạng thái:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Đã tắt"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Đã bật"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "Đường dẫn OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Giới hạn tần suất:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Không"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Yêu cầu TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Có"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Token đang hoạt động:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Tác vụ đang chờ:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "Điểm cuối OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Phần mở rộng API plugin đã đăng ký"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Hiện chưa có tập hợp API plugin liên kết nào được đăng ký."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Tập hợp"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Plugin"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Quyền đọc"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Trình xử lý"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Lỗi phần mở rộng được cô lập"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Mật khẩu ứng dụng mới (chỉ hiển thị một lần):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Chưa có mật khẩu ứng dụng nào được cấp."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Nhãn"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Tiền tố"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Phạm vi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Hết hạn"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Trạng thái"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Thao tác"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Không bao giờ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Đang hoạt động"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Đã thu hồi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Thu hồi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Chưa có tác vụ chạy dài nào được ghi nhận."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Tác vụ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Đích"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Hoàn tất"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Đã tạo"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Đã hoàn thành"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Hủy"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Plugin REST API yêu cầu PHP %s trở lên. Máy chủ này đang chạy PHP %s nên plugin chưa được cài đặt hoặc bật."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Cấu hình"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "Plugin REST API chưa được bật."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Plugin REST API yêu cầu PHP %s trở lên."

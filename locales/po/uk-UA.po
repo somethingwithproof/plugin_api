@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Ukrainian <https://translate.cacti.net/projects/cacti/core/uk/>\n"
+"Language: uk-UA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Недійсний токен CSRF. Перезавантажте сторінку та повторіть спробу."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "Операції API та адміністрування токенів"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Усі паролі застосунків"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Тривалі операції (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "Паролі застосунків API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Мітка:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Області доступу:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Список дозволених CIDR (необов'язково):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Створити токен"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Оглядач і стан Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "Перегляд API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "Токени API (Оператор)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "Адміністрування API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "Оглядач і стан API"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "Операції та адміністрування API"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Увімкнути REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Дозволити автентифікованим клієнтам доступ до кінцевих точок /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Обмеження частоти (запитів / хвилину)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Максимальна кількість запитів за 60-секундне вікно на один токен або IP клієнта."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "TTL токена за замовчуванням (дні)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Термін дії в днях за замовчуванням для новостворених паролів застосунків (0 вимикає строк дії за замовчуванням)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Дозволені джерела CORS"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Список джерел через кому або з нового рядка, яким дозволено викликати API з браузерів (ніколи не використовуйте * разом з обліковими даними)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "Дозволити облікові дані CORS"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Надсилати заголовок Access-Control-Allow-Credentials: true для явно дозволених джерел (ігнорується, якщо джерело - *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Вимагати HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Відхиляти запити API без HTTPS із кодом 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Максимальний розмір тіла запиту (байти)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Верхня межа корисного навантаження HTTP-запитів, що приймаються REST API (за замовчуванням 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Увімкнути узгодження вмісту YAML"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Дозволити клієнтам, які надсилають Accept: application/yaml, отримувати відповіді у форматі YAML."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Зберігати таблиці стану під час видалення"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Зберігати таблиці plugin_api_tokens, plugin_api_operations, plugin_api_idempotency та plugin_api_rate_limits під час видалення."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Стан:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Вимкнено"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Увімкнено"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "Шляхи OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Обмеження частоти:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Ні"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Вимагати TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Так"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Активні токени:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Операції в очікуванні:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "Кінцева точка OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Зареєстровані розширення API плагінів"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Наразі не зареєстровано жодної колекції API сусідніх плагінів."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Колекція"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Плагін"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Область читання"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Обробники"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Ізольовані збої розширень"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Новий пароль застосунку (показується лише один раз):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Паролі застосунків ще не видавалися."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Мітка"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Префікс"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Області доступу"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Дійсний до"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Стан"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Дія"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Ніколи"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Активний"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Відкликано"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Відкликати"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Тривалих операцій не зафіксовано."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Операція"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Ціль"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Виконано"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Створено"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Завершено"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Плагін REST API потребує PHP %s або новішої версії. На цьому сервері встановлено PHP %s, тому плагін не було встановлено або увімкнено."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Конфігурація"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "Плагін REST API не увімкнено."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Плагін REST API потребує PHP %s або новішої версії."

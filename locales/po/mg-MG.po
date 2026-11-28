@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Malagasy <developers@cacti.net>\n"
+"Language: mg_MG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Tsy manan-kery ny mari-pamantarana CSRF. Avereno sokafana ny pejy ary andramo indray."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "Asa API sy Fitantanana Mari-pamantarana"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Teny Miafina Fampiharana Rehetra"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Asa Maharitra (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "Teny Miafina Fampiharana API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Anarana:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Sahan'asa:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Lisitra CIDR ekena (tsy voatery):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Hamorona Mari-pamantarana"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Mpizaha sy Toetry ny Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "Fijerena API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "Mari-pamantarana API (Mpanatanteraka)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "Mpitantana API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "Mpizaha sy Toetry ny API"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "Asa API sy Fitantanana"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Alefa ny REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Avela hiditra amin'ny teboka /plugins/api/v1 ireo mpanjifa voamarina."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Fetran'ny Fangatahana (Fangatahana / Minitra)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Isan'ny fangatahana ambony indrindra ekena isaky ny 60 segondra ho an'ny mari-pamantarana na adiresy IP mpanjifa tsirairay."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "TTL Mahazatra ho an'ny Mari-pamantarana (Andro)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Fe-potoana fahalaniana daty mahazatra amin'ny andro ho an'ny Teny Miafina Fampiharana vao noforonina (0 dia manafoana ny fahalaniana daty mahazatra)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Loharano CORS Ekena"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Loharano sarahin'ny faingo na andalana vaovao izay avela hiantso ny API avy amin'ny mpitety tranonkala (aza mampiasa * miaraka amin'ny fanamarinam-pananana mihitsy)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "Avela ny Fanamarinam-pananana CORS"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Mamoaka Access-Control-Allow-Credentials: true ho an'ireo loharano voasoratra mazava ao amin'ny lisitra ekena (tsy raharahaina raha * ny loharano)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Mitaky HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Lavina miaraka amin'ny 400 FAILED_PRECONDITION ireo fangatahana API tsy mampiasa HTTPS."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Haben'ny Votoatin'ny Fangatahana Ambony Indrindra (Oktety)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Fetra ambony ho an'ny votoatin'ny fangatahana HTTP eken'ny REST API (mahazatra 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Alefa ny Fifampiraharahana Votoaty YAML"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Avela hahazo valiny YAML ireo mpanjifa mandefa Accept: application/yaml."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Tahirizina ny Tabilao Toetra Rehefa Esorina"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Tahirizina ny plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, ary plugin_api_rate_limits rehefa esorina."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Toetra:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Tsy alefa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Alefa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "Lalana OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Fetran'ny fangatahana:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Tsia"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Mitaky TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Eny"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Mari-pamantarana miasa:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Asa miandry:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "Teboka OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Fanitarana API an'ny Fanampiny Voasoratra"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Tsy misy fanangonana API avy amin'ny fanampiny hafa voasoratra amin'izao fotoana izao."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Fanangonana"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Fanampiny"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Sahan'ny famakiana"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Mpitantana hetsika"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Hadisoan'ny Fanitarana Mitokana"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Teny Miafina Fampiharana Vaovao (aseho indray mandeha ihany):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Tsy mbola nisy Teny Miafina Fampiharana navoaka."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Anarana"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Tovona"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Sahan'asa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Lany daty"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Toetra"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Hetsika"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Tsy mihitsy"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Miasa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Nofoanana"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Foano"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Tsy misy Asa Maharitra voarakitra."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Asa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Tanjona"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Vita"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Noforonina"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Nahavitana"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Ajanony"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Mitaky PHP %s na vaovao kokoa ny fanampiny REST API. Mampiasa PHP %s ity mpizara ity, ka tsy napetraka na nalefa ny fanampiny."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Fikirakirana"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "Tsy alefa ny fanampiny REST API."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Mitaky PHP %s na vaovao kokoa ny fanampiny REST API."

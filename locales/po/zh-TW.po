@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://translate.cacti.net/projects/cacti/core/zh_Hant/>\n"
+"Language: zh-TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "無效的 CSRF 權杖。請重新載入頁面並重試。"
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "API 作業與權杖管理"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "所有應用程式密碼"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "長時間執行的作業 (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "API 應用程式密碼"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "標籤："
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "權限範圍："
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "CIDR 允許清單（選填）："
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "建立權杖"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Google AIP REST API 探索工具與狀態"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "API 檢視"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "API 權杖（操作員）"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "API 管理員"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "API 探索工具與狀態"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "API 作業與管理"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "啟用 REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "允許已驗證的用戶端存取 /plugins/api/v1 端點。"
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "速率限制（請求數 / 分鐘）"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "每個權杖或用戶端 IP 在每 60 秒時間視窗內允許的最大請求數。"
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "預設權杖 TTL（天）"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "新建應用程式密碼的預設到期天數（設為 0 表示停用預設到期）。"
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "CORS 允許清單來源"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "允許從瀏覽器呼叫 API 的來源，以逗號或換行分隔（搭配憑證時切勿使用 *）。"
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "CORS 允許憑證"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "為明確列入允許清單的來源輸出 Access-Control-Allow-Credentials: true（若來源為 * 則忽略）。"
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "強制使用 HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "以 400 FAILED_PRECONDITION 拒絕非 HTTPS 的 API 請求。"
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "最大請求主體大小（位元組）"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "REST API 接受的 HTTP 請求承載資料上限（預設 1048576 = 1 MiB）。"
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "啟用 YAML 內容協商"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "允許傳送 Accept: application/yaml 的用戶端接收 YAML 回應。"
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "解除安裝時保留狀態資料表"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "解除安裝時保留 plugin_api_tokens、plugin_api_operations、plugin_api_idempotency 與 plugin_api_rate_limits 資料表。"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "狀態："
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "已停用"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "已啟用"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "OpenAPI 3.1 路徑："
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "速率限制："
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "否"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "強制使用 TLS："
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "是"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "使用中權杖："
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "待處理作業："
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "OpenAPI 端點："
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "已註冊的外掛程式 API 擴充功能"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "目前未註冊任何同層級外掛程式的 API 集合。"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "集合"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "外掛程式"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "讀取領域"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "處理常式"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "隔離的擴充功能錯誤"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "新應用程式密碼（僅顯示一次）："
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "尚未核發任何應用程式密碼。"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "標籤"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "前置詞"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "權限範圍"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "到期時間"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "狀態"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "操作"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "永不"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "使用中"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "已撤銷"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "撤銷"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "未記錄任何長時間執行的作業。"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "作業"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "目標"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "已完成"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "建立時間"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "完成時間"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "取消"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "REST API 外掛程式需要 PHP %s 或更新版本。此伺服器執行的是 PHP %s，因此未安裝或啟用該外掛程式。"
+
+#: setup.php
+msgid "Configuration"
+msgstr "組態"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "REST API 外掛程式未啟用。"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "REST API 外掛程式需要 PHP %s 或更新版本。"

@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Japanese <https://translate.cacti.net/projects/cacti/core/ja/>\n"
+"Language: ja-JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "無効な CSRF トークンです。ページを再読み込みして再試行してください。"
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "API 操作とトークン管理"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "すべてのアプリケーションパスワード"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "長時間実行操作 (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "API アプリケーションパスワード"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "ラベル:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "スコープ:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "CIDR 許可リスト (任意):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "トークンを作成"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Google AIP REST API エクスプローラーとステータス"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "API 閲覧"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "API トークン (オペレーター)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "API 管理者"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "API エクスプローラーとステータス"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "API 操作と管理"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "REST API を有効にする"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "認証済みクライアントによる /plugins/api/v1 エンドポイントへのアクセスを許可します。"
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "レート制限 (リクエスト / 分)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "トークンまたはクライアント IP ごとに 60 秒間で許可される最大リクエスト数です。"
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "デフォルトのトークン TTL (日)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "新規作成されるアプリケーションパスワードのデフォルト有効期限 (日数) です (0 を指定するとデフォルトの有効期限を無効にします)。"
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "CORS 許可オリジン"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "ブラウザーから API を呼び出すことを許可するオリジンをカンマまたは改行区切りで指定します (認証情報とともに * を使用しないでください)。"
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "CORS 認証情報の許可"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "明示的に許可リストへ登録されたオリジンに対して Access-Control-Allow-Credentials: true を出力します (オリジンが * の場合は無視されます)。"
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "HTTPS を必須にする"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "HTTPS 以外の API リクエストを 400 FAILED_PRECONDITION で拒否します。"
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "最大リクエストボディサイズ (バイト)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "REST API が受け付ける HTTP リクエストペイロードの上限です (デフォルト: 1048576 = 1 MiB)。"
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "YAML コンテンツネゴシエーションを有効にする"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Accept: application/yaml を送信するクライアントが YAML レスポンスを受信できるようにします。"
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "アンインストール時に状態テーブルを保持する"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "アンインストール時に plugin_api_tokens、plugin_api_operations、plugin_api_idempotency、および plugin_api_rate_limits を保持します。"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "ステータス:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "無効"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "有効"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "OpenAPI 3.1 パス:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "レート制限:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "いいえ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "TLS 必須:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "はい"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "有効なトークン:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "保留中の操作:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "OpenAPI エンドポイント:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "登録済みプラグイン API 拡張"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "現在登録されている関連プラグイン API コレクションはありません。"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "コレクション"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "プラグイン"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "読み取り権限レルム"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "ハンドラー"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "分離された拡張機能の障害"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "新しいアプリケーションパスワード (一度のみ表示):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "発行されたアプリケーションパスワードはありません。"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "ラベル"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "プレフィックス"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "スコープ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "有効期限"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "ステータス"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "操作"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "無期限"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "有効"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "失効済み"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "失効"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "記録された長時間実行操作はありません。"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "操作"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "対象"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "完了"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "作成日時"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "完了日時"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "REST API プラグインには PHP %s 以降が必要です。このサーバーでは PHP %s が動作しているため、プラグインはインストールまたは有効化されませんでした。"
+
+#: setup.php
+msgid "Configuration"
+msgstr "設定"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "REST API プラグインは有効になっていません。"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "REST API プラグインには PHP %s 以降が必要です。"

@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Hindi <https://translate.cacti.net/projects/cacti/core/hi/>\n"
+"Language: hi-IN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "अमान्य CSRF टोकन। पृष्ठ को पुनः लोड करें और फिर से प्रयास करें।"
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "API संचालन और टोकन प्रशासन"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "सभी एप्लिकेशन पासवर्ड"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "दीर्घकालिक संचालन (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "API एप्लिकेशन पासवर्ड"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "लेबल:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "स्कोप:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "CIDR अनुमति-सूची (वैकल्पिक):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "टोकन बनाएँ"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Google AIP REST API एक्सप्लोरर और स्थिति"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "API दृश्य"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "API टोकन (ऑपरेटर)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "API प्रशासक"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "API एक्सप्लोरर और स्थिति"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "API संचालन और प्रशासन"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "REST API सक्षम करें"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "प्रमाणित क्लाइंट्स को /plugins/api/v1 एंडपॉइंट्स तक पहुँचने की अनुमति दें।"
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "दर सीमा (अनुरोध / मिनट)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "प्रति टोकन या क्लाइंट IP के लिए प्रत्येक 60-सेकंड की अवधि में अनुमत अधिकतम अनुरोध।"
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "डिफ़ॉल्ट टोकन TTL (दिन)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "नवनिर्मित एप्लिकेशन पासवर्ड के लिए दिनों में डिफ़ॉल्ट समाप्ति अवधि (0 डिफ़ॉल्ट समाप्ति को अक्षम करता है)।"
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "CORS अनुमति-सूचीबद्ध ऑरिजिन"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "ब्राउज़र से API को कॉल करने के लिए अनुमत अल्पविराम या नई पंक्ति से पृथक ऑरिजिन (क्रेडेंशियल्स के साथ कभी भी * का उपयोग न करें)।"
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "CORS क्रेडेंशियल्स की अनुमति दें"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "स्पष्ट रूप से अनुमति-सूचीबद्ध ऑरिजिन के लिए Access-Control-Allow-Credentials: true भेजें (यदि ऑरिजिन * है तो अनदेखा किया जाता है)।"
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "HTTPS आवश्यक करें"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "गैर-HTTPS API अनुरोधों को 400 FAILED_PRECONDITION के साथ अस्वीकार करें।"
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "अधिकतम अनुरोध बॉडी आकार (बाइट्स)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "REST API द्वारा स्वीकार किए जाने वाले HTTP अनुरोध पेलोड की अधिकतम सीमा (डिफ़ॉल्ट 1048576 = 1 MiB)।"
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "YAML सामग्री समन्वय सक्षम करें"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Accept: application/yaml भेजने वाले क्लाइंट्स को YAML प्रतिक्रियाएँ प्राप्त करने की अनुमति दें।"
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "अनइंस्टॉल पर स्टेट तालिकाएँ सुरक्षित रखें"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "अनइंस्टॉल करने पर plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, और plugin_api_rate_limits को सुरक्षित रखें।"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "स्थिति:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "अक्षम"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "सक्षम"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "OpenAPI 3.1 पथ:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "दर सीमा:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "नहीं"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "TLS आवश्यक:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "हाँ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "सक्रिय टोकन:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "लंबित संचालन:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "OpenAPI एंडपॉइंट:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "पंजीकृत प्लगइन API एक्सटेंशन"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "वर्तमान में कोई सहयोगी प्लगइन API संग्रह पंजीकृत नहीं है।"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "संग्रह"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "प्लगइन"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "पठन क्षेत्र"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "हैंडलर"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "पृथक एक्सटेंशन दोष"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "नया एप्लिकेशन पासवर्ड (केवल एक बार दिखाया जाएगा):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "कोई एप्लिकेशन पासवर्ड जारी नहीं किया गया है।"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "लेबल"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "उपसर्ग"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "स्कोप"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "समाप्ति"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "स्थिति"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "कार्रवाई"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "कभी नहीं"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "सक्रिय"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "निरस्त"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "निरस्त करें"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "कोई दीर्घकालिक संचालन दर्ज नहीं है।"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "संचालन"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "लक्ष्य"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "पूर्ण"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "निर्मित"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "संपन्न"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "REST API प्लगइन के लिए PHP %s या उसके बाद का संस्करण आवश्यक है। यह सर्वर PHP %s चला रहा है, इसलिए प्लगइन को इंस्टॉल या सक्षम नहीं किया गया।"
+
+#: setup.php
+msgid "Configuration"
+msgstr "कॉन्फ़िगरेशन"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "REST API प्लगइन सक्षम नहीं है।"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "REST API प्लगइन के लिए PHP %s या उसके बाद का संस्करण आवश्यक है।"

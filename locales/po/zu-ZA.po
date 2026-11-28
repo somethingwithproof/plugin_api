@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Zulu <developers@cacti.net>\n"
+"Language: zu_ZA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Ithokheni ye-CSRF engavumelekile. Layisha kabusha ikhasi bese uzama futhi."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "Imisebenzi ye-API Nokuphathwa Kwamathokheni"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Wonke Amaphasiwedi Ohlelo Lokusebenza"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Imisebenzi Ethatha Isikhathi Eside (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "Amaphasiwedi Ohlelo Lokusebenza lwe-API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Ilebula:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Imikhakha:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Uhlu Lokuvunyelwe lwe-CIDR (ngokuzikhethela):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Dala Ithokheni"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Umhloli Nesimo se-Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "Ukubuka i-API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "Amathokheni e-API (Umqhubi)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "Umlawuli we-API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "Umhloli Nesimo se-API"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "Imisebenzi Nokuphatha kwe-API"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Nika Amandla i-REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Vumela amaklayenti aqinisekisiwe ukuthi afinyelele ezindaweni zokuxhumana ezithi /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Umkhawulo Wezinga (Izicelo / Ngomzuzu)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Inani eliphezulu lezicelo ezivunyelwe esikhathini esiyimizuzwana engu-60 ngethokheni ngayinye noma nge-IP yeklayenti."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "I-TTL Yethokheni Ezenzakalelayo (Izinsuku)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Isikhathi esizenzakalelayo sokuphelelwa yisikhathi ngezinsuku samaphasiwedi ohlelo lokusebenza asanda kudalwa (u-0 ukhubaza ukuphelelwa yisikhathi okuzenzakalelayo)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Imithombo Evunyelwe Ohlwini lwe-CORS"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Imithombo ehlukaniswe ngokhefana noma ngomugqa omusha evunyelwe ukubiza i-API kusuka kuziphequluli (ungalokothi usebenzise u-* nezifakazo)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "I-CORS Ivumela Izifakazo"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Thumela unhlokweni othi Access-Control-Allow-Credentials: true emithonjeni evunyelwe ngokucacile ohlwini (kuyashaywa indiva uma umthombo ungu-*)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Funa i-HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Yenqaba izicelo ze-API ezingeyona i-HTTPS ngephutha elithi 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Usayizi Ophezulu Womzimba Wesicelo (Amabhayithi)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Umkhawulo ophezulu wemithwalo yedatha yezicelo ze-HTTP ezamukelwa yi-REST API (okuzenzakalelayo ngu-1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Nika Amandla Ukuxoxisana Kokuqukethwe kwe-YAML"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Vumela amaklayenti athumela unhlokweni othi Accept: application/yaml ukuthi athole izimpendulo ze-YAML."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Gcina Amathebula Esimo Lapho Ukhipha"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Gcina amathebula athi plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, kanye nelithi plugin_api_rate_limits lapho ukhipha isengezo."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Isimo:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Ikhutshaziwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Inikwe amandla"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "Izindlela ze-OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Umkhawulo Wezinga:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Cha"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Funa i-TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Yebo"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Amathokheni Asebenzayo:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Imisebenzi Elindile:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "Indawo Yokuxhumana ye-OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Izandiso Ze-API Zezinye Izengezo Ezibhalisiwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Awekho amaqoqo e-API ezinye izengezo abhalisiwe okwamanje."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Iqoqo"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Isengezo"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Umkhakha Wokufunda"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Abaphathi Bezicelo"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Amaphutha Ezandiso Ahlukanisiwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Iphasiwedi Entsha Yohlelo Lokusebenza (iboniswa kanye kuphela):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Awekho Amaphasiwedi Ohlelo Lokusebenza akhishiwe."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Ilebula"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Isiqalo"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Imikhakha"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Iphelelwa Yisikhathi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Isimo"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Isenzo"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Akupheli"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Iyasebenza"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Ihoxisiwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Hoxisa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Ayikho Imisebenzi Ethatha Isikhathi Eside erekhodiwe."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Umsebenzi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Okuhlosiwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Kwenziwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Kwakhiwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Kuphothuliwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Khansela"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Isengezo se-REST API sidinga i-PHP %s noma eyakamuva. Le seva isebenzisa i-PHP %s, ngakho-ke isengezo asifakwanga futhi asinikwanga amandla."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Ukumiswa"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "Isengezo se-REST API asinikwanga amandla."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Isengezo se-REST API sidinga i-PHP %s noma eyakamuva."

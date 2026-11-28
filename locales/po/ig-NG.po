@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Igbo <developers@cacti.net>\n"
+"Language: ig_NG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Akara CSRF ezighị ezi. Bugharịa ibe ahụ ma nwaa ọzọ."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "Ọrụ API na Nchịkwa Akara"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Okwuntughe Ngwa Niile"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Ọrụ Na-ewe Ogologo Oge (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "Okwuntughe Ngwa API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Akara aha:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Oke ikike:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Ndepụta nnabata CIDR (nhọrọ):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Mepụta Akara"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Nnyocha na Ọnọdụ Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "Nlele API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "Akara API (Onye ọrụ)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "Nchịkwa API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "Nnyocha na Ọnọdụ API"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "Ọrụ API na Nchịkwa"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Kwado REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Kwe ka ngwa ahịa enyochara njirimara ha nweta isi njedebe /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Oke Arịrịọ (Arịrịọ / Nkeji)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Ọnụọgụ arịrịọ kasị elu akwadoro n'ime sekọnd 60 maka akara ma ọ bụ adreesị IP nke ngwa ahịa ọ bụla."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "Oge TTL Akara Ndabara (Ụbọchị)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Oge ngwụcha ndabara n'ụbọchị maka Okwuntughe Ngwa emepụtara ọhụrụ (0 na-akwụsị oge ngwụcha ndabara)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Ebe Mbido Ekwadoro maka CORS"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Ebe mbido ejiri rikọm ma ọ bụ ahịrị ọhụrụ kewaa nke ekwadoro ịkpọ API site n'ihe nchọgharị (ejila * yana nzere njirimara)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "Kwe ka Nzere Njirimara CORS"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Zipụ Access-Control-Allow-Credentials: true maka ebe mbido akwadoro kpọmkwem (a na-eleghara ya anya ma ọ bụrụ na ebe mbido bụ *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Chọọ HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Jụ arịrịọ API na-abụghị HTTPS jiri 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Oke Ibu Ahụ Arịrịọ Kasị Elu (Bayịtị)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Oke kasị elu maka ibu arịrịọ HTTP nke REST API na-anabata (ndabara 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Kwado Nkwekọrịta Ọdịnaya YAML"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Kwe ka ngwa ahịa na-ezipụ Accept: application/yaml nata nzaghachi YAML."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Debe Tebụl Ọnọdụ Mgbe A Na-ewepụ Ngwa Mgbakwunye"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Chekwaa plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, na plugin_api_rate_limits mgbe a na-ewepụ ngwa mgbakwunye."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Ọnọdụ:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Ekwadoghị"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Ekwadoro"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "Ụzọ OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Oke arịrịọ:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Mba"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Chọọ TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Ee"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Akara na-arụ ọrụ:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Ọrụ na-eche:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "Isi njedebe OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Mgbakwunye API nke Ngwa Mgbakwunye Edebanyere Aha"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Enweghị nchịkọta API nke ngwa mgbakwunye ndị ọzọ edebanyere aha ugbu a."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Nchịkọta"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Ngwa mgbakwunye"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Mpaghara Ọgụgụ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Ndị njikwa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Njehie Mgbakwunye Ekewapụrụ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Okwuntughe ngwa ọhụrụ (egosipụtara otu ugboro):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Enweghị Okwuntughe Ngwa ewepụtala."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Akara aha"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Okwu mmalite"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Oke ikike"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Oge ngwụcha"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Ọnọdụ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Omume"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Ọ dịghị mgbe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Na-arụ ọrụ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Akagburu"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Kagbuo"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Enweghị Ọrụ Na-ewe Ogologo Oge edekọrọ."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Ọrụ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Ebumnuche"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Emechara"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Emepụtara"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Agwụla"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Kagbuo"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Ngwa mgbakwunye REST API chọrọ PHP %s ma ọ bụ nke ọhụrụ. Sava a na-arụ ọrụ na PHP %s, ya mere etinyeghị ma ọ bụ kwado ngwa mgbakwunye ahụ."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Nhazi"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "Ekwadoghị ngwa mgbakwunye REST API."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Ngwa mgbakwunye REST API chọrọ PHP %s ma ọ bụ nke ọhụrụ."

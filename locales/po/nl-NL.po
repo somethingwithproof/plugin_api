@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Dutch <https://translate.cacti.net/projects/cacti/core/nl/>\n"
+"Language: nl-NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Ongeldig CSRF-token. Laad de pagina opnieuw en probeer het nogmaals."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "API-bewerkingen en tokenbeheer"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Alle applicatiewachtwoorden"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Langlopende bewerkingen (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "API-applicatiewachtwoorden"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Label:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Bereiken:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "CIDR-toelatingslijst (optioneel):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Token aanmaken"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Google AIP REST API-verkenner en status"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "API-weergave"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "API-tokens (operator)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "API-beheer"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "API-verkenner en status"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "API-bewerkingen en beheer"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "REST API inschakelen"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Geef geauthenticeerde clients toegang tot eindpunten onder /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Snelheidslimiet (verzoeken / minuut)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Maximaal aantal toegestane verzoeken per tijdvak van 60 seconden per token of client-IP."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "Standaard TTL voor tokens (dagen)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Standaard vervaltermijn in dagen voor nieuw aangemaakte applicatiewachtwoorden (0 schakelt standaard vervallen uit)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Toegestane CORS-herkomsten"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Door komma's of nieuwe regels gescheiden herkomsten die de API vanuit browsers mogen aanroepen (gebruik nooit * met inloggegevens)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "CORS-inloggegevens toestaan"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Verstuur Access-Control-Allow-Credentials: true voor expliciet toegestane herkomsten (wordt genegeerd als de herkomst * is)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "HTTPS vereisen"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Wijs API-verzoeken zonder HTTPS af met 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Maximale grootte van verzoekinhoud (bytes)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Bovengrens voor HTTP-verzoekgegevens die door de REST API worden geaccepteerd (standaard 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "YAML-inhoudsonderhandeling inschakelen"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Sta clients die Accept: application/yaml verzenden toe om YAML-antwoorden te ontvangen."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Statustabellen behouden bij verwijderen"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Behoud plugin_api_tokens, plugin_api_operations, plugin_api_idempotency en plugin_api_rate_limits bij het verwijderen."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Status:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "OpenAPI 3.1-paden:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Snelheidslimiet:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Nee"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "TLS vereisen:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Ja"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Actieve tokens:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Openstaande bewerkingen:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "OpenAPI-eindpunt:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Geregistreerde plugin-API-extensies"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Er zijn momenteel geen API-verzamelingen van andere plugins geregistreerd."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Verzameling"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Plugin"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Leesdomein"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Afhandelaars"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Geïsoleerde extensiefouten"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Nieuw applicatiewachtwoord (wordt eenmalig getoond):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Er zijn geen applicatiewachtwoorden uitgegeven."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Label"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Voorvoegsel"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Bereiken"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Verloopt"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Status"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Actie"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Nooit"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Actief"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Ingetrokken"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Intrekken"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Er zijn geen langlopende bewerkingen vastgelegd."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Bewerking"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Doel"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Gereed"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Aangemaakt"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Voltooid"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "De REST API-plugin vereist PHP %s of hoger. Deze server draait op PHP %s, dus de plugin is niet geïnstalleerd of ingeschakeld."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Configuratie"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "De REST API-plugin is niet ingeschakeld."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "De REST API-plugin vereist PHP %s of hoger."

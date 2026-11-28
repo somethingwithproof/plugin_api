@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Georgian <https://translate.cacti.net/projects/cacti/core/ka/>\n"
+"Language: ka-GE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "არასწორი CSRF ტოკენი. გადატვირთეთ გვერდი და სცადეთ ხელახლა."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "API ოპერაციები და ტოკენების ადმინისტრირება"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "ყველა აპლიკაციის პაროლი"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "ხანგრძლივი ოპერაციები (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "API აპლიკაციის პაროლები"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "ეტიკეტი:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "წვდომის სფეროები:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "CIDR დაშვებულთა სია (არასავალდებულო):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "ტოკენის შექმნა"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Google AIP REST API მიმომხილველი და სტატუსი"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "API ნახვა"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "API ტოკენები (ოპერატორი)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "API ადმინისტრატორი"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "API მიმომხილველი და სტატუსი"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "API ოპერაციები და ადმინისტრირება"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "REST API-ის ჩართვა"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "ავტორიზებული კლიენტებისთვის /plugins/api/v1 საბოლოო წერტილებზე წვდომის დაშვება."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "მოთხოვნების ლიმიტი (მოთხოვნა / წუთში)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "60-წამიან ინტერვალში დაშვებული მოთხოვნების მაქსიმალური რაოდენობა თითო ტოკენზე ან კლიენტის IP მისამართზე."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "ტოკენის ნაგულისხმევი TTL (დღეებში)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "ახლად შექმნილი აპლიკაციის პაროლების ვადის ამოწურვის ნაგულისხმევი პერიოდი დღეებში (0 გამორთავს ნაგულისხმევ ვადას)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "CORS დაშვებული წყაროები"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "მძიმით ან ახალი ხაზით გამოყოფილი წყაროები, რომლებსაც უფლება აქვთ ბრაუზერიდან მიმართონ API-ს (არასოდეს გამოიყენოთ * ავტორიზაციის მონაცემებთან ერთად)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "CORS ავტორიზაციის მონაცემების დაშვება"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Access-Control-Allow-Credentials: true სათაურის გაგზავნა მკაფიოდ დაშვებული წყაროებისთვის (იგნორირდება, თუ წყარო არის *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "HTTPS-ის მოთხოვნა"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "არა-HTTPS API მოთხოვნების უარყოფა 400 FAILED_PRECONDITION შეცდომით."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "მოთხოვნის ტანის მაქსიმალური ზომა (ბაიტებში)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "REST API-ის მიერ მიღებული HTTP მოთხოვნის მონაცემების ზედა ზღვარი (ნაგულისხმევი 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "YAML კონტენტის შეთანხმების ჩართვა"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "კლიენტებისთვის, რომლებიც აგზავნიან Accept: application/yaml სათაურს, YAML პასუხების მიღების დაშვება."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "მდგომარეობის ცხრილების შენახვა დეინსტალაციისას"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "plugin_api_tokens, plugin_api_operations, plugin_api_idempotency და plugin_api_rate_limits ცხრილების შენახვა დეინსტალაციისას."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "სტატუსი:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "გამორთული"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "ჩართული"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "OpenAPI 3.1 გზები:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "მოთხოვნების ლიმიტი:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "არა"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "TLS-ის მოთხოვნა:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "დიახ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "აქტიური ტოკენები:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "მოლოდინში მყოფი ოპერაციები:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "OpenAPI საბოლოო წერტილი:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "რეგისტრირებული პლაგინების API გაფართოებები"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "ამჟამად სხვა პლაგინების API კოლექციები რეგისტრირებული არ არის."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "კოლექცია"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "პლაგინი"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "წაკითხვის სფერო"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "დამმუშავებლები"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "იზოლირებული გაფართოების შეცდომები"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "ახალი აპლიკაციის პაროლი (ნაჩვენებია ერთჯერადად):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "აპლიკაციის პაროლები არ არის გაცემული."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "ეტიკეტი"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "პრეფიქსი"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "წვდომის სფეროები"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "ვადა ეწურება"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "სტატუსი"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "მოქმედება"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "არასოდეს"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "აქტიური"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "გაუქმებული"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "გაუქმება"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "ხანგრძლივი ოპერაციები არ არის ჩაწერილი."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "ოპერაცია"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "სამიზნე"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "დასრულებულია"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "შექმნილია"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "დასრულდა"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "გაუქმება"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "REST API პლაგინს სჭირდება PHP %s ან უფრო ახალი ვერსია. ამ სერვერზე გაშვებულია PHP %s, ამიტომ პლაგინი არ დაინსტალირდა და არ ჩაირთო."
+
+#: setup.php
+msgid "Configuration"
+msgstr "კონფიგურაცია"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "REST API პლაგინი ჩართული არ არის."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "REST API პლაგინს სჭირდება PHP %s ან უფრო ახალი ვერსია."

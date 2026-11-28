@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Arabic (Morocco) <developers@cacti.net>\n"
+"Language: ar_MA\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "رمز CSRF غير صالح. أعد تحميل الصفحة وحاول مرة أخرى."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "عمليات API وإدارة الرموز"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "جميع كلمات مرور التطبيقات"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "العمليات طويلة الأمد (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "كلمات مرور تطبيقات API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "التسمية:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "النطاقات:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "قائمة CIDR المسموح بها (اختياري):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "إنشاء رمز"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "مستكشف وحالة Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "عرض API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "رموز API (المشغل)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "إدارة API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "مستكشف وحالة API"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "عمليات وإدارة API"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "تفعيل REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "السماح للعملاء المصادق عليهم بالوصول إلى نقاط النهاية /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "حد المعدل (طلبات / دقيقة)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "الحد الأقصى للطلبات المسموح بها لكل نافذة مدتها 60 ثانية لكل رمز أو عنوان IP للعميل."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "مدة صلاحية الرمز الافتراضية (TTL بالأيام)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "فترة انتهاء الصلاحية الافتراضية بالأيام لكلمات مرور التطبيقات المنشأة حديثا (0 يعطل انتهاء الصلاحية الافتراضي)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "مصادر CORS المسموح بها"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "المصادر المفصولة بفاصلة أو سطر جديد المسموح لها باستدعاء API من المتصفحات (لا تستخدم * أبدا مع بيانات الاعتماد)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "السماح ببيانات اعتماد CORS"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "إصدار Access-Control-Allow-Credentials: true للمصادر المسموح بها صراحة (يتم تجاهله إذا كان المصدر *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "فرض استخدام HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "رفض طلبات API التي لا تستخدم HTTPS مع الرد 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "الحد الأقصى لحجم متن الطلب (بالبايت)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "الحد الأقصى لحمولات طلبات HTTP التي يقبلها REST API (الافتراضي 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "تفعيل التفاوض على محتوى YAML"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "السماح للعملاء الذين يرسلون Accept: application/yaml باستلام استجابات YAML."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "الاحتفاظ بجداول الحالة عند إلغاء التثبيت"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "الاحتفاظ بجداول plugin_api_tokens وplugin_api_operations وplugin_api_idempotency وplugin_api_rate_limits عند إلغاء التثبيت."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "الحالة:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "معطل"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "مفعل"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "مسارات OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "حد المعدل:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "لا"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "فرض TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "نعم"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "الرموز النشطة:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "العمليات المعلقة:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "نقطة نهاية OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "امتدادات API للإضافات المسجلة"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "لا توجد مجموعات API لإضافات شقيقة مسجلة حاليا."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "المجموعة"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "الإضافة"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "نطاق القراءة"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "المعالجات"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "أعطال الامتدادات المعزولة"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "كلمة مرور التطبيق الجديدة (تعرض مرة واحدة):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "لم يتم إصدار أي كلمات مرور للتطبيقات."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "التسمية"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "البادئة"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "النطاقات"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "تاريخ الانتهاء"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "الحالة"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "الإجراء"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "أبدا"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "نشط"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "مسحوب"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "سحب"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "لا توجد عمليات طويلة الأمد مسجلة."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "العملية"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "الهدف"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "مكتمل"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "تاريخ الإنشاء"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "تاريخ الإكمال"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "تتطلب إضافة REST API إصدار PHP %s أو أحدث. يشغل هذا الخادم إصدار PHP %s، لذلك لم يتم تثبيت الإضافة أو تفعيلها."
+
+#: setup.php
+msgid "Configuration"
+msgstr "التهيئة"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "إضافة REST API غير مفعلة."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "تتطلب إضافة REST API إصدار PHP %s أو أحدث."

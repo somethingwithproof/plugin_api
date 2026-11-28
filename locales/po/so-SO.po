@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Somali <developers@cacti.net>\n"
+"Language: so_SO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Calaamadda CSRF waa mid aan sax ahayn. Dib u rar bogga oo mar kale isku day."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "Hawlgallada API iyo Maamulka Calaamadaha"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Dhammaan Furayaasha Sirta ah ee Barnaamijka"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Hawlgallada Muddo-dheer Socda (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "Furayaasha Sirta ah ee Barnaamijka API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Tilmaame:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Baaxadaha:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Liiska Oggolaanshaha CIDR (ikhtiyaari):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Abuur Calaamad"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Sahamiyaha iyo Xaaladda Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "Eegista API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "Calaamadaha API (Hawl-wadeen)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "Maamulka API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "Sahamiyaha iyo Xaaladda API"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "Hawlgallada iyo Maamulka API"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Hawl-geli REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "U oggolow macaamiisha la xaqiijiyay inay galaan baraha dhammaadka /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Xadka Heerka Codsiyada (Codsiyo / Daqiiqad)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Tirada ugu badan ee codsiyada la oggol yahay 60-kii ilbiriqsiba halkii calaamad ama cinwaan IP ee macmiilka."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "TTL-ka Caadiga ah ee Calaamadda (Maalmo)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Muddada dhicitaanka caadiga ah ee maalmaha loogu talagalay Furayaasha Sirta ah ee Barnaamijka ee cusub (0 waxay damisaa dhicitaanka caadiga ah)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Ilaha Liiska Oggolaanshaha CORS"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Ilo ay kala soocayaan hakad ama sadar cusub oo loo oggol yahay inay ka wacaan API baraawsarrada (marnaba ha u isticmaalin * aqoonsiyo gelitaan)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "Oggolow Aqoonsiyada CORS"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Soo saar Access-Control-Allow-Credentials: true ilaha si cad ugu jira liiska oggolaanshaha (waa la iska indho-tiraa haddii isha ay tahay *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Waajib ka dhig HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Ku diid codsiyada API ee aan HTTPS ahayn 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Cabbirka Ugu Badan ee Jirka Codsiga (Bayt)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Xadka ugu sarreeya ee xamuulka codsiyada HTTP ee uu aqbalo REST API (caadiga ah 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Hawl-geli Wada-xaajoodka Nuxurka YAML"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "U oggolow macaamiisha soo diraya Accept: application/yaml inay helaan jawaabo YAML ah."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Hay Jadwallada Xaaladda Marka la Tirtiro"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Xafid jadwallada plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, iyo plugin_api_rate_limits marka la tirtiro."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Xaaladda:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Dansan"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Daaran"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "Waddooyinka OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Xadka Codsiyada:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Maya"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Waajib ka dhig TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Haa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Calaamadaha Firfircoon:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Hawlgallada Sugaya:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "Barta Dhammaadka OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Fidinnada API ee Kordhinta Diiwaangashan"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Ma jiraan ururino API oo kordhino kale ah oo hadda diiwaangashan."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Ururin"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Kordhin"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Aagga Akhriska"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Maareeyeyaasha"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Khaladaadka Fidinta la Go'doomiyay"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Fure Sir ah oo Barnaamij oo Cusub (hal mar ayaa la muujiyaa):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Ma jiraan Furayaal Sir ah oo Barnaamij oo la soo saaray."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Tilmaame"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Horgale"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Baaxadaha"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Wuxuu dhacayaa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Xaalad"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Tallaabo"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Marnaba"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Firfircoon"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "La buriyay"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Buri"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Ma jiraan Hawlgallo Muddo-dheer Socda oo la diiwaangeliyay."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Hawlgal"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Bartilmaameed"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Dhammaaday"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "La abuuray"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "La dhammeeyay"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Jooji"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Kordhinta REST API waxay u baahan tahay PHP %s ama ka dambeeya. Adeegahani wuxuu ku shaqeeyaa PHP %s, sidaas darteed kordhinta lama rakibin lamana hawl-gelin."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Habaynta"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "Kordhinta REST API ma daarana."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Kordhinta REST API waxay u baahan tahay PHP %s ama ka dambeeya."
