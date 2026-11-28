@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Turkish <https://translate.cacti.net/projects/cacti/core/tr/>\n"
+"Language: tr-TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Geçersiz CSRF belirteci. Sayfayı yeniden yükleyip tekrar deneyin."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "API İşlemleri ve Belirteç Yönetimi"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Tüm Uygulama Parolaları"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Uzun Süren İşlemler (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "API Uygulama Parolaları"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Etiket:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Kapsamlar:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "CIDR İzin Listesi (isteğe bağlı):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Belirteç Oluştur"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Google AIP REST API Gezgini ve Durumu"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "API Görüntüleme"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "API Belirteçleri (Operatör)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "API Yöneticisi"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "API Gezgini ve Durumu"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "API İşlemleri ve Yönetim"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "REST API'yi Etkinleştir"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Kimliği doğrulanmış istemcilerin /plugins/api/v1 uç noktalarına erişmesine izin ver."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Hız Sınırı (İstek / Dakika)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Belirteç veya istemci IP adresi başına 60 saniyelik pencerede izin verilen en fazla istek sayısı."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "Varsayılan Belirteç TTL (Gün)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Yeni oluşturulan Uygulama Parolaları için gün cinsinden varsayılan geçerlilik süresi (0 varsayılan süre sonunu devre dışı bırakır)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "CORS İzin Verilen Kaynaklar"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Tarayıcılardan API çağrısı yapmasına izin verilen, virgül veya yeni satırla ayrılmış kaynaklar (kimlik bilgileriyle asla * kullanmayın)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "CORS Kimlik Bilgilerine İzin Ver"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Açıkça izin listesine eklenmiş kaynaklar için Access-Control-Allow-Credentials: true başlığını gönder (kaynak * ise yoksayılır)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "HTTPS Gerektir"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "HTTPS olmayan API isteklerini 400 FAILED_PRECONDITION ile reddet."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "En Fazla İstek Gövdesi Boyutu (Bayt)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "REST API tarafından kabul edilen HTTP istek yükleri için üst sınır (varsayılan 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "YAML İçerik Uzlaşmasını Etkinleştir"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Accept: application/yaml gönderen istemcilerin YAML yanıtları almasına izin ver."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Kaldırırken Durum Tablolarını Koru"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Kaldırma sırasında plugin_api_tokens, plugin_api_operations, plugin_api_idempotency ve plugin_api_rate_limits tablolarını koru."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Durum:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Devre Dışı"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Etkin"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "OpenAPI 3.1 Yolları:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Hız Sınırı:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Hayır"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "TLS Gerektir:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Evet"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Etkin Belirteçler:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Bekleyen İşlemler:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "OpenAPI Uç Noktası:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Kayıtlı Eklenti API Uzantıları"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Şu anda kayıtlı eş eklenti API koleksiyonu bulunmuyor."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Koleksiyon"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Eklenti"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Okuma Yetki Alanı"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "İşleyiciler"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Yalıtılmış Uzantı Hataları"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Yeni Uygulama Parolası (yalnızca bir kez gösterilir):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Henüz Uygulama Parolası oluşturulmadı."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Etiket"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Ön Ek"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Kapsamlar"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Süre Sonu"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Durum"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "İşlem"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Hiçbir Zaman"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Etkin"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "İptal Edildi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "İptal Et"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Kayıtlı Uzun Süren İşlem bulunmuyor."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "İşlem"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Hedef"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Bitti"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Oluşturulma"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Tamamlanma"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "İptal"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "REST API eklentisi PHP %s veya sonraki bir sürümü gerektirir. Bu sunucuda PHP %s çalıştığı için eklenti kurulmadı veya etkinleştirilmedi."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "REST API eklentisi etkin değil."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "REST API eklentisi PHP %s veya sonraki bir sürümü gerektirir."

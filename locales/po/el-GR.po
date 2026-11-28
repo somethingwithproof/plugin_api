@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Greek <https://translate.cacti.net/projects/cacti/core/el/>\n"
+"Language: el-GR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Μη έγκυρο διακριτικό CSRF. Επαναφορτώστε τη σελίδα και προσπαθήστε ξανά."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "Λειτουργίες API και διαχείριση διακριτικών"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Όλοι οι κωδικοί εφαρμογής"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Λειτουργίες μακράς διάρκειας (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "Κωδικοί εφαρμογής API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Ετικέτα:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Εμβέλειες:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Λίστα επιτρεπόμενων CIDR (προαιρετικό):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Δημιουργία διακριτικού"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Εξερευνητής και κατάσταση Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "Προβολή API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "Διακριτικά API (Χειριστής)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "Διαχειριστής API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "Εξερευνητής και κατάσταση API"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "Λειτουργίες και διαχείριση API"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Ενεργοποίηση REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Επιτρέψτε σε πιστοποιημένους πελάτες να έχουν πρόσβαση στα τελικά σημεία /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Όριο ρυθμού (Αιτήματα / Λεπτό)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Μέγιστος επιτρεπόμενος αριθμός αιτημάτων ανά παράθυρο 60 δευτερολέπτων ανά διακριτικό ή διεύθυνση IP πελάτη."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "Προεπιλεγμένο TTL διακριτικού (Ημέρες)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Προεπιλεγμένη περίοδος λήξης σε ημέρες για νέους κωδικούς εφαρμογής (το 0 απενεργοποιεί την προεπιλεγμένη λήξη)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Επιτρεπόμενες προελεύσεις CORS"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Προελεύσεις διαχωρισμένες με κόμμα ή νέα γραμμή που επιτρέπεται να καλούν το API από προγράμματα περιήγησης (μη χρησιμοποιείτε ποτέ * με διαπιστευτήρια)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "Αποδοχή διαπιστευτηρίων CORS"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Αποστολή Access-Control-Allow-Credentials: true για ρητά επιτρεπόμενες προελεύσεις (αγνοείται αν η προέλευση είναι *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Απαίτηση HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Απόρριψη αιτημάτων API χωρίς HTTPS με 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Μέγιστο μέγεθος σώματος αιτήματος (byte)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Ανώτατο όριο για το φορτίο αιτημάτων HTTP που δέχεται το REST API (προεπιλογή 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Ενεργοποίηση διαπραγμάτευσης περιεχομένου YAML"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Επιτρέψτε σε πελάτες που στέλνουν Accept: application/yaml να λαμβάνουν αποκρίσεις YAML."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Διατήρηση πινάκων κατάστασης κατά την απεγκατάσταση"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Διατήρηση των πινάκων plugin_api_tokens, plugin_api_operations, plugin_api_idempotency και plugin_api_rate_limits κατά την απεγκατάσταση."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Κατάσταση:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Απενεργοποιημένο"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Ενεργοποιημένο"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "Διαδρομές OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Όριο ρυθμού:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Όχι"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Απαίτηση TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Ναι"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Ενεργά διακριτικά:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Λειτουργίες σε εκκρεμότητα:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "Τελικό σημείο OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Καταχωρισμένες επεκτάσεις API πρόσθετων"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Δεν υπάρχουν προς το παρόν καταχωρισμένες συλλογές API από άλλα πρόσθετα."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Συλλογή"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Πρόσθετο"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Τομέας ανάγνωσης"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Χειριστές"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Απομονωμένα σφάλματα επεκτάσεων"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Νέος κωδικός εφαρμογής (εμφανίζεται μόνο μία φορά):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Δεν έχουν εκδοθεί κωδικοί εφαρμογής."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Ετικέτα"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Πρόθεμα"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Εμβέλειες"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Λήξη"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Ενέργεια"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Ποτέ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Ενεργό"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Ανακληθέν"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Ανάκληση"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Δεν έχουν καταγραφεί λειτουργίες μακράς διάρκειας."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Λειτουργία"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Στόχος"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Ολοκληρωμένο"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Δημιουργήθηκε"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Ολοκληρώθηκε"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Το πρόσθετο REST API απαιτεί PHP %s ή νεότερη έκδοση. Αυτός ο διακομιστής εκτελεί PHP %s, επομένως το πρόσθετο δεν εγκαταστάθηκε ούτε ενεργοποιήθηκε."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Διαμόρφωση"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "Το πρόσθετο REST API δεν είναι ενεργοποιημένο."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Το πρόσθετο REST API απαιτεί PHP %s ή νεότερη έκδοση."

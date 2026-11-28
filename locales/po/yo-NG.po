@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Yoruba <developers@cacti.net>\n"
+"Language: yo_NG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Tókènì CSRF kò tọ́. Tún ojú-ewé náà gbé wá kí o sì tún gbìyànjú."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "Àwọn Ìṣiṣẹ́ API àti Ìṣàkóso Tókènì"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Gbogbo Àwọn Ọ̀rọ̀ Aṣínà Ohun Èlò"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Àwọn Ìṣiṣẹ́ Tí Ń Pẹ́ (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "Àwọn Ọ̀rọ̀ Aṣínà Ohun Èlò API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Àkọlé:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Àwọn ààyè àṣẹ:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Àtòjọ ìfọwọ́sí CIDR (àṣàyàn):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Ṣẹ̀dá Tókènì"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Olùṣàwárí àti Ipò Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "Ìwòran API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "Àwọn Tókènì API (Olùṣiṣẹ́)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "Alámòójútó API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "Olùṣàwárí àti Ipò API"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "Àwọn Ìṣiṣẹ́ àti Alámòójútó API"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Mú REST API ṣiṣẹ́"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Fún àwọn olùbéèrè tí a fìdí wọn múlẹ̀ láyè láti wọ àwọn ibùdó ìsopọ̀ /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Ààlà Ìbéèrè (Àwọn ìbéèrè / Ìṣẹ́jú)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Iye ìbéèrè tí ó pọ̀ jù lọ tí a gbà láyè láàárín ìṣẹ́jú-àáyá 60 fún tókènì kọ̀ọ̀kan tàbí IP olùbéèrè."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "TTL Tókènì Àtìpìlẹ̀ (Àwọn Ọjọ́)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Àkókò ìparí àtìpìlẹ̀ ní ọjọ́ fún Àwọn Ọ̀rọ̀ Aṣínà Ohun Èlò tuntun tí a ṣẹ̀dá (0 máa ń pa ìparí àtìpìlẹ̀ tì)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Àwọn Orísun CORS Tí A Fọwọ́sí"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Àwọn orísun tí a fi kọ́mà tàbí ìlà tuntun pín tí a gbà láyè láti pe API láti inú àwọn àṣàwákiri (má ṣe lo * pẹ̀lú ẹ̀rí ìwọlé láéláé)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "Gba Ẹ̀rí Ìwọlé CORS Láyè"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Fi Access-Control-Allow-Credentials: true ránṣẹ́ fún àwọn orísun tí a fọwọ́sí ní pàtó (a máa ń fojú fò ó bí orísun bá jẹ́ *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Nílò HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Kọ àwọn ìbéèrè API tí kì í ṣe HTTPS pẹ̀lú 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Ìwọ̀n Ara Ìbéèrè Tí Ó Pọ̀ Jù (Báìtì)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Ààlà òkè lórí àkóónú dátà ìbéèrè HTTP tí REST API ń gbà (àtìpìlẹ̀ 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Mú Ìjíròrò Àkóónú YAML Ṣiṣẹ́"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Fún àwọn olùbéèrè tí ń fi Accept: application/yaml ránṣẹ́ láyè láti gba ìdáhùn YAML."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Pa Àwọn Tábìlì Ipò Mọ́ Nígbà Ìyọkúrò"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Pa plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, àti plugin_api_rate_limits mọ́ nígbà tí a bá yọ àfikún kúrò."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Ipò:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Tí a pa tì"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Tí a mú ṣiṣẹ́"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "Àwọn Ọ̀nà OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Ààlà Ìbéèrè:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Rárá"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Nílò TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Bẹ́ẹ̀ ni"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Àwọn Tókènì Tí Ń Ṣiṣẹ́:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Àwọn Ìṣiṣẹ́ Tí Ń Dúró:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "Ibùdó Ìsopọ̀ OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Àwọn Ìfàgùn API Àfikún Tí A Forúkọsílẹ̀"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Kò sí àkójọpọ̀ API àfikún ẹlẹgbẹ́ kankan tí a forúkọsílẹ̀ lọ́wọ́lọ́wọ́."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Àkójọpọ̀"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Àfikún"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Ẹ̀ka Ìkà"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Àwọn Olùṣàkóso"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Àwọn Àṣìṣe Ìfàgùn Tí A Yà Sọ́tọ̀"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Ọ̀rọ̀ Aṣínà Ohun Èlò Tuntun (a fi hàn lẹ́ẹ̀kan ṣoṣo):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Kò sí Ọ̀rọ̀ Aṣínà Ohun Èlò kankan tí a ti pèsè."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Àkọlé"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Àmì-ìbẹ̀rẹ̀"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Àwọn ààyè àṣẹ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Ìparí àkókò"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Ipò"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Ìgbésẹ̀"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Láéláé"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Ń ṣiṣẹ́"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Tí a fagi lé"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Fagi lé"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Kò sí Ìṣiṣẹ́ Tí Ń Pẹ́ kankan tí a kọ sílẹ̀."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Ìṣiṣẹ́"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Àfojúsùn"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Parí"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "A ṣẹ̀dá"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Tí ó parí"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Dá dúró"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Àfikún REST API nílò PHP %s tàbí tuntun jù bẹ́ẹ̀ lọ. Sáfà yìí ń lo PHP %s, nítorí náà a kò fi àfikún náà sí orí ẹ̀rọ tàbí mú un ṣiṣẹ́."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Ìṣètò"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "A kò mú àfikún REST API ṣiṣẹ́."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Àfikún REST API nílò PHP %s tàbí tuntun jù bẹ́ẹ̀ lọ."

@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Croatian <developers@cacti.net>\n"
+"Language: hr-HR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Nevažeći CSRF token. Ponovno učitajte stranicu i pokušajte ponovno."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "API operacije i administracija tokena"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Sve aplikacijske lozinke"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Dugotrajne operacije (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "API aplikacijske lozinke"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Oznaka:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Opsezi:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Popis dopuštenih CIDR adresa (neobvezno):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Izradi token"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Preglednik i status za Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "API pregled"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "API tokeni (operater)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "API administrator"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "API preglednik i status"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "API operacije i administracija"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Omogući REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Dopusti autentificiranim klijentima pristup krajnjim točkama /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Ograničenje učestalosti (zahtjeva u minuti)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Najveći dopušteni broj zahtjeva u prozoru od 60 sekundi po tokenu ili IP adresi klijenta."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "Zadani TTL tokena (dani)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Zadano razdoblje isteka u danima za novoizrađene aplikacijske lozinke (0 onemogućuje zadani istek)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Dopuštena CORS ishodišta"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Ishodišta odvojena zarezom ili novim retkom kojima je dopušteno pozivati API iz preglednika (nikada ne koristite * s vjerodajnicama)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "CORS dopusti vjerodajnice"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Šalji zaglavlje Access-Control-Allow-Credentials: true za izričito dopuštena ishodišta (zanemaruje se ako je ishodište *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Zahtijevaj HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Odbij API zahtjeve koji ne koriste HTTPS s kodom 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Maksimalna veličina tijela zahtjeva (bajtovi)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Gornja granica veličine sadržaja HTTP zahtjeva koje REST API prihvaća (zadano 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Omogući pregovaranje YAML sadržaja"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Dopusti klijentima koji šalju Accept: application/yaml primanje YAML odgovora."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Zadrži tablice stanja pri deinstalaciji"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Sačuvaj tablice plugin_api_tokens, plugin_api_operations, plugin_api_idempotency i plugin_api_rate_limits pri deinstalaciji."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Status:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Onemogućeno"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Omogućeno"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "OpenAPI 3.1 putanje:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Ograničenje učestalosti:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Ne"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Zahtijevaj TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Da"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Aktivni tokeni:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Operacije na čekanju:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "OpenAPI krajnja točka:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Registrirana API proširenja dodataka"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Trenutačno nisu registrirane API zbirke drugih dodataka."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Zbirka"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Dodatak"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Područje čitanja"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Rukovatelji"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Izolirane pogreške proširenja"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Nova aplikacijska lozinka (prikazuje se samo jednom):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Nije izdana nijedna aplikacijska lozinka."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Oznaka"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Prefiks"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Opsezi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Istječe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Status"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Radnja"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Nikad"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Aktivno"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Opozvano"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Opozovi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Nema zabilježenih dugotrajnih operacija."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Operacija"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Cilj"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Dovršeno"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Izrađeno"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Završeno"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Otkaži"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Dodatak REST API zahtijeva PHP %s ili noviji. Ovaj poslužitelj koristi PHP %s, stoga dodatak nije instaliran ni omogućen."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Konfiguracija"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "Dodatak REST API nije omogućen."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Dodatak REST API zahtijeva PHP %s ili noviji."

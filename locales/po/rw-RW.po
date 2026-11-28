@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Kinyarwanda <developers@cacti.net>\n"
+"Language: rw_RW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Ikimenyetso cya CSRF kitari cyo. Ongera ufungure urupapuro hanyuma ugerageze nanone."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "Ibikorwa bya API n'Imicungire y'Ibimenyetso"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Amagambo y'Ibanga Yose ya Porogaramu"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Ibikorwa Bimara Igihe Kirekire (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "Amagambo y'Ibanga ya Porogaramu ya API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Ikirango:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Inzego z'uburenganzira:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Urutonde rwa CIDR rwemewe (bitari ngombwa):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Kurema Ikimenyetso"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Umusuzumyi n'Imiterere ya Google AIP REST API"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "Kureba API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "Ibimenyetso bya API (Umukozi)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "Umuyobozi wa API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "Umusuzumyi n'Imiterere ya API"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "Ibikorwa n'Ubuyobozi bya API"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Gukoresha REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Emerera abakiriya bemejwe kugera ku miyoboro ya /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Igipimo Ntarengwa (Ibisabwa / Umunota)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Umubare ntarengwa w'ibisabwa byemewe mu masegonda 60 kuri buri kimenyetso cyangwa aderesi IP y'umukiriya."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "TTL Mbanziriza y'Ikimenyetso (Iminsi)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Igihe mbanziriza mu minsi cyo kurangira kw'Amagambo y'Ibanga ya Porogaramu mashya yaremwe (0 ihagarika irangira mbanziriza)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Inkomoko Zemewe za CORS"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Inkomoko zitandukanyijwe n'ikitso cyangwa umurongo mushya zemewe guhamagara API zivuye muri mushakisha (ntukigere ukoresha * hamwe n'ibimenyetso by'uburenganzira)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "Kwemerera Ibimenyetso by'Uburenganzira muri CORS"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Kohereza Access-Control-Allow-Credentials: true ku nkomoko zashyizwe ku rutonde rwemewe ku buryo busobanutse (ntibyitabwaho iyo inkomoko ari *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Gusaba HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Kwanga ibisabwa bya API bidakoresha HTTPS ukoresheje 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Ingano Ntarengwa y'Igice cy'Igisabwa (Bayite)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Igipimo ntarengwa cy'amakuru yoherezwa mu bisabwa bya HTTP byemerwa na REST API (mbanziriza ni 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Gukoresha Igenwa ry'Imiterere ya YAML"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Emerera abakiriya bohereza Accept: application/yaml kwakira ibisubizo biri muri YAML."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Gukomeza Kubika Imbonerahamwe z'Imiterere mu gihe cyo Kuvanaho"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Gukomeza kubika plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, na plugin_api_rate_limits mu gihe cyo kuvanaho."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Imiterere:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Byahagaritswe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Birakora"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "Inzira za OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Igipimo Ntarengwa:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Oya"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Gusaba TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Yego"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Ibimenyetso Bikora:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Ibikorwa Bitegereje:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "Umuyoboro wa OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Inyongera za API z'Imigereka Zanditswe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Nta matsinda ya API y'indi migereka yanditswe ubu."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Itsinda"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Umugereka"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Urwego rwo Gusoma"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Ibishinzwe Ibisabwa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Amakosa y'Inyongera Yatandukanyijwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Ijambo ry'Ibanga Rishya rya Porogaramu (ryerekanwa rimwe gusa):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Nta Magambo y'Ibanga ya Porogaramu yatanzwe."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Ikirango"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Imbanzirizajambo"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Inzego z'uburenganzira"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Birangira"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Imiterere"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Igikorwa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Nta na rimwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Bikora"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Byateshejwe agaciro"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Teshaho agaciro"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Nta Bikorwa Bimara Igihe Kirekire byanditswe."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Igikorwa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Intego"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Byarangiye"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Byaremwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Byasojwe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Hagarika"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Umugereka wa REST API usaba PHP %s cyangwa iyisumbuyeho. Iyi seriveri ikoresha PHP %s, bityo umugereka ntiwashyizweho cyangwa ngo wemezwe."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Igenamiterere"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "Umugereka wa REST API ntukora."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Umugereka wa REST API usaba PHP %s cyangwa iyisumbuyeho."

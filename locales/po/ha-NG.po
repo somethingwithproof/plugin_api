@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Hausa <developers@cacti.net>\n"
+"Language: ha_NG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Alamar CSRF ba ta da inganci. Sake loda shafin ka sake gwadawa."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "Ayyukan API da Gudanar da Alamomin Shiga"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Dukkan Kalmomin Sirrin Manhaja"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Ayyuka Masu Tsawon Lokaci (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "Kalmomin Sirrin Manhajar API"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Lakabi:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Iyakoki:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Jerin Izinin CIDR (na zaɓi):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Ƙirƙiri Alamar Shiga"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Mai Binciken Google AIP REST API da Matsayi"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "Duban API"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "Alamomin Shigar API (Mai Gudanar da Aiki)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "Gudanarwar API"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "Mai Binciken API da Matsayi"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "Ayyukan API da Gudanarwa"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Kunna REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Ba wa abokan hulɗa da aka tantance damar shiga wuraren haɗin /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Iyakar Yawan Buƙatu (Buƙatu / Minti)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Matsakaicin yawan buƙatun da aka yarda a kowane daƙiƙa 60 ga kowace alamar shiga ko adireshin IP na abokin hulɗa."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "Tsohon TTL na Alamar Shiga (Kwanaki)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Tsohon lokacin ƙarewa a cikin kwanaki don sabbin Kalmomin Sirrin Manhaja da aka ƙirƙira (0 yana kashe tsohon lokacin ƙarewa)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Asalin Wuraren da Aka Ba Izini na CORS"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Asalin wuraren da aka raba da waƙafi ko sabon layi waɗanda aka ba su izinin kiran API daga burauza (kada a taɓa amfani da * tare da bayanan shiga)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "Ba da Izinin Bayanan Shiga na CORS"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Fitar da Access-Control-Allow-Credentials: true ga asalin wuraren da aka ba izini kai tsaye (ana watsi da shi idan asalin shi ne *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Buƙaci HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Ƙi buƙatun API waɗanda ba na HTTPS ba tare da 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Matsakaicin Girman Jikin Buƙata (Baitoci)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Mafi girman adadin bayanan buƙatar HTTP da REST API ke karɓa (tsoho 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Kunna Tattaunawar Abun Ciki na YAML"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Ba wa abokan hulɗa masu aika Accept: application/yaml damar karɓar amsoshin YAML."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Ajiye Teburan Matsayi Lokacin Cire Manhaja"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Kiyaye teburan plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, da plugin_api_rate_limits lokacin cire manhaja."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Matsayi:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "An kashe"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "An kunna"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "Hanyoyin OpenAPI 3.1:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Iyakar Yawan Buƙatu:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "A'a"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Buƙaci TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Ee"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Alamomin Shiga Masu Aiki:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Ayyuka Masu Jira:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "Wurin Haɗin OpenAPI:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Ƙarin Manhajojin API da Aka Yi Wa Rajista"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Babu tarin API na ƙarin manhajoji 'yan uwa da aka yi wa rajista a halin yanzu."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Tari"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Ƙarin Manhaja"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Yankin Karatu"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Masu Sarrafawa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Kuskuren Ƙarin Manhaja da Aka Ware"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Sabuwar Kalmar Sirrin Manhaja (ana nunawa sau ɗaya):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Ba a bayar da wata Kalmar Sirrin Manhaja ba."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Lakabi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Gaban Alama"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Iyakoki"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Zai Ƙare"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Matsayi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Mataki"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Ba ya ƙarewa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Mai aiki"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "An soke"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Soke"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Ba a yi rikodin wasu Ayyuka Masu Tsawon Lokaci ba."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Aiki"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Manufa"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "An gama"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "An ƙirƙira"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "An kammala"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Dakatar"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Ƙarin manhajar REST API tana buƙatar PHP %s ko fiye da haka. Wannan sabar tana aiki da PHP %s, don haka ba a shigar ko kunna ƙarin manhajar ba."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Saita"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "Ba a kunna ƙarin manhajar REST API ba."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Ƙarin manhajar REST API tana buƙatar PHP %s ko fiye da haka."

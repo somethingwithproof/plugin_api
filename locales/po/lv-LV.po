@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Latvian <https://translate.cacti.net/projects/cacti/core/lv/>\n"
+"Language: lv-LV\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Nederīgs CSRF marķieris. Pārlādējiet lapu un mēģiniet vēlreiz."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "API darbības un marķieru administrēšana"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Visas lietotņu paroles"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Ilgstošas darbības (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "API lietotņu paroles"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Nosaukums:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Tvērumi:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "CIDR atļauto adrešu saraksts (neobligāts):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Izveidot marķieri"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Google AIP REST API pārlūks un statuss"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "API skatīšana"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "API marķieri (operators)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "API administrators"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "API pārlūks un statuss"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "API darbības un administrēšana"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Iespējot REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Atļaut autentificētiem klientiem piekļūt /plugins/api/v1 galapunktiem."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Pieprasījumu ierobežojums (pieprasījumi minūtē)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Maksimālais atļautais pieprasījumu skaits 60 sekunžu periodā vienam marķierim vai klienta IP adresei."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "Noklusējuma marķiera TTL (dienās)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Noklusējuma derīguma termiņš dienās jaunizveidotām lietotņu parolēm (0 atspējo noklusējuma derīguma termiņu)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "CORS atļautie avoti"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Ar komatu vai jaunu rindu atdalīti avoti, kuriem atļauts izsaukt API no pārlūkprogrammām (nekad neizmantojiet * kopā ar akreditācijas datiem)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "CORS atļaut akreditācijas datus"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Nosūtīt galveni Access-Control-Allow-Credentials: true skaidri atļautajiem avotiem (tiek ignorēts, ja avots ir *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Pieprasīt HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Noraidīt ne-HTTPS API pieprasījumus ar kļūdu 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Maks. pieprasījuma pamatteksta lielums (baitos)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Augšējā robeža HTTP pieprasījumu datu apjomam, ko pieņem REST API (noklusējums 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Iespējot YAML satura saskaņošanu"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Atļaut klientiem, kas nosūta Accept: application/yaml, saņemt YAML atbildes."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Saglabāt stāvokļa tabulas atinstalēšanas laikā"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Atinstalējot saglabāt tabulas plugin_api_tokens, plugin_api_operations, plugin_api_idempotency un plugin_api_rate_limits."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Statuss:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Atspējots"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Iespējots"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "OpenAPI 3.1 ceļi:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Pieprasījumu ierobežojums:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Nē"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Pieprasīt TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Jā"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Aktīvie marķieri:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Gaidošās darbības:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "OpenAPI galapunkts:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Reģistrētie spraudņu API paplašinājumi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Pašlaik nav reģistrēta neviena saistīto spraudņu API kolekcija."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Kolekcija"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Spraudnis"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Lasīšanas joma"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Apstrādātāji"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Izolētās paplašinājumu kļūmes"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Jaunā lietotnes parole (tiek rādīta tikai vienreiz):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Nav izsniegta neviena lietotnes parole."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Nosaukums"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Prefikss"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Tvērumi"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Derīguma termiņš"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Statuss"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Darbība"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Nekad"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Aktīvs"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Atsaukts"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Atsaukt"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Nav reģistrēta neviena ilgstoša darbība."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Darbība"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Mērķis"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Pabeigts"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Izveidots"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Pabeigšanas laiks"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Atcelt"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "REST API spraudnim nepieciešama PHP %s vai jaunāka versija. Šajā serverī darbojas PHP %s, tāpēc spraudnis netika instalēts vai iespējots."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Konfigurācija"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "REST API spraudnis nav iespējots."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "REST API spraudnim nepieciešama PHP %s vai jaunāka versija."

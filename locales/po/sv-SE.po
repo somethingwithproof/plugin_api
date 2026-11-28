@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Swedish <https://translate.cacti.net/projects/cacti/core/sv/>\n"
+"Language: sv-SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "Ogiltig CSRF-token. Ladda om sidan och försök igen."
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "API-åtgärder och tokenadministration"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "Alla applikationslösenord"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "Långvariga åtgärder (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "API-applikationslösenord"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "Etikett:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "Behörighetsomfång:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "Tillåtelselista för CIDR (valfritt):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "Skapa token"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "Google AIP REST API-utforskare och status"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "API-visning"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "API-tokens (operatör)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "API-administratör"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "API-utforskare och status"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "API-åtgärder och administration"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "Aktivera REST API"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "Tillåt autentiserade klienter att komma åt slutpunkter under /plugins/api/v1."
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "Hastighetsgräns (begäranden / minut)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "Högsta antal tillåtna begäranden per 60-sekundersfönster per token eller klient-IP."
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "Standard-TTL för token (dagar)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "Standardgiltighetstid i dagar för nyskapade applikationslösenord (0 inaktiverar standardutgång)."
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "Tillåtna CORS-ursprung"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "Komma- eller radbrytningsseparerade ursprung som tillåts anropa API:et från webbläsare (använd aldrig * med inloggningsuppgifter)."
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "Tillåt inloggningsuppgifter i CORS"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "Skicka Access-Control-Allow-Credentials: true för uttryckligen tillåtna ursprung (ignoreras om ursprunget är *)."
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "Kräv HTTPS"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "Avvisa API-begäranden utan HTTPS med 400 FAILED_PRECONDITION."
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "Maximal storlek på begärandekropp (byte)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "Övre gräns för nyttolast i HTTP-begäranden som accepteras av REST API (standard 1048576 = 1 MiB)."
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "Aktivera YAML-innehållsförhandling"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Tillåt klienter som skickar Accept: application/yaml att ta emot YAML-svar."
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "Behåll tillståndstabeller vid avinstallation"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "Behåll plugin_api_tokens, plugin_api_operations, plugin_api_idempotency och plugin_api_rate_limits vid avinstallation."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "Status:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "Aktiverad"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "OpenAPI 3.1-sökvägar:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "Hastighetsgräns:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "Nej"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "Kräv TLS:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "Ja"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "Aktiva tokens:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "Väntande åtgärder:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "OpenAPI-slutpunkt:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "Registrerade API-utökningar från tillägg"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "Inga API-samlingar från andra tillägg är registrerade för närvarande."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "Samling"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "Tillägg"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "Läsbehörighetsområde"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "Hanterare"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "Isolerade fel i utökningar"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "Nytt applikationslösenord (visas endast en gång):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "Inga applikationslösenord har utfärdats."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "Etikett"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "Prefix"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "Behörighetsomfång"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "Upphör"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "Status"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "Åtgärd"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "Aldrig"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "Aktiv"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "Återkallad"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "Återkalla"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "Inga långvariga åtgärder har registrerats."
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "Åtgärd"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "Mål"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "Klar"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "Skapad"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "Slutförd"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "Tillägget REST API kräver PHP %s eller senare. Denna server kör PHP %s, så tillägget installerades eller aktiverades inte."
+
+#: setup.php
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "Tillägget REST API är inte aktiverat."
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "Tillägget REST API kräver PHP %s eller senare."

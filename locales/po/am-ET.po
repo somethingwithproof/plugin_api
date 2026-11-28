@@ -1,0 +1,321 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2026 Thomas Vincent <thomasvincent@gmail.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: api 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/somethingwithproof/plugin_api/issues\n"
+"PO-Revision-Date: 2026-11-28 00:00+0000\n"
+"Last-Translator: Thomas Vincent <thomasvincent@gmail.com>\n"
+"Language-Team: Amharic <developers@cacti.net>\n"
+"Language: am_ET\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: api_admin.php api_tokens.php
+msgid "Invalid CSRF token. Reload the page and retry."
+msgstr "ልክ ያልሆነ CSRF ቶክን። ገጹን እንደገና ይጫኑና ይሞክሩ።"
+
+#: api_admin.php
+msgid "API Operations & Token Administration"
+msgstr "የ API ክዋኔዎች እና የቶክን አስተዳደር"
+
+#: api_admin.php
+msgid "All Application Passwords"
+msgstr "ሁሉም የመተግበሪያ የይለፍ ቃላት"
+
+#: api_admin.php
+msgid "Long-Running Operations (AIP-151)"
+msgstr "ረጅም ጊዜ የሚወስዱ ክዋኔዎች (AIP-151)"
+
+#: api_tokens.php lib/Pages.php
+msgid "API Application Passwords"
+msgstr "የ API መተግበሪያ የይለፍ ቃላት"
+
+#: api_tokens.php
+msgid "Label:"
+msgstr "መለያ:"
+
+#: api_tokens.php
+msgid "Scopes:"
+msgstr "ወሰኖች:"
+
+#: api_tokens.php
+msgid "CIDR Allowlist (optional):"
+msgstr "የ CIDR የተፈቀዱ ዝርዝር (አማራጭ):"
+
+#: api_tokens.php
+msgid "Create Token"
+msgstr "ቶክን ፍጠር"
+
+#: api_view.php
+msgid "Google AIP REST API Explorer & Status"
+msgstr "የ Google AIP REST API ማሰሻ እና ሁኔታ"
+
+#: lib/Pages.php
+msgid "API View"
+msgstr "የ API እይታ"
+
+#: lib/Pages.php
+msgid "API Tokens (Operator)"
+msgstr "የ API ቶክኖች (ኦፕሬተር)"
+
+#: lib/Pages.php
+msgid "API Admin"
+msgstr "የ API አስተዳዳሪ"
+
+#: lib/Pages.php
+msgid "API Explorer & Status"
+msgstr "የ API ማሰሻ እና ሁኔታ"
+
+#: lib/Pages.php
+msgid "API Operations & Admin"
+msgstr "የ API ክዋኔዎች እና አስተዳደር"
+
+#: lib/Settings.php setup.php
+msgid "Google AIP REST API"
+msgstr "Google AIP REST API"
+
+#: lib/Settings.php
+msgid "Enable REST API"
+msgstr "REST API አንቃ"
+
+#: lib/Settings.php
+msgid "Allow authenticated clients to access /plugins/api/v1 endpoints."
+msgstr "የተረጋገጡ ደንበኞች የ /plugins/api/v1 መድረሻ ነጥቦችን እንዲጠቀሙ ፍቀድ።"
+
+#: lib/Settings.php
+msgid "Rate Limit (Requests / Minute)"
+msgstr "የፍጥነት ገደብ (ጥያቄዎች / ደቂቃ)"
+
+#: lib/Settings.php
+msgid "Maximum requests allowed per 60-second window per token or client IP."
+msgstr "በአንድ ቶክን ወይም የደንበኛ IP በ60 ሰከንድ ጊዜ ውስጥ የሚፈቀዱ ከፍተኛ ጥያቄዎች።"
+
+#: lib/Settings.php
+msgid "Default Token TTL (Days)"
+msgstr "ነባሪ የቶክን TTL (ቀናት)"
+
+#: lib/Settings.php
+msgid "Default expiration period in days for newly created Application Passwords (0 disables default expiry)."
+msgstr "ለአዲስ የተፈጠሩ የመተግበሪያ የይለፍ ቃላት ነባሪ የማለቂያ ጊዜ በቀናት (0 ነባሪውን የማለቂያ ጊዜ ያሰናክላል)።"
+
+#: lib/Settings.php
+msgid "CORS Allowlisted Origins"
+msgstr "የ CORS የተፈቀዱ መነሻዎች"
+
+#: lib/Settings.php
+msgid "Comma- or newline-separated origins permitted to call the API from browsers (never use * with credentials)."
+msgstr "ከአሳሾች API ለመጥራት የተፈቀዱ በኮማ ወይም በአዲስ መስመር የተለዩ መነሻዎች (* ከማረጋገጫዎች ጋር በጭራሽ አይጠቀሙ)።"
+
+#: lib/Settings.php
+msgid "CORS Allow Credentials"
+msgstr "CORS ማረጋገጫዎችን ፍቀድ"
+
+#: lib/Settings.php
+msgid "Emit Access-Control-Allow-Credentials: true for explicitly allowlisted origins (ignored if origin is *)."
+msgstr "በግልጽ ለተፈቀዱ መነሻዎች Access-Control-Allow-Credentials: true ላክ (መነሻው * ከሆነ ችላ ይባላል)።"
+
+#: lib/Settings.php
+msgid "Require HTTPS"
+msgstr "HTTPS አስገድድ"
+
+#: lib/Settings.php
+msgid "Reject non-HTTPS API requests with 400 FAILED_PRECONDITION."
+msgstr "HTTPS ያልሆኑ የ API ጥያቄዎችን በ 400 FAILED_PRECONDITION ውድቅ አድርግ።"
+
+#: lib/Settings.php
+msgid "Max Request Body Size (Bytes)"
+msgstr "ከፍተኛ የጥያቄ አካል መጠን (ባይቶች)"
+
+#: lib/Settings.php
+msgid "Upper bound on HTTP request payloads accepted by the REST API (default 1048576 = 1 MiB)."
+msgstr "በ REST API የሚቀበሉ የ HTTP ጥያቄ ጭነቶች ከፍተኛ ገደብ (ነባሪ 1048576 = 1 MiB)።"
+
+#: lib/Settings.php
+msgid "Enable YAML Content Negotiation"
+msgstr "የ YAML ይዘት ድርድር አንቃ"
+
+#: lib/Settings.php
+msgid "Allow clients sending Accept: application/yaml to receive YAML responses."
+msgstr "Accept: application/yaml የሚልኩ ደንበኞች የ YAML ምላሾችን እንዲቀበሉ ፍቀድ።"
+
+#: lib/Settings.php
+msgid "Keep State Tables on Uninstall"
+msgstr "ሲራገፍ የሁኔታ ሰንጠረዦችን አቆይ"
+
+#: lib/Settings.php
+msgid "Preserve plugin_api_tokens, plugin_api_operations, plugin_api_idempotency, and plugin_api_rate_limits on uninstall."
+msgstr "ሲራገፍ plugin_api_tokens፣ plugin_api_operations፣ plugin_api_idempotency እና plugin_api_rate_limits ሰንጠረዦችን አቆይ።"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status:"
+msgstr "ሁኔታ:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Disabled"
+msgstr "የተሰናከለ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Enabled"
+msgstr "የነቃ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI 3.1 Paths:"
+msgstr "የ OpenAPI 3.1 መንገዶች:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Rate Limit:"
+msgstr "የፍጥነት ገደብ:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No"
+msgstr "አይ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Require TLS:"
+msgstr "TLS ያስፈልጋል:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Yes"
+msgstr "አዎ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active Tokens:"
+msgstr "ንቁ ቶክኖች:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Pending Operations:"
+msgstr "በመጠባበቅ ላይ ያሉ ክዋኔዎች:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "OpenAPI Endpoint:"
+msgstr "የ OpenAPI መድረሻ ነጥብ:"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Registered Plugin API Extensions"
+msgstr "የተመዘገቡ የተሰኪ API ቅጥያዎች"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No sibling plugin API collections are currently registered."
+msgstr "በአሁኑ ጊዜ የተመዘገቡ የተጓዳኝ ተሰኪ API ስብስቦች የሉም።"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Collection"
+msgstr "ስብስብ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Plugin"
+msgstr "ተሰኪ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Read Realm"
+msgstr "የንባብ ክልል"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Handlers"
+msgstr "ተቆጣጣሪዎች"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Isolated Extension Faults"
+msgstr "የተነጠሉ የቅጥያ ስህተቶች"
+
+#: lib/Ui/PagesRenderer.php
+msgid "New Application Password (shown once):"
+msgstr "አዲስ የመተግበሪያ የይለፍ ቃል (አንድ ጊዜ ብቻ ይታያል):"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Application Passwords have been issued."
+msgstr "ምንም የመተግበሪያ የይለፍ ቃላት አልተሰጡም።"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Label"
+msgstr "መለያ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Prefix"
+msgstr "ቅድመ-ቅጥያ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Scopes"
+msgstr "ወሰኖች"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Expires"
+msgstr "ጊዜው ያልፋል"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Status"
+msgstr "ሁኔታ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Action"
+msgstr "እርምጃ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Never"
+msgstr "በጭራሽ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Active"
+msgstr "ንቁ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoked"
+msgstr "የተሻረ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Revoke"
+msgstr "ሻር"
+
+#: lib/Ui/PagesRenderer.php
+msgid "No Long-Running Operations recorded."
+msgstr "ምንም ረጅም ጊዜ የሚወስዱ ክዋኔዎች አልተመዘገቡም።"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Operation"
+msgstr "ክዋኔ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Target"
+msgstr "ዒላማ"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Done"
+msgstr "ተጠናቋል"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Created"
+msgstr "የተፈጠረበት"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Completed"
+msgstr "የተጠናቀቀበት"
+
+#: lib/Ui/PagesRenderer.php
+msgid "Cancel"
+msgstr "ሰርዝ"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later. This server runs PHP %s, so the plugin was not installed or enabled."
+msgstr "የ REST API ተሰኪው PHP %s ወይም ከዚያ በላይ ይፈልጋል። ይህ አገልጋይ PHP %s እያስኬደ ስለሆነ ተሰኪው አልተጫነም ወይም አልነቃም።"
+
+#: setup.php
+msgid "Configuration"
+msgstr "ውቅር"
+
+#: setup.php
+msgid "REST API"
+msgstr "REST API"
+
+#: setup.php
+msgid "The REST API plugin is not enabled."
+msgstr "የ REST API ተሰኪው አልነቃም።"
+
+#: setup.php
+#, php-format
+msgid "The REST API plugin requires PHP %s or later."
+msgstr "የ REST API ተሰኪው PHP %s ወይም ከዚያ በላይ ይፈልጋል።"
